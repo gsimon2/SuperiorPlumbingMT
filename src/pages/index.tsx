@@ -1,3 +1,6 @@
+import TestComponent from "@/components/TestComponent";
+import Link from 'next/link';
+
 export const getStaticProps = async () => {
    return {
       props: {},
@@ -5,7 +8,12 @@ export const getStaticProps = async () => {
 };
 
 const Index = () => {
-   return <div>pages</div>;
+   return (
+      <div>
+         <TestComponent pageName="home" />
+         <Link href="/page1">page1</Link>
+      </div>
+   );
 };
 
 export default Index;
