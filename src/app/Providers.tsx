@@ -1,8 +1,8 @@
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
-import theme from "../app/theme";
+import theme from "./theme";
 
-export default function ThemeLayout({
+export default function Providers({
    children,
 }: Readonly<{
    children: React.ReactNode;
