@@ -1,7 +1,8 @@
-import TestComponent from "@/components/TestComponent";
-import { Metadata } from "next";
+import Content from "@/components/Content";
+import MainContentWrapper from "@/components/MainContentWrapper";
+import { siteTitle } from "@/content";
+import { Box, Grid, Typography } from "@mui/material";
 import Head from "next/head";
-import Link from "next/link";
 
 export const getStaticProps = async () => {
    return {
@@ -13,12 +14,15 @@ const Page = () => {
    return (
       <>
          <Head>
-            <title>test</title>
+            <title>{`Page Title | ${siteTitle}`}</title>
          </Head>
-         <div>
-            <TestComponent pageName="home" />
-            <Link href="/page1">page1</Link>
-         </div>
+         <MainContentWrapper>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+               <Content>
+                  <Typography>Home</Typography>
+               </Content>
+            </Grid>
+         </MainContentWrapper>
       </>
    );
 };

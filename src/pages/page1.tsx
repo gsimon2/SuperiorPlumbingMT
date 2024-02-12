@@ -1,4 +1,6 @@
-import TestComponent from '@/components/TestComponent';
+import MainContentWrapper from "@/components/MainContentWrapper";
+import { siteTitle } from '@/content';
+import Head from "next/head";
 
 export const getStaticProps = async () => {
    return {
@@ -7,7 +9,14 @@ export const getStaticProps = async () => {
 };
 
 const Index = () => {
-   return <TestComponent pageName='page1' />;
+   return (
+      <>
+         <Head>
+            <title>{`Page Title | ${siteTitle}`}</title>
+         </Head>
+         <MainContentWrapper>Page Content</MainContentWrapper>
+      </>
+   );
 };
 
 export default Index;

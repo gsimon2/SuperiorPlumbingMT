@@ -13,7 +13,7 @@ export default function MyDocument(props: DocumentProps & DocumentHeadTagsProps)
             <DocumentHeadTags {...props} />
             <meta name='description' content='site description'/>
          </Head>
-         <body>
+         <body style={{ margin: 0 }}>
             <Main />
             <NextScript />
          </body>
