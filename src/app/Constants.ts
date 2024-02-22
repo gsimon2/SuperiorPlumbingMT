@@ -5,11 +5,6 @@ export const localStorageKeys = {
    themePreference: 'themePreference'
 };
 
-export enum themes {
-   light = 'light',
-   dark = 'dark'
-}
-
 export const breakpoints = {
    xs: '0px',
    sm: '600px',

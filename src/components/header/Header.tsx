@@ -7,7 +7,7 @@ import MobileNavMenu from './MobileNavMenu';
 import HeaderIcon from './HeaderIcon';
 import { siteTitle, pages } from '@/content';
 
-const Header: React.FC<IHeaderProps> = ({ setTheme }) => {
+const Header: React.FC = () => {
    return (
       <AppBar
          elevation={elevation}
@@ -42,15 +42,10 @@ const Header: React.FC<IHeaderProps> = ({ setTheme }) => {
                   {siteTitle}
                </Typography>
                <DesktopNavMenu pages={pages} />
-               <SettingsMenu setTheme={setTheme} />
             </Toolbar>
          </Container>
       </AppBar>
    );
 };
-
-export interface IHeaderProps {
-   setTheme: (newTheme: themes) => void;
-}
 
 export default Header;
