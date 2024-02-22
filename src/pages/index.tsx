@@ -14,7 +14,7 @@ const Page = () => {
    return (
       <>
          <Head>
-            <title>{`Page Title | ${siteTitle}`}</title>
+            <title>{`${siteTitle}`}</title>
          </Head>
          <MainContentWrapper>
             <Grid item xs={12} sm={12} md={12} lg={12}>

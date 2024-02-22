@@ -3,15 +3,29 @@ import {
    DocumentHeadTagsProps,
    documentGetInitialProps,
 } from "@mui/material-nextjs/v14-pagesRouter";
-import { DocumentContext, DocumentProps, Head, Html, Main, NextScript } from 'next/document';
+import {
+   DocumentContext,
+   DocumentProps,
+   Head,
+   Html,
+   Main,
+   NextScript,
+} from "next/document";
 
-
-export default function MyDocument(props: DocumentProps & DocumentHeadTagsProps) {
+export default function MyDocument(
+   props: DocumentProps & DocumentHeadTagsProps
+) {
    return (
       <Html lang="en">
          <Head>
             <DocumentHeadTags {...props} />
-            <meta name='description' content='site description'/>
+            <meta name="description" content="site description" />
+            <link
+               rel="icon"
+               href="/assets/plumber.svg"
+               type="image/<generated>"
+               sizes="<generated>"
+            />
          </Head>
          <body style={{ margin: 0 }}>
             <Main />

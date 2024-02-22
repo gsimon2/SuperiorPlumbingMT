@@ -1,6 +1,6 @@
-export const headerLogo = "/assets/lyons-bjj-logo.png";
+export const headerLogo = "/assets/plumber.svg";
 
-export const siteTitle = "Site Title";
+export const siteTitle = "Superior Plumbing MT";
 
 export const pages: ReadonlyArray<{
    title: string;
