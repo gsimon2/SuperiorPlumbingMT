@@ -18,7 +18,7 @@ const ContactDisplay: React.FC = () => {
             sx={{
                display: "flex",
                padding: "0.5rem",
-               justifyContent: { sm: "center", md: "flex-start" },
+               justifyContent: { xs: "center", sm: "center", md: "flex-start" },
             }}
          >
             <PhoneIcon fontSize="medium" sx={{ marginRight: "1rem" }} />
@@ -35,7 +35,7 @@ const ContactDisplay: React.FC = () => {
             sx={{
                display: "flex",
                padding: "0.5rem",
-               justifyContent: { sm: "center", md: "flex-start" },
+               justifyContent: { xs: "center", sm: "center", md: "flex-start" },
             }}
          >
             <EmailIcon fontSize="medium" sx={{ marginRight: "1rem" }} />
