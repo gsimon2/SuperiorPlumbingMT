@@ -1,6 +1,7 @@
-import Header from "@/components/header/Header";
+import NavigationHeader from "@/components/header/NavigationHeader";
 import { maxWidth } from "./Constants";
 import { Box, Container, CssBaseline } from "@mui/material";
+import TopInfo from "@/components/header/TopInfo";
 
 export default function RootLayout({
    children,
@@ -10,10 +11,10 @@ export default function RootLayout({
    return (
       <>
          <CssBaseline />
-         <Box sx={{ background: 'black', height: '6rem' }}/>
-         <Header />
+         <TopInfo />
+         <NavigationHeader />
          <Container maxWidth={maxWidth}>{children}</Container>
-         <Box sx={{ background: 'white', height: '100rem' }}/>
+         <Box sx={{ background: "white", height: "100rem" }} />
       </>
    );
 }

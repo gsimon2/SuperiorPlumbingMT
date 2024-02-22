@@ -21,6 +21,15 @@ const theme = createTheme({
          paper: "#f2f2f5",
       },
    },
+   breakpoints: {
+      values: {
+        xs: 0,
+        sm: 405,
+        md: 600,
+        lg: 900,
+        xl: 1536,
+      },
+    },
    typography: {
       fontFamily: roboto.style.fontFamily,
    },

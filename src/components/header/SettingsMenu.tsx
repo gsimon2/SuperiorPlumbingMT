@@ -22,9 +22,9 @@ const SettingsMenu: React.FC = () => {
             edge="end"
             color="inherit"
             id="settings-menu"
-            aria-controls={open ? 'basic-menu' : undefined}
+            aria-controls={open ? "basic-menu" : undefined}
             aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
+            aria-expanded={open ? "true" : undefined}
          >
             <SettingsIcon />
          </IconButton>
@@ -36,8 +36,7 @@ const SettingsMenu: React.FC = () => {
             MenuListProps={{
                "aria-labelledby": "basic-button",
             }}
-         >
-         </Menu>
+         ></Menu>
       </Box>
    );
 };

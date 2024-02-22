@@ -5,7 +5,7 @@ import NextLink from "next/link";
 
 const DesktopNavMenu: React.FC<IDesktopNavMenuProps> = ({ pages }) => {
    return (
-      <Box sx={{ display: { xs: "none", sm: "none", md: "flex" } }}>
+      <Box sx={{ display: { xs: "none", sm: "none", md: "none", lg: 'flex' } }}>
          {pages.map((page) => (
             <Link
                component={NextLink}
