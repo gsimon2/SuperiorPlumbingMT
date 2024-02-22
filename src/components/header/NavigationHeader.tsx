@@ -7,7 +7,6 @@ import {
    Toolbar,
    Typography,
    useMediaQuery,
-   useTheme,
 } from "@mui/material";
 import React from "react";
 import DesktopNavMenu from "./DesktopNavMenu";
@@ -20,7 +19,7 @@ const NavigationHeader: React.FC = () => {
    const isSmall = useMediaQuery("(max-width:660px)");
 
    return (
-      <Box sx={{ position: "sticky", top: 0, display: "grid" }}>
+      <Box sx={{ position: "sticky", top: 0, display: "grid", zIndex: 5 }}>
          <Box
             sx={{
                background: "black",
@@ -78,12 +77,12 @@ const NavigationHeader: React.FC = () => {
                         <HeaderIcon sizeInPx={60} />
                      </Box>
                      <Typography
-                        variant="h6"
+                        variant="h1"
                         noWrap
                         sx={{
                            mx: 2,
                            display: "flex",
-                           fontFamily: "monospace",
+                           // fontFamily: "monospace",
                            fontSize: {
                               xs: "large",
                               sm: "large",

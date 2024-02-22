@@ -14,7 +14,19 @@ export default function RootLayout({
          <TopInfo />
          <NavigationHeader />
          <Container maxWidth={maxWidth}>{children}</Container>
-         <Box sx={{ background: "white", height: "100rem" }} />
+         <Box
+            sx={{
+               background: "black",
+               color: "white",
+               height: "10rem",
+               display: "flex",
+               justifyContent: "center",
+               alignItems: "center",
+               marginTop: "2rem",
+            }}
+         >
+            I&apos;m going to be a footer! =D
+         </Box>
       </>
    );
 }

@@ -12,13 +12,13 @@ const theme = createTheme({
    palette: {
       mode: "light",
       primary: {
-         main: '#1976d2',
+         main: '#4178d8'
        },
       secondary: {
          main: "#fbde00",
       },
       background: {
-         paper: "#f2f2f5",
+         paper: "#e3f2fd",
       },
    },
    breakpoints: {
