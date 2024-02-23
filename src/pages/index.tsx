@@ -2,8 +2,10 @@ import Content from "@/components/Content";
 import MainContentWrapper from "@/components/MainContentWrapper";
 import Service from "@/components/Service";
 import { siteTitle } from "@/content";
-import { Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import Head from "next/head";
+import Image from "next/image";
+import { headerLogo } from "@/content";
 
 export const getStaticProps = async () => {
    return {
@@ -20,36 +22,60 @@ const Page = () => {
          <MainContentWrapper>
             <Grid item xs={12} sm={12} md={12} lg={12}>
                <Content>
-                  <Typography>
-                     Welcome to Superior Plumbing MT, your trusted local
-                     plumbing solution proudly serving Superior, Montana, and
-                     its surrounding areas. Owned and operated by Brody, a
-                     Michigan native with a passion for precision and service,
-                     our company stands as a testament to quality workmanship
-                     and unmatched customer care. Understanding the unique
-                     plumbing needs of our community, Brody and his team of
-                     skilled plumbers bring a personal touch to every project,
-                     big or small. From emergency repairs in the dead of winter
-                     to thoughtful consultations on eco-friendly upgrades,
-                     Superior Plumbing MT is committed to ensuring your water
-                     flows as beautifully as the Clark Fork River, without any
-                     unexpected interruptions.
-                  </Typography>
-                  <br />
-                  <Typography>
-                     Here at Superior Plumbing MT, we believe in building
-                     relationships through reliability and transparency. Brody
-                     has instilled in his team the importance of clear
-                     communication, timely responses, and thorough work,
-                     ensuring that every customer feels heard and valued from
-                     the first call to the final inspection. Our services span a
-                     wide range, including leak detection, drain cleaning, water
-                     heater installation, and comprehensive plumbing
-                     inspections, all delivered with the highest standards of
-                     professionalism and care. Choose Superior Plumbing MT,
-                     where quality meets integrity, and let Brody and his team
-                     take the worry out of your water woes.
-                  </Typography>
+                  <Grid container spacing={2}>
+                     <Grid item xs={12} sm={12} md={12} lg={5} xl={4}>
+                        <Box
+                           sx={{
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              height: '100%',
+                              position: 'relative',
+                              minHeight: '200px'
+                           }}
+                        >
+                           <Image
+                              src={headerLogo}
+                              alt="logo"
+                              fill
+                           />
+                        </Box>
+                     </Grid>
+                     <Grid item xs={12} sm={12} md={12} lg={7} xl={8}>
+                        <Typography>
+                           Welcome to Superior Plumbing MT, your trusted local
+                           plumbing solution proudly serving Superior, Montana,
+                           and its surrounding areas. Owned and operated by
+                           Brody, a Michigan native with a passion for precision
+                           and service, our company stands as a testament to
+                           quality workmanship and unmatched customer care.
+                           Understanding the unique plumbing needs of our
+                           community, Brody and his team of skilled plumbers
+                           bring a personal touch to every project, big or
+                           small. From emergency repairs in the dead of winter
+                           to thoughtful consultations on eco-friendly upgrades,
+                           Superior Plumbing MT is committed to ensuring your
+                           water flows as beautifully as the Clark Fork River,
+                           without any unexpected interruptions.
+                        </Typography>
+                        <br />
+                        <Typography>
+                           Here at Superior Plumbing MT, we believe in building
+                           relationships through reliability and transparency.
+                           Brody has instilled in his team the importance of
+                           clear communication, timely responses, and thorough
+                           work, ensuring that every customer feels heard and
+                           valued from the first call to the final inspection.
+                           Our services span a wide range, including leak
+                           detection, drain cleaning, water heater installation,
+                           and comprehensive plumbing inspections, all delivered
+                           with the highest standards of professionalism and
+                           care. Choose Superior Plumbing MT, where quality
+                           meets integrity, and let Brody and his team take the
+                           worry out of your water woes.
+                        </Typography>
+                     </Grid>
+                  </Grid>
                </Content>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -61,9 +87,10 @@ const Page = () => {
                         </Typography>
                         <br />
                         <Typography sx={{ textAlign: "center" }}>
-                           At Superior Plumbing MT, we&apos;re committed to offering
-                           a comprehensive suite of plumbing services to meet
-                           all your needs. Here&apos;s what we can do for you:
+                           At Superior Plumbing MT, we&apos;re committed to
+                           offering a comprehensive suite of plumbing services
+                           to meet all your needs. Here&apos;s what we can do
+                           for you:
                         </Typography>
                      </Grid>
                      <Service
