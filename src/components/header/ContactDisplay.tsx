@@ -12,6 +12,7 @@ const ContactDisplay: React.FC = () => {
             color: "secondary.main",
             paddingRight: "1rem",
             paddingTop: "0.5rem",
+            display: { sm: "none", md: "block" },
          }}
       >
          <Box

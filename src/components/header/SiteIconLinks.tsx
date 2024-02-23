@@ -3,6 +3,8 @@ import React from "react";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import EmailIcon from "@mui/icons-material/Email";
+import PhoneIcon from "@mui/icons-material/Phone";
 import { ContactInfo } from "@/content";
 
 const SiteIconLinks: React.FC = () => {
@@ -16,6 +18,28 @@ const SiteIconLinks: React.FC = () => {
             order: { xs: 1, sm: 1, md: 0 },
          }}
       >
+         <IconButton
+            aria-label="Phone number"
+            title="Phone number"
+            href={ContactInfo.phone.href}
+            sx={{
+               color: "secondary.main",
+               display: { sm: "inline-flex", md: "none" },
+            }}
+         >
+            <PhoneIcon />
+         </IconButton>
+         <IconButton
+            aria-label="Email"
+            title="Email"
+            href={ContactInfo.email.href}
+            sx={{
+               color: "secondary.main",
+               display: { sm: "inline-flex", md: "none" },
+            }}
+         >
+            <EmailIcon />
+         </IconButton>
          <IconButton
             aria-label="Google business page"
             title="Google business page"
