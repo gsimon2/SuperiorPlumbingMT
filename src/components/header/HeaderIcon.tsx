@@ -7,9 +7,6 @@ const HeaderIcon: React.FC<IHeaderIconProps> = ({ sizeInPx }) => {
       <Image
          width={sizeInPx}
          height={sizeInPx}
-         style={{
-            borderRadius: "50%",
-         }}
          src={headerLogo}
          alt="logo"
       />

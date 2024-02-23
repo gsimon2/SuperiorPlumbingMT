@@ -67,11 +67,15 @@ const NavigationHeader: React.FC = () => {
                            order: {
                               xs: 2,
                               sm: 2,
-                              md: 0,
+                              md: 2,
+                              lg: 0
                            },
-                           display: { xs: "none", sm: "inline-block" },
-                           paddingTop: "0.25rem",
+                           display: {
+                              xs: "flex",
+                              sm: "flex"
+                           },
                            overflow: "hidden",
+                           filter: "brightness(0) invert(1)"
                         }}
                      >
                         <HeaderIcon sizeInPx={60} />
@@ -82,16 +86,14 @@ const NavigationHeader: React.FC = () => {
                         sx={{
                            mx: 2,
                            display: "flex",
-                           // fontFamily: "monospace",
                            fontSize: {
                               xs: "large",
                               sm: "large",
                               md: "x-large",
+                              lg: "xx-large"
                            },
                            fontWeight: 700,
-                           letterSpacing: ".3rem",
-                           color: "inherit",
-                           textDecoration: "none",
+                           letterSpacing: ".2rem",
                            textWrap: "wrap",
                            flex: 1,
                         }}

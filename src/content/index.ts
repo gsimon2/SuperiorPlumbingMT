@@ -1,6 +1,6 @@
-export const headerLogo = "/assets/plumber.svg";
+export const headerLogo = "/assets/logo.svg";
 
-export const siteTitle = "Superior Plumbing MT";
+export const siteTitle = "Superior Plumbing";
 
 export const pages: ReadonlyArray<{
    title: string;

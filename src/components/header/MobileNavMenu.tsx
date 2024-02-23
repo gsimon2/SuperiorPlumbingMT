@@ -21,7 +21,6 @@ const MobileNavMenu: React.FC<IMobileNavMenuProps> = ({ pages }) => {
             edge="start"
             sx={{
                display: { xs: "flex", sm: "flex", md: "flex", lg: "none" },
-               mr: 2,
             }}
             color="inherit"
          >
