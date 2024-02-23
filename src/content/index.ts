@@ -8,6 +8,7 @@ export const pages: ReadonlyArray<{
 }> = [
    { title: "Home", url: "/" },
    { title: "Page1", url: "/page1" },
+   { title: "Contact", url: "/contact" },
 ];
 
 export const ContactInfo = {
