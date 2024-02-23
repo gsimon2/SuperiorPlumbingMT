@@ -9,11 +9,20 @@ export default function RootLayout({
    children: React.ReactNode;
 }>) {
    return (
-      <>
+      <Box
+         sx={{
+            height: "auto",
+            minHeight: "100%",
+            display: "flex",
+            flexDirection: "column",
+         }}
+      >
          <CssBaseline />
          <TopInfo />
          <NavigationHeader />
-         <Container maxWidth={maxWidth}>{children}</Container>
+         <Box sx={{ flex: "1 0 auto" }}>
+            <Container maxWidth={maxWidth}>{children}</Container>
+         </Box>
          <Box
             sx={{
                background: "black",
@@ -27,6 +36,6 @@ export default function RootLayout({
          >
             I&apos;m going to be a footer! =D
          </Box>
-      </>
+      </Box>
    );
 }

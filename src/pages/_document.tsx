@@ -16,7 +16,7 @@ export default function MyDocument(
    props: DocumentProps & DocumentHeadTagsProps
 ) {
    return (
-      <Html lang="en">
+      <Html lang="en" style={{ height: "100%" }}>
          <Head>
             <DocumentHeadTags {...props} />
             <meta name="description" content="site description" />
@@ -27,7 +27,7 @@ export default function MyDocument(
                sizes="<generated>"
             />
          </Head>
-         <body style={{ margin: 0 }}>
+         <body style={{ margin: 0, height: "100%" }}>
             <Main />
             <NextScript />
          </body>
