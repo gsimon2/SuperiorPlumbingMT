@@ -2,7 +2,7 @@ import { IconButton, Stack } from "@mui/material";
 import React from "react";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import YouTubeIcon from "@mui/icons-material/YouTube";
+// import YouTubeIcon from "@mui/icons-material/YouTube";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { ContactInfo } from "@/content";
@@ -56,14 +56,14 @@ const SiteIconLinks: React.FC = () => {
          >
             <FacebookIcon />
          </IconButton>
-         <IconButton
+         {/* <IconButton
             aria-label="Youtube business page"
             title="Youtube business page"
             href={ContactInfo.youtube.href}
             sx={{ color: "secondary.main" }}
          >
             <YouTubeIcon />
-         </IconButton>
+         </IconButton> */}
       </Stack>
    );
 };
