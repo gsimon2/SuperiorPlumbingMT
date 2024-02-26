@@ -1,6 +1,6 @@
 export const headerLogo = "/assets/logo.svg";
 
-export const siteTitle = "Superior Plumbing";
+export const siteTitle = "Superior Plumbing Service";
 
 export const pages: ReadonlyArray<{
    title: string;
@@ -21,8 +21,8 @@ export const ContactInfo = {
       href: "tel:6666666666",
    },
    email: {
-      text: "support@superiorPlumbingMt.com",
-      href: "mailto:support@superiorPlumbingMt.com",
+      text: "service@superiorPlumbingMt.com",
+      href: "mailto:service@superiorPlumbingMt.com",
    },
    facebook: {
       text: "",
