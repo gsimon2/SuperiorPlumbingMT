@@ -8,12 +8,17 @@ Superior Plumbing Services: Providing top-tier plumbing solutions in Superior, M
 From emergency repairs to installations, our certified experts ensure your plumbing needs are met with professionalism and efficiency.
 `;
 
+export const googlePlaceId = "ChIJI38X8IHzZm8R8xBNy6v5EhU";
+export const reviewsUrl =
+   "https://www.google.com/localservices/prolist?spp=Cg0vZy8xMXkzcmtkNWNq&source=sh/x/loc/srv/m1/0&kgs=09ff334a00aa471f&src=2&slp=UhUIARIREg8iDS9nLzExeTNya2Q1Y2o#ts=3";
+
 export const pages: ReadonlyArray<{
    title: string;
    url: string;
 }> = [
    { title: "Home", url: "/" },
    { title: "Contact", url: "/contact" },
+   { title: "Reviews", url: "/reviews" },
 ];
 
 export const ContactInfo = {
