@@ -12,7 +12,6 @@ export const pages: ReadonlyArray<{
    url: string;
 }> = [
    { title: "Home", url: "/" },
-   { title: "Page1", url: "/page1" },
    { title: "Contact", url: "/contact" },
 ];
 
