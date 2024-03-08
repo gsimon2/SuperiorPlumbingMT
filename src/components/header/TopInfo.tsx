@@ -13,7 +13,12 @@ const TopInfo: React.FC = () => {
             flexDirection: { xs: "column", sm: "column", md: "row" },
          }}
       >
-         <SiteIconLinks />
+         <SiteIconLinks
+            sx={{
+               padding: { sm: "0", md: "1.5rem" },
+               order: { xs: 1, sm: 1, md: 0 },
+            }}
+         />
          <ContactDisplay />
       </Box>
    );

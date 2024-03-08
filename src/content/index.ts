@@ -1,13 +1,18 @@
 export const headerLogo = "/assets/logo.svg";
 
 export const siteTitle = "Superior Plumbing Service";
+export const siteURL = "superiorPlumbingMt.com";
+
+export const siteDescription = `
+Superior Plumbing Services: Providing top-tier plumbing solutions in Superior, MT, and surrounding areas.
+From emergency repairs to installations, our certified experts ensure your plumbing needs are met with professionalism and efficiency.
+`;
 
 export const pages: ReadonlyArray<{
    title: string;
    url: string;
 }> = [
    { title: "Home", url: "/" },
-   { title: "Page1", url: "/page1" },
    { title: "Contact", url: "/contact" },
 ];
 

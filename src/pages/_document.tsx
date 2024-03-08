@@ -1,3 +1,4 @@
+import { siteDescription } from '@/content';
 import {
    DocumentHeadTags,
    DocumentHeadTagsProps,
@@ -19,7 +20,7 @@ export default function MyDocument(
       <Html lang="en" style={{ height: "100%" }}>
          <Head>
             <DocumentHeadTags {...props} />
-            <meta name="description" content="site description" />
+            <meta name="description" content={siteDescription} />
             <link
                rel="icon"
                href="/assets/plumber.svg"
