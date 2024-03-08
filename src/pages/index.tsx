@@ -152,11 +152,20 @@ const Page = () => {
                         line installations and repairs, ensuring your gas
                         appliances operate safely and efficiently."
                      />
+                     <Service
+                        imageSource="/assets/services/services-remodel.svg"
+                        imageAltText="bathtub"
+                        title="Remodel Services"
+                        text="Transform your space with our remodeling services.
+                        Whether you're updating a bathroom or kitchen, we work
+                        closely with you to install the plumbing necessary for
+                        your dream space."
+                     />
                      <Grid item xs={12} sm={12} md={12} lg={12}>
                         <Typography sx={{ textAlign: "center" }}>
-                           At Superior Plumbing Service, we
-                           provide top-notch plumbing services with a smile. Let
-                           us take the worry out of your plumbing problems.
+                           At Superior Plumbing Service, we provide top-notch
+                           plumbing services with a smile. Let us take the worry
+                           out of your plumbing problems.
                         </Typography>
                      </Grid>
                   </Grid>
