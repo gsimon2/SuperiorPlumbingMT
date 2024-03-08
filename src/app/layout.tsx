@@ -1,6 +1,6 @@
 import NavigationHeader from "@/components/header/NavigationHeader";
 import { maxWidth } from "./Constants";
-import { Box, Container, CssBaseline } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import TopInfo from "@/components/header/TopInfo";
 
 export default function RootLayout({
@@ -17,7 +17,6 @@ export default function RootLayout({
             flexDirection: "column",
          }}
       >
-         <CssBaseline />
          <TopInfo />
          <NavigationHeader />
          <Box sx={{ flex: "1 0 auto" }}>
