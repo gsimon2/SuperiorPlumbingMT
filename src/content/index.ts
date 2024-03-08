@@ -1,6 +1,7 @@
 export const headerLogo = "/assets/logo.svg";
 
 export const siteTitle = "Superior Plumbing Service";
+export const siteURL = "superiorPlumbingMt.com";
 
 export const siteDescription = `
 Superior Plumbing Services: Providing top-tier plumbing solutions in Superior, MT, and surrounding areas.

@@ -1,4 +1,4 @@
-import { IconButton, Stack } from "@mui/material";
+import { IconButton, Stack, SxProps } from "@mui/material";
 import React from "react";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -7,15 +7,22 @@ import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { ContactInfo } from "@/content";
 
-const SiteIconLinks: React.FC = () => {
+export interface ISiteIconLinks {
+   sx?: SxProps;
+   alwaysShowAll?: boolean;
+}
+
+const SiteIconLinks: React.FC<ISiteIconLinks> = ({
+   sx,
+   alwaysShowAll = false,
+}) => {
    return (
       <Stack
          direction="row"
          spacing={2}
          sx={{
-            padding: { sm: "0", md: "1.5rem" },
             justifyContent: "center",
-            order: { xs: 1, sm: 1, md: 0 },
+            ...sx,
          }}
       >
          <IconButton
@@ -24,7 +31,9 @@ const SiteIconLinks: React.FC = () => {
             href={ContactInfo.phone.href}
             sx={{
                color: "secondary.main",
-               display: { sm: "inline-flex", md: "none" },
+               display: alwaysShowAll
+                  ? "inline-flex"
+                  : { sm: "inline-flex", md: "none" },
             }}
          >
             <PhoneIcon />
@@ -35,7 +44,9 @@ const SiteIconLinks: React.FC = () => {
             href={ContactInfo.email.href}
             sx={{
                color: "secondary.main",
-               display: { sm: "inline-flex", md: "none" },
+               display: alwaysShowAll
+                  ? "inline-flex"
+                  : { sm: "inline-flex", md: "none" },
             }}
          >
             <EmailIcon />
