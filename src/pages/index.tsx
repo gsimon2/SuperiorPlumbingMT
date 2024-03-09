@@ -6,6 +6,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import Head from "next/head";
 import Image from "next/image";
 import { headerLogo } from "@/content";
+import ParallaxContainer from "@/components/ParallaxContainer";
 
 export const getStaticProps = async () => {
    return {
@@ -70,6 +71,12 @@ const Page = () => {
                      </Grid>
                   </Grid>
                </Content>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+               <ParallaxContainer
+                  imagePath="/assets/test-mountains.png"
+                  sx={{ height: "20rem", borderRadius: "0.5rem" }}
+               />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
                <Content bold={true}>
