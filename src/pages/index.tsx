@@ -82,7 +82,7 @@ const Page = () => {
                <Content bold={true}>
                   <Grid container spacing={2}>
                      <Grid item xs={12} sm={12} md={12} lg={12}>
-                        <Typography variant="h4" sx={{ textAlign: "center" }}>
+                        <Typography variant="h4" sx={{ textAlign: "center" }} id="services">
                            Plumbing Services
                         </Typography>
                         <br />
