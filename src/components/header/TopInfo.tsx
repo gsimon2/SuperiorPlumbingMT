@@ -19,7 +19,16 @@ const TopInfo: React.FC = () => {
                order: { xs: 1, sm: 1, md: 0 },
             }}
          />
-         <ContactDisplay />
+         <Box
+            sx={{
+               color: "secondary.main",
+               paddingRight: "1rem",
+               paddingTop: "0.5rem",
+               display: { xs: "none", sm: "none", md: "block" },
+            }}
+         >
+            <ContactDisplay />
+         </Box>
       </Box>
    );
 };

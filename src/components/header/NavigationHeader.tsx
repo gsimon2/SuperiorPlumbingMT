@@ -4,6 +4,7 @@ import {
    AppBar,
    Box,
    Container,
+   Link,
    Toolbar,
    Typography,
    useMediaQuery,
@@ -14,6 +15,7 @@ import MobileNavMenu from "./MobileNavMenu";
 import HeaderIcon from "./HeaderIcon";
 import { siteTitle, pages } from "@/content";
 import Image from "next/image";
+import NextLink from "next/link";
 
 const NavigationHeader: React.FC = () => {
    const isSmall = useMediaQuery("(max-width:660px)");
@@ -62,44 +64,62 @@ const NavigationHeader: React.FC = () => {
                <Container maxWidth={maxWidth} sx={{ paddingX: "0 !important" }}>
                   <Toolbar sx={{ paddingX: "0 !important" }}>
                      <MobileNavMenu pages={pages} />
-                     <Box
+                     <Link
+                        component={NextLink}
+                        href="/"
                         sx={{
-                           order: {
-                              xs: 2,
-                              sm: 2,
-                              md: 2,
-                              lg: 0
-                           },
-                           display: {
-                              xs: "flex",
-                              sm: "flex"
-                           },
-                           overflow: "hidden",
-                           filter: "brightness(0) invert(1)"
+                           color: "unset",
+                           ":hover": { textDecoration: "none" },
                         }}
                      >
-                        <HeaderIcon sizeInPx={60} />
-                     </Box>
-                     <Typography
-                        variant="h1"
-                        noWrap
+                        <Box
+                           sx={{
+                              order: {
+                                 xs: 2,
+                                 sm: 2,
+                                 md: 2,
+                                 lg: 0,
+                              },
+                              display: {
+                                 xs: "flex",
+                                 sm: "flex",
+                              },
+                              overflow: "hidden",
+                              filter: "brightness(0) invert(1)",
+                           }}
+                        >
+                           <HeaderIcon sizeInPx={60} />
+                        </Box>
+                     </Link>
+                     <Link
+                        component={NextLink}
+                        href="/"
                         sx={{
-                           mx: 2,
-                           display: "flex",
-                           fontSize: {
-                              xs: "large",
-                              sm: "large",
-                              md: "x-large",
-                              lg: "xx-large"
-                           },
-                           fontWeight: 700,
-                           letterSpacing: ".2rem",
-                           textWrap: "wrap",
-                           flex: 1,
+                           color: "unset",
+                           ":hover": { textDecoration: "none" },
                         }}
                      >
-                        {siteTitle}
-                     </Typography>
+                        <Typography
+                           variant="h1"
+                           noWrap
+                           sx={{
+                              mx: 2,
+                              display: "flex",
+                              fontSize: {
+                                 xs: "large",
+                                 sm: "large",
+                                 md: "x-large",
+                                 lg: "xx-large",
+                              },
+                              fontWeight: 700,
+                              letterSpacing: ".2rem",
+                              textWrap: "wrap",
+                              flex: 1,
+                           }}
+                        >
+                           {siteTitle}
+                        </Typography>
+                     </Link>
                      <DesktopNavMenu pages={pages} />
                   </Toolbar>
                </Container>

@@ -7,19 +7,12 @@ import EmailIcon from "@mui/icons-material/Email";
 
 const ContactDisplay: React.FC = () => {
    return (
-      <Box
-         sx={{
-            color: "secondary.main",
-            paddingRight: "1rem",
-            paddingTop: "0.5rem",
-            display: { xs: "none", sm: "none", md: "block" },
-         }}
-      >
+      <Box>
          <Box
             sx={{
                display: "flex",
                padding: "0.5rem",
-               justifyContent: { xs: "center", sm: "center", md: "flex-start" },
+               justifyContent: "flex-start",
             }}
          >
             <PhoneIcon fontSize="medium" sx={{ marginRight: "1rem" }} />
@@ -36,7 +29,7 @@ const ContactDisplay: React.FC = () => {
             sx={{
                display: "flex",
                padding: "0.5rem",
-               justifyContent: { xs: "center", sm: "center", md: "flex-start" },
+               justifyContent: "flex-start",
             }}
          >
             <EmailIcon fontSize="medium" sx={{ marginRight: "1rem" }} />

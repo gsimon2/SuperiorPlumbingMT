@@ -55,6 +55,7 @@ const SiteIconLinks: React.FC<ISiteIconLinks> = ({
             aria-label="Google business page"
             title="Google business page"
             href={ContactInfo.google.href}
+            target='_blank'
             sx={{ color: "secondary.main" }}
          >
             <GoogleIcon />
@@ -63,6 +64,7 @@ const SiteIconLinks: React.FC<ISiteIconLinks> = ({
             aria-label="Facebook business page"
             title="Facebook business page"
             href={ContactInfo.facebook.href}
+            target='_blank'
             sx={{ color: "secondary.main" }}
          >
             <FacebookIcon />
@@ -71,6 +73,7 @@ const SiteIconLinks: React.FC<ISiteIconLinks> = ({
             aria-label="Youtube business page"
             title="Youtube business page"
             href={ContactInfo.youtube.href}
+            target='_blank'
             sx={{ color: "secondary.main" }}
          >
             <YouTubeIcon />
