@@ -30,8 +30,8 @@ export const ContactInfo = {
       href: "mailto:service@superiorPlumbingMt.com",
    },
    facebook: {
-      text: "",
-      href: "",
+      text: "Facebook",
+      href: "https://www.facebook.com/profile.php?id=61555851148323&mibextid=qi2Omg",
    },
    google: {
       href: "",
