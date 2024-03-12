@@ -2,10 +2,14 @@ import { Box, Link } from "@mui/material";
 import React from "react";
 import NextLink from "next/link";
 
-
 const DesktopNavMenu: React.FC<IDesktopNavMenuProps> = ({ pages }) => {
    return (
-      <Box sx={{ display: { xs: "none", sm: "none", md: "none", lg: 'flex' } }}>
+      <Box
+         sx={{
+            marginLeft: "auto",
+            display: { xs: "none", sm: "none", md: "none", lg: "flex" },
+         }}
+      >
          {pages.map((page) => (
             <Link
                component={NextLink}
