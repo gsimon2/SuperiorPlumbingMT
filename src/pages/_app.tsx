@@ -4,6 +4,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "@/app/theme";
 import { CssBaseline } from "@mui/material";
 import Head from "next/head";
+import { Analytics } from "@vercel/analytics/react"
 
 export default function MyApp({ Component, pageProps }: AppProps) {
    return (
@@ -15,7 +16,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                />
             </Head>
             <ThemeProvider theme={theme}>
-               <CssBaseline />
+               <CssBaseline />]
+               <Analytics />
                <Layout>
                   <Component {...pageProps} />
                </Layout>
