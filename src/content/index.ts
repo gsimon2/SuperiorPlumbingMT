@@ -22,8 +22,8 @@ export const ContactInfo = {
       href: "",
    },
    phone: {
-      text: "(666) 666-6666",
-      href: "tel:6666666666",
+      text: "(406) 550-0869",
+      href: "tel:4065500869",
    },
    email: {
       text: "service@superiorPlumbingMt.com",

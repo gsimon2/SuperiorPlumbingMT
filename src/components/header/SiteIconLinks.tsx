@@ -51,20 +51,22 @@ const SiteIconLinks: React.FC<ISiteIconLinks> = ({
          >
             <EmailIcon />
          </IconButton>
-         <IconButton
-            aria-label="Google business page"
-            title="Google business page"
-            href={ContactInfo.google.href}
-            target='_blank'
-            sx={{ color: "secondary.main" }}
-         >
-            <GoogleIcon />
-         </IconButton>
+         {ContactInfo.google.href && (
+            <IconButton
+               aria-label="Google business page"
+               title="Google business page"
+               href={ContactInfo.google.href}
+               target="_blank"
+               sx={{ color: "secondary.main" }}
+            >
+               <GoogleIcon />
+            </IconButton>
+         )}
          <IconButton
             aria-label="Facebook business page"
             title="Facebook business page"
             href={ContactInfo.facebook.href}
-            target='_blank'
+            target="_blank"
             sx={{ color: "secondary.main" }}
          >
             <FacebookIcon />
