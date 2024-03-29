@@ -70,20 +70,21 @@ const NavigationHeader: React.FC = () => {
                         sx={{
                            color: "unset",
                            ":hover": { textDecoration: "none" },
+                           order: {
+                              xs: 2,
+                              sm: 2,
+                              md: 3,
+                              lg: 0,
+                           },
+                           display: {
+                              xs: "none",
+                              sm: "flex",
+                              md: "flex"
+                           },
                         }}
                      >
                         <Box
                            sx={{
-                              order: {
-                                 xs: 2,
-                                 sm: 2,
-                                 md: 2,
-                                 lg: 0,
-                              },
-                              display: {
-                                 xs: "flex",
-                                 sm: "flex",
-                              },
                               overflow: "hidden",
                               filter: "brightness(0) invert(1)",
                            }}
@@ -114,6 +115,8 @@ const NavigationHeader: React.FC = () => {
                               fontWeight: 700,
                               letterSpacing: ".2rem",
                               textWrap: "wrap",
+                              wordWrap: "break-word",
+                              whiteSpace: "break-spaces",
                               flex: 1,
                            }}
                         >
