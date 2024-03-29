@@ -102,7 +102,6 @@ const NavigationHeader: React.FC = () => {
                      >
                         <Typography
                            variant="h1"
-                           noWrap
                            sx={{
                               mx: 2,
                               display: "flex",
@@ -114,9 +113,6 @@ const NavigationHeader: React.FC = () => {
                               },
                               fontWeight: 700,
                               letterSpacing: ".2rem",
-                              textWrap: "wrap",
-                              wordWrap: "break-word",
-                              whiteSpace: "break-spaces",
                               flex: 1,
                            }}
                         >
