@@ -25,6 +25,9 @@ const TopInfo: React.FC = () => {
                paddingRight: "1rem",
                paddingTop: "0.5rem",
                display: { xs: "none", sm: "none", md: "block" },
+               "a": {
+                  color: 'secondary.main'
+               }
             }}
          >
             <ContactDisplay />

@@ -37,7 +37,7 @@ const ContactDisplay: React.FC = () => {
                component={NextLink}
                target="_blank"
                href={ContactInfo.email.href}
-               sx={{ alignSelf: "center" }}
+               sx={{ alignSelf: "center", wordBreak: "break-word" }}
             >
                {ContactInfo.email.text}
             </Link>
