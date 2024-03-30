@@ -23,8 +23,8 @@ const Page = () => {
                   <Typography variant="h5" sx={{ fontWeight: "bold" }}>
                      How Can We Help ?
                   </Typography>
-                  <Box sx={{ color: "primary.dark" }}>
-                     <ContactDisplay />
+                  <Box>
+                     <ContactDisplay iconColor='primary.dark' textColor='primary.dark' includeFacebook />
                   </Box>
                </Content>
             </Grid>

@@ -4,8 +4,19 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import NextLink from "next/link";
 import { ContactInfo } from "@/content";
 import EmailIcon from "@mui/icons-material/Email";
+import FacebookIcon from "@mui/icons-material/Facebook";
 
-const ContactDisplay: React.FC = () => {
+export interface IContactDisplayProps {
+   iconColor?: string;
+   textColor?: string;
+   includeFacebook?: boolean;
+}
+
+const ContactDisplay: React.FC<IContactDisplayProps> = ({
+   iconColor,
+   textColor,
+   includeFacebook = false,
+}) => {
    return (
       <Box>
          <Box
@@ -15,12 +26,15 @@ const ContactDisplay: React.FC = () => {
                justifyContent: "flex-start",
             }}
          >
-            <PhoneIcon fontSize="medium" sx={{ marginRight: "1rem" }} />
+            <PhoneIcon
+               fontSize="medium"
+               sx={{ marginRight: "1rem", color: iconColor }}
+            />
             <Link
                component={NextLink}
                target="_blank"
                href={ContactInfo.phone.href}
-               sx={{ alignSelf: "center" }}
+               sx={{ alignSelf: "center", color: textColor }}
             >
                {ContactInfo.phone.text}
             </Link>
@@ -32,16 +46,49 @@ const ContactDisplay: React.FC = () => {
                justifyContent: "flex-start",
             }}
          >
-            <EmailIcon fontSize="medium" sx={{ marginRight: "1rem" }} />
+            <EmailIcon
+               fontSize="medium"
+               sx={{ marginRight: "1rem", color: iconColor }}
+            />
             <Link
                component={NextLink}
                target="_blank"
                href={ContactInfo.email.href}
-               sx={{ alignSelf: "center", wordBreak: "break-word" }}
+               sx={{
+                  alignSelf: "center",
+                  wordBreak: "break-word",
+                  color: textColor,
+               }}
             >
                {ContactInfo.email.text}
             </Link>
          </Box>
+         {includeFacebook && (
+            <Box
+               sx={{
+                  display: "flex",
+                  padding: "0.5rem",
+                  justifyContent: "flex-start",
+               }}
+            >
+               <FacebookIcon
+                  fontSize="medium"
+                  sx={{ marginRight: "1rem", color: iconColor }}
+               />
+               <Link
+                  component={NextLink}
+                  target="_blank"
+                  href={ContactInfo.facebook.href}
+                  sx={{
+                     alignSelf: "center",
+                     wordBreak: "break-word",
+                     color: textColor,
+                  }}
+               >
+                  Facebook Page
+               </Link>
+            </Box>
+         )}
       </Box>
    );
 };

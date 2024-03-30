@@ -21,16 +21,15 @@ const TopInfo: React.FC = () => {
          />
          <Box
             sx={{
-               color: "secondary.main",
                paddingRight: "1rem",
                paddingTop: "0.5rem",
                display: { xs: "none", sm: "none", md: "block" },
-               "a": {
-                  color: 'secondary.main'
-               }
             }}
          >
-            <ContactDisplay />
+            <ContactDisplay
+               iconColor="secondary.main"
+               textColor="secondary.main"
+            />
          </Box>
       </Box>
    );
