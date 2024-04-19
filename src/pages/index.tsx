@@ -82,7 +82,11 @@ const Page = () => {
                <Content bold={true}>
                   <Grid container spacing={2}>
                      <Grid item xs={12} sm={12} md={12} lg={12}>
-                        <Typography variant="h4" sx={{ textAlign: "center" }} id="services">
+                        <Typography
+                           variant="h4"
+                           sx={{ textAlign: "center" }}
+                           id="services"
+                        >
                            Plumbing Services
                         </Typography>
                         <br />
@@ -160,6 +164,14 @@ const Page = () => {
                         appliances operate safely and efficiently."
                      />
                      <Service
+                        title=""
+                        text=""
+                        sx={{
+                           display: { md: "none", lg: "none", xl: "block" },
+                           border: "none",
+                        }}
+                     />
+                     <Service
                         imageSource="/assets/services/services-remodel.svg"
                         imageAltText="bathtub"
                         title="Remodel Services"
@@ -167,6 +179,27 @@ const Page = () => {
                         Whether you're updating a bathroom or kitchen, we work
                         closely with you to install the plumbing necessary for
                         your dream space."
+                     />
+                     <Service
+                        title=""
+                        text=""
+                        sx={{
+                           display: {
+                              md: "none",
+                              lg: "block",
+                              xl: "none",
+                           },
+                           border: "none",
+                        }}
+                     />
+                     <Service
+                        imageSource="/assets/services/services-new-construction.svg"
+                        imageAltText="new consturction symbol"
+                        title="New Construction"
+                        text="Lay the right foundation with our plumbing services for
+                        new constructions. We collaborate with builders and
+                        contractors to design and install comprehensive plumbing
+                        systems that meet modern standards and building codes."
                      />
                      <Grid item xs={12} sm={12} md={12} lg={12}>
                         <Typography sx={{ textAlign: "center" }}>
