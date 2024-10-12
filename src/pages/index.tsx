@@ -7,6 +7,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { headerLogo } from "@/content";
 import ParallaxContainer from "@/components/ParallaxContainer";
+import BBBSeal from '@/components/BBBSeal';
 
 export const getStaticProps = async () => {
    return {
@@ -68,6 +69,7 @@ const Page = () => {
                            Superior Plumbing Service, where quality meets
                            integrity.
                         </Typography>
+                        <BBBSeal sx={{ justifyContent: "flex-end" }} />
                      </Grid>
                   </Grid>
                </Content>

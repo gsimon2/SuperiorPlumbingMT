@@ -6,6 +6,7 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import Masonry from '@mui/lab/Masonry';
 import { Box, Link, Typography } from '@mui/material';
+import BBBSeal from '@/components/BBBSeal';
 
 export interface ReviewsResponse {
    id: string;
@@ -65,6 +66,7 @@ const Index: React.FC<{ reviewsResponse: ReviewsResponse }> = ({
          <MainContentWrapper>
             <Content sx={{ marginTop: '1rem', marginLeft: '1rem' }}>
                <Typography sx={{ textAlign: "center", pb: '1rem' }} variant="h3">Our Reviews</Typography>
+               <BBBSeal sx={{ marginBottom: '1rem', marginTop: '1rem' }} />
                <Masonry columns={{ xs: 1, sm: 1, md: 1, lg: 2, xl: 3 }} spacing={2}>
                   {reviewsResponse?.reviews?.map((review) => (
                      <ReviewCard
