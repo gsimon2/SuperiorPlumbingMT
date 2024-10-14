@@ -1,6 +1,6 @@
 import Content from "@/components/Content";
 import MainContentWrapper from "@/components/MainContentWrapper";
-import ContactDisplay from "@/components/header/ContactDisplay";
+import ContactDisplay, { DisplayableContacts } from "@/components/header/ContactDisplay";
 import { siteTitle } from "@/content";
 import { Grid, Typography, Box } from "@mui/material";
 import Head from "next/head";
@@ -24,7 +24,16 @@ const Page = () => {
                      How Can We Help ?
                   </Typography>
                   <Box>
-                     <ContactDisplay iconColor='primary.dark' textColor='primary.dark' includeFacebook includeGoogle/>
+                     <ContactDisplay
+                        iconColor='primary.dark'
+                        textColor='primary.dark'
+                        contactsToDisplay={[
+                           DisplayableContacts.phone,
+                           DisplayableContacts.email,
+                           DisplayableContacts.facebook,
+                           DisplayableContacts.google,
+                        ]}
+                     />
                   </Box>
                </Content>
             </Grid>

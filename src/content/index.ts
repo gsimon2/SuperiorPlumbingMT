@@ -41,6 +41,9 @@ export const ContactInfo = {
    google: {
       href: "https://g.co/kgs/C9PUvaV",
    },
+   rinnai: {
+      href: "https://www.rinnai.us/pro/superior-plumbing-service/superior/sanders?guid=120e8584731a7137fddbc6eca9e592613dc62666",
+   },
    youtube: {
       href: "",
    },
