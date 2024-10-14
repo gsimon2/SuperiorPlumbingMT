@@ -24,7 +24,7 @@ const Page = () => {
                      How Can We Help ?
                   </Typography>
                   <Box>
-                     <ContactDisplay iconColor='primary.dark' textColor='primary.dark' includeFacebook />
+                     <ContactDisplay iconColor='primary.dark' textColor='primary.dark' includeFacebook includeGoogle/>
                   </Box>
                </Content>
             </Grid>

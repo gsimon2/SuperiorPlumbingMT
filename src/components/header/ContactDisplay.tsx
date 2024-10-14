@@ -5,17 +5,20 @@ import NextLink from "next/link";
 import { ContactInfo } from "@/content";
 import EmailIcon from "@mui/icons-material/Email";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import GoogleIcon from "@mui/icons-material/Google";
 
 export interface IContactDisplayProps {
    iconColor?: string;
    textColor?: string;
    includeFacebook?: boolean;
+   includeGoogle?: boolean;
 }
 
 const ContactDisplay: React.FC<IContactDisplayProps> = ({
    iconColor,
    textColor,
    includeFacebook = false,
+   includeGoogle = false,
 }) => {
    return (
       <Box>
@@ -86,6 +89,32 @@ const ContactDisplay: React.FC<IContactDisplayProps> = ({
                   }}
                >
                   Facebook Page
+               </Link>
+            </Box>
+         )}
+         {includeGoogle && (
+            <Box
+               sx={{
+                  display: "flex",
+                  padding: "0.5rem",
+                  justifyContent: "flex-start",
+               }}
+            >
+               <GoogleIcon
+                  fontSize="medium"
+                  sx={{ marginRight: "1rem", color: iconColor }}
+               />
+               <Link
+                  component={NextLink}
+                  target="_blank"
+                  href={ContactInfo.google.href}
+                  sx={{
+                     alignSelf: "center",
+                     wordBreak: "break-word",
+                     color: textColor,
+                  }}
+               >
+                  Google Page
                </Link>
             </Box>
          )}

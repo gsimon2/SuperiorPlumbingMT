@@ -39,7 +39,7 @@ export const ContactInfo = {
       href: "https://www.facebook.com/profile.php?id=61555851148323&mibextid=qi2Omg",
    },
    google: {
-      href: "",
+      href: "https://g.co/kgs/C9PUvaV",
    },
    youtube: {
       href: "",
