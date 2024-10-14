@@ -1,8 +1,7 @@
 import { siteURL } from "@/content";
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import SiteIconLinks from "./header/SiteIconLinks";
-import ContactDisplay from "./header/ContactDisplay";
+import ContactDisplay, { DisplayableContacts } from "./header/ContactDisplay";
 
 const Footer: React.FC = () => {
    return (
@@ -21,7 +20,10 @@ const Footer: React.FC = () => {
          <Typography variant="h6" sx={{ textAlign: "center", mb: '0.5rem' }}>
             {`Copyright 2024 | ${siteURL}`}
          </Typography>
-         <ContactDisplay iconColor="secondary.main" textColor="secondary.main" includeFacebook />
+         <ContactDisplay
+            iconColor="secondary.main"
+            textColor="secondary.main"
+            contactsToDisplay={[DisplayableContacts.phone, DisplayableContacts.email]} />
       </Box>
    );
 };

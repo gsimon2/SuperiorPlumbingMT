@@ -7,6 +7,7 @@ const roboto = Roboto({
    subsets: ["latin"],
    display: "swap",
 });
+ 
 
 const theme = createTheme({
    palette: {
@@ -24,6 +25,11 @@ const theme = createTheme({
       background: {
          paper: "#e3f2fd",
       },
+      info: {
+         light: '#eaf6ff',
+         main: '#cce8ff',
+         dark: '#8acdff'
+      }
    },
    breakpoints: {
       values: {
