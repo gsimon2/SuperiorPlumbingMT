@@ -39,8 +39,7 @@ export interface AuthorAttribution {
    photoUri: string;
 }
 
-// export const getStaticProps = (async (context) => {
-export const getServerSideProps = (async (context) => {
+export const getStaticProps = (async (context) => {
    const res = await fetch(
       `https://places.googleapis.com/v1/places/${googlePlaceId}?fields=id,displayName,reviews&key=${process.env.REVIEW_API_KEY}&languageCode=en`
    );
@@ -50,7 +49,10 @@ export const getServerSideProps = (async (context) => {
       console.error('No reviews found!');
    }
 
-   return { props: { reviewsResponse } };
+   return {
+      props: { reviewsResponse },
+      revalidate: 60 * 60 * 24, // 24 hours
+   };
 }) satisfies GetStaticProps<{
    reviewsResponse: ReviewsResponse;
 }>;
