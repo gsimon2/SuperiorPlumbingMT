@@ -6,12 +6,14 @@ import { ContactInfo } from "@/content";
 import EmailIcon from "@mui/icons-material/Email";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
+import Image from 'next/image';
 
 export enum DisplayableContacts {
    phone = "phone",
    email = "email",
    facebook = "facebook",
    google = "google",
+   rinnai = "rinnai",
 }
 
 const ContactInfoMap: Record<DisplayableContacts, { href: string; text: string, icon: (props: any) => React.ReactNode }> = {
@@ -34,6 +36,16 @@ const ContactInfoMap: Record<DisplayableContacts, { href: string; text: string, 
       href: ContactInfo.google.href,
       text: "Google Page",
       icon: (props) => <GoogleIcon {...props} />
+   },
+   rinnai: {
+      href: ContactInfo.rinnai.href,
+      text: "Rinnai Page",
+      icon: (props) => <Image
+         alt="Rinnai Logo"
+         src="/assets/rinnai-logo.svg"
+         width={20}
+         height={20}
+         style={{ marginLeft: "0.25rem", marginRight: "1rem" }} />
    }
 };
 export interface IContactDisplayProps {

@@ -32,6 +32,7 @@ const Page = () => {
                            DisplayableContacts.email,
                            DisplayableContacts.facebook,
                            DisplayableContacts.google,
+                           DisplayableContacts.rinnai,
                         ]}
                      />
                   </Box>

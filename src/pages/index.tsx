@@ -1,8 +1,8 @@
 import Content from "@/components/Content";
 import MainContentWrapper from "@/components/MainContentWrapper";
 import Service from "@/components/Service";
-import { siteTitle } from "@/content";
-import { Box, Grid, Typography } from "@mui/material";
+import { ContactInfo, siteTitle } from "@/content";
+import { Box, Grid, Link, Typography } from "@mui/material";
 import Head from "next/head";
 import Image from "next/image";
 import { headerLogo } from "@/content";
@@ -69,7 +69,34 @@ const Page = () => {
                            Superior Plumbing Service, where quality meets
                            integrity.
                         </Typography>
-                        <BBBSeal sx={{ justifyContent: "flex-end" }} />
+                        <Box sx={{
+                           display: "flex",
+                           justifyContent: "flex-end",
+                           marginTop: "2rem",
+                           '@media (max-width: 400px)': {
+                              flexDirection: 'column',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                              ">a": {
+                                 marginBottom: "1rem"
+                              }
+                           }
+                        }}>
+                           <Link
+                              href={ContactInfo.rinnai.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              sx={{ marginRight: "1rem" }}
+                           >
+                              <Image
+                                 height={60}
+                                 width={60}
+                                 src="/assets/rinnai-pro.svg"
+                                 alt="Rinnai Pro" />
+                           </Link>
+                           <BBBSeal sx={{ justifyContent: "flex-end" }} />
+                        </Box>
+
                      </Grid>
                   </Grid>
                </Content>

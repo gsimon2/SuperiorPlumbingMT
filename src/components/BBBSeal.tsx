@@ -5,7 +5,7 @@ import Image from "next/image";
 const BBBSeal: React.FC<BBBSealProps> = ({ sx }) => {
 
    return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '2rem', ...sx }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', ...sx }}>
          <Link
             href="https://www.bbb.org/us/mt/superior/profile/plumber/superior-plumbing-service-llc-1296-1000170171/#sealclick"
             target="_blank"
