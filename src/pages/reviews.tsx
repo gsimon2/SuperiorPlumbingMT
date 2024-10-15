@@ -69,7 +69,7 @@ const Index: React.FC<{ reviewsResponse: ReviewsResponse }> = ({
             <Content sx={{ marginTop: '1rem', marginLeft: '1rem' }}>
                <Typography sx={{ textAlign: "center", pb: '1rem' }} variant="h3">Our Reviews</Typography>
                <BBBSeal sx={{ marginBottom: '1rem', marginTop: '1rem' }} />
-               <Masonry columns={{ xs: 1, sm: 1, md: 1, lg: 2, xl: 3 }} spacing={2}>
+               <Masonry columns={{ xs: 1, sm: 1, md: 1, lg: 2, xl: 3 }} spacing={2} sx={{ m: 0 }}>
                   {reviewsResponse?.reviews?.map((review) => (
                      <ReviewCard
                         review={review}
