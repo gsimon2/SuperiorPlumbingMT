@@ -60,7 +60,6 @@ const ContactForm: React.FC = () => {
             position: "relative",
          }}
       >
-         <FormControl>
             <Box>
                {!!error && (
                   <Alert severity="error">
@@ -119,7 +118,6 @@ const ContactForm: React.FC = () => {
                   </Button>
                </Box>
             </Box>
-         </FormControl>
 
          <Backdrop
             open={loading || messageSent}

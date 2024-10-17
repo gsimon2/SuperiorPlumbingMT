@@ -25,7 +25,7 @@ const Page = () => {
             <Grid item xs={12} sm={12} md={12} lg={6}>
                <Content>
                   <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-                     Get a hold of us
+                     Get a hold of us at:
                   </Typography>
                   <Box>
                      <ContactDisplay
