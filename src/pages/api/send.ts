@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { EmailTemplate } from "../../components/email/contact-email-template";
 import { Resend } from "resend";
-import { siteTitle, siteURL } from "@/content";
+import { ContactInfo, siteTitle, siteURL } from "@/content";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -10,8 +10,8 @@ const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(400).json({ error: "Missing required fields" });
    }
 
-   const destinationEmail =
-      process.env.NODE_ENV === "production" ? "" : "glen.a.simon@gmail.com";
+   const env = process.env.VERCEL_ENV ?? process.env.NODE_ENV;
+   const destinationEmail = env.toLowerCase() === "production" ? ContactInfo.email.text : "glen.a.simon@gmail.com";
 
    const { data, error } = await resend.emails.send({
       from: `${siteTitle}<${siteURL}@resend.dev>`,
@@ -26,7 +26,9 @@ const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
    });
 
    if (error) {
-      return res.status(400).json(error);
+      console.error(error);
+      // @ts-ignore - statusCode is not defined on the error object, but is passed along
+      return res.status(error?.statusCode ?? "500").json(error);
    }
 
    res.status(200).json(data);
