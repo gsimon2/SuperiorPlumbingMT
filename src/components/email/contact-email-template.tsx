@@ -57,7 +57,10 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
          <p style={{ fontSize: "1rem" }}>Name: {name}</p>
          <p style={{ fontSize: "1rem" }}>Email: {email}</p>
          {!!phoneNumber && (
-            <p style={{ fontSize: "1rem" }}>Phone Number: {phoneNumber}</p>
+            <p style={{ fontSize: "1rem" }}>
+               Phone Number:
+               <a href={`tel:${phoneNumber.replace(/\D+/g, '')}`}>{phoneNumber}</a>
+            </p>
          )}
       </div>
    </div>

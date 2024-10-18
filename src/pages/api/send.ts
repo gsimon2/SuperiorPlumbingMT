@@ -6,7 +6,11 @@ import { ContactInfo, siteTitle, siteURL } from "@/content";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
-   if (!req.body.name || !req.body.email || !req.body.message) {
+   if (
+      !req.body.name ||
+      !(req.body.phone || req.body.email) ||
+      !req.body.message
+   ) {
       return res.status(400).json({ error: "Missing required fields" });
    }
 

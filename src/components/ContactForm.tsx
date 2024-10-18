@@ -14,16 +14,36 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import SendIcon from "@mui/icons-material/Send";
+import { MuiTelInput } from "mui-tel-input";
 
 const ContactForm: React.FC = () => {
    const [loading, setLoading] = useState(false);
    const [messageSent, setMessageSent] = useState(false);
    const [error, setError] = useState("");
+   const [phoneValue, setPhoneValue] = useState("");
+
+   const handlePhoneChange = (value: string) => {
+      setPhoneValue(value);
+   };
+
+   const checkValidity = () => {
+      if (!phoneValue || phoneValue.length < 11) {
+         setError("Phone number is required.");
+         return false;
+      }
+
+      return true;
+   }
 
    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       setLoading(true);
       setError("");
+
+      if (!checkValidity()) {
+         setLoading(false);
+         return;
+      }
 
       const formData = new FormData(event.currentTarget);
       const formProps = Object.fromEntries(formData);
@@ -60,64 +80,67 @@ const ContactForm: React.FC = () => {
             position: "relative",
          }}
       >
-            <Box>
-               {!!error && (
-                  <Alert severity="error">
-                     <AlertTitle>Error</AlertTitle>
-                     {error}
-                  </Alert>
-               )}
-               <TextField
-                  required
-                  name="name"
-                  id="name-input"
-                  label="Name"
-                  fullWidth
-                  margin="normal"
-               />
-               <TextField
-                  name="phone"
-                  id="phone-input"
-                  label="Phone Number"
-                  fullWidth
-                  margin="normal"
-               />
-               <TextField
-                  required
-                  name="email"
-                  id="email-input"
-                  label="Email"
-                  fullWidth
-                  margin="normal"
-               />
-               <TextField
-                  name="subject"
-                  id="subject-input"
-                  label="Subject"
-                  fullWidth
-                  margin="normal"
-               />
-               <TextField
-                  name="message"
-                  id="message-input"
-                  label="Message"
-                  multiline
-                  fullWidth
-                  rows={5}
-                  margin="normal"
-                  required
-               />
-               <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                  <Button
-                     variant="contained"
-                     type="submit"
-                     disabled={loading}
-                     endIcon={<SendIcon />}
-                  >
-                     Send
-                  </Button>
-               </Box>
+         <Box>
+            {!!error && (
+               <Alert severity="error">
+                  <AlertTitle>Error</AlertTitle>
+                  {error}
+               </Alert>
+            )}
+            <TextField
+               required
+               name="name"
+               id="name-input"
+               label="Name"
+               fullWidth
+               margin="normal"
+            />
+            <MuiTelInput
+               label="Phone Number"
+               defaultCountry="US"
+               onlyCountries={["US", "CA"]}
+               sx={{ width: "100%" }}
+               name="phone"
+               value={phoneValue}
+               onChange={handlePhoneChange}
+               required
+               margin="normal"
+            />
+            <TextField
+               name="email"
+               id="email-input"
+               label="Email"
+               fullWidth
+               margin="normal"
+            />
+            <TextField
+               name="subject"
+               id="subject-input"
+               label="Subject"
+               fullWidth
+               margin="normal"
+            />
+            <TextField
+               name="message"
+               id="message-input"
+               label="Message"
+               multiline
+               fullWidth
+               rows={5}
+               margin="normal"
+               required
+            />
+            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+               <Button
+                  variant="contained"
+                  type="submit"
+                  disabled={loading}
+                  endIcon={<SendIcon />}
+               >
+                  Send
+               </Button>
             </Box>
+         </Box>
 
          <Backdrop
             open={loading || messageSent}
