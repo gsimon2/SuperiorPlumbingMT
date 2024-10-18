@@ -27,13 +27,13 @@ const ContactForm: React.FC = () => {
    };
 
    const checkValidity = () => {
-      if (!phoneValue || phoneValue.length < 11) {
+      if (!phoneValue || phoneValue.replace(/\s+/g, "").length < 12) {
          setError("Phone number is required.");
          return false;
       }
 
       return true;
-   }
+   };
 
    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
@@ -106,6 +106,7 @@ const ContactForm: React.FC = () => {
                onChange={handlePhoneChange}
                required
                margin="normal"
+               error={error.toLowerCase().includes("phone")}
             />
             <TextField
                name="email"
