@@ -28,7 +28,7 @@ const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
    const { data, error } = await resend.emails.send({
       from: `${siteTitle}<${siteURL}@resend.dev>`,
       to: getDestinationEmails(),
-      subject: `Webiste Inquiry - ${req.body.subject}`,
+      subject: `Website Message - ${req.body.subject}`,
       react: EmailTemplate({
          name: req.body.name,
          phoneNumber: req.body.phone,

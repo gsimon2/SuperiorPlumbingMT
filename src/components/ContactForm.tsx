@@ -97,6 +97,7 @@ const ContactForm: React.FC = () => {
             />
             <MuiTelInput
                label="Phone Number"
+               forceCallingCode
                defaultCountry="US"
                onlyCountries={["US", "CA"]}
                sx={{ width: "100%" }}
