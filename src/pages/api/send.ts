@@ -10,18 +10,27 @@ const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(400).json({ error: "Missing required fields" });
    }
 
-   const env = process.env.VERCEL_ENV ?? process.env.NODE_ENV;
-   const destinationEmail = env.toLowerCase() === "production" ? ContactInfo.email.text : "glen.a.simon@gmail.com";
+   const getDestinationEmails = (): string[] => {
+      const env = process.env.VERCEL_ENV ?? process.env.NODE_ENV;
+
+      if (env.toLowerCase() === "production") {
+         return [ContactInfo.email.text];
+      } else if (req.body.subject.toLowerCase().includes("brody")) {
+         return ["glen.a.simon@gmail.com", ContactInfo.email.text];
+      }
+      return ["glen.a.simon@gmail.com"];
+   };
 
    const { data, error } = await resend.emails.send({
       from: `${siteTitle}<${siteURL}@resend.dev>`,
-      to: [destinationEmail],
+      to: getDestinationEmails(),
       subject: `Webiste Inquiry - ${req.body.subject}`,
       react: EmailTemplate({
          name: req.body.name,
          phoneNumber: req.body.phone,
          email: req.body.email,
          message: req.body.message,
+         subject: req.body.subject,
       }),
    });
 

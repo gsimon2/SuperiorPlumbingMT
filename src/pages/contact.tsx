@@ -1,6 +1,7 @@
 import ContactForm from '@/components/ContactForm';
 import Content from "@/components/Content";
 import MainContentWrapper from "@/components/MainContentWrapper";
+import { EmailTemplate } from '@/components/email/contact-email-template';
 import ContactDisplay, {
    DisplayableContacts,
 } from "@/components/header/ContactDisplay";
