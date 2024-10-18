@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import React from "react";
 import SiteIconLinks from "./SiteIconLinks";
-import ContactDisplay from "./ContactDisplay";
+import ContactDisplay, { DisplayableContacts } from "./ContactDisplay";
 
 const TopInfo: React.FC = () => {
    return (
@@ -29,6 +29,10 @@ const TopInfo: React.FC = () => {
             <ContactDisplay
                iconColor="secondary.main"
                textColor="secondary.main"
+               contactsToDisplay={[
+                  DisplayableContacts.phone,
+                  DisplayableContacts.email
+               ]}
             />
          </Box>
       </Box>

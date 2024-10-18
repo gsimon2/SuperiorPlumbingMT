@@ -3,6 +3,11 @@ const nextConfig = {
    // output: 'export'
    compiler: {
       emotion: true,
+    },
+    images: {
+      domains: [
+         'seal-alaskaoregonwesternwashington.bbb.org'
+      ]
     }
 };
 
