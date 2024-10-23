@@ -8,7 +8,8 @@ const nextConfig = {
       domains: [
          'seal-alaskaoregonwesternwashington.bbb.org'
       ]
-    }
+    },
+    transpilePackages: ['mui-tel-input'],
 };
 
 export default nextConfig;
