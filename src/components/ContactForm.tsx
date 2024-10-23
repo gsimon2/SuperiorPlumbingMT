@@ -6,6 +6,7 @@ import {
    Box,
    Button,
    CircularProgress,
+   Input,
    Paper,
    TextField,
    Typography,
@@ -14,12 +15,17 @@ import {
 import React, { useState } from "react";
 import SendIcon from "@mui/icons-material/Send";
 import { MuiTelInput } from "mui-tel-input";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
+// todo
+// image previews
+// file size too large
 const ContactForm: React.FC = () => {
    const [loading, setLoading] = useState(false);
    const [messageSent, setMessageSent] = useState(false);
    const [error, setError] = useState("");
    const [phoneValue, setPhoneValue] = useState("");
+   const [images, setImages] = useState<File[]>([]);
 
    const handlePhoneChange = (value: string) => {
       setPhoneValue(value);
@@ -45,14 +51,21 @@ const ContactForm: React.FC = () => {
       }
 
       const formData = new FormData(event.currentTarget);
-      const formProps = Object.fromEntries(formData);
+
+      if (images.length > 0) {
+         for (let img of images) formData.append("images", img);
+      }
 
       const res = await fetch("/api/send", {
          method: "POST",
          headers: {
-            "Content-Type": "application/json",
+            // "Content-Type": "application/json",
+            "Context-Type": "multipart/form-data",
+            Accept: "multipart/form-data",
          },
-         body: JSON.stringify(formProps),
+         // body: JSON.stringify(formProps),
+         body: formData,
+         
       });
 
       if (res.ok) {
@@ -64,6 +77,13 @@ const ContactForm: React.FC = () => {
       }
 
       setLoading(false);
+   };
+
+   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (!e.target.files) return;
+      const files = Array.from(e.target.files);
+      console.log(files);
+      setImages(files);
    };
 
    return (
@@ -95,6 +115,7 @@ const ContactForm: React.FC = () => {
                margin="normal"
             />
             <MuiTelInput
+               required
                label="Phone Number"
                forceCallingCode
                defaultCountry="US"
@@ -103,7 +124,6 @@ const ContactForm: React.FC = () => {
                name="phone"
                value={phoneValue}
                onChange={handlePhoneChange}
-               required
                margin="normal"
                error={error.toLowerCase().includes("phone")}
             />
@@ -122,6 +142,7 @@ const ContactForm: React.FC = () => {
                margin="normal"
             />
             <TextField
+               required
                name="message"
                id="message-input"
                label="Message"
@@ -129,8 +150,28 @@ const ContactForm: React.FC = () => {
                fullWidth
                rows={5}
                margin="normal"
-               required
             />
+            <input
+               name="images"
+               id="images-input"
+               multiple
+               type="file"
+               accept="image/*"
+               onChange={handleFileChange}
+               style={{
+                  display: "none",
+               }}
+            />
+            <label htmlFor="images-input">
+               <Button
+                  component="span"
+                  variant="outlined"
+                  sx={{ mt: "0.25rem" }}
+                  endIcon={<CloudUploadIcon />}
+               >
+                  Add Images
+               </Button>
+            </label>
             <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
                <Button
                   variant="contained"
