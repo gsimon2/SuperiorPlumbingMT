@@ -6,8 +6,10 @@ import {
    Box,
    Button,
    CircularProgress,
+   IconButton,
    Input,
    Paper,
+   Stack,
    TextField,
    Typography,
    Zoom,
@@ -16,10 +18,11 @@ import React, { useState } from "react";
 import SendIcon from "@mui/icons-material/Send";
 import { MuiTelInput } from "mui-tel-input";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import imageCompression from "browser-image-compression";
+import { maxImagesInRequest, maxRequestSizeInMB } from "@/app/Constants";
+import CloseIcon from "@mui/icons-material/Close";
+import Image from "next/image";
 
-// todo
-// image previews
-// file size too large
 const ContactForm: React.FC = () => {
    const [loading, setLoading] = useState(false);
    const [messageSent, setMessageSent] = useState(false);
@@ -53,19 +56,28 @@ const ContactForm: React.FC = () => {
       const formData = new FormData(event.currentTarget);
 
       if (images.length > 0) {
-         for (let img of images) formData.append("images", img);
+         //compress images
+         const options = {
+            maxSizeMB: Math.floor((maxRequestSizeInMB - 0.5) / images.length),
+            maxWidthOrHeight: 1920,
+         };
+         const compressedImages = await Promise.all(
+            images.map((img) => imageCompression(img, options))
+         );
+
+         for (let img of compressedImages) {
+            // compressing the image turns it into a blob, convert it back to a file before sending
+            formData.append("images", new File([img], img.name));
+         }
       }
 
       const res = await fetch("/api/send", {
          method: "POST",
          headers: {
-            // "Content-Type": "application/json",
             "Context-Type": "multipart/form-data",
             Accept: "multipart/form-data",
          },
-         // body: JSON.stringify(formProps),
          body: formData,
-         
       });
 
       if (res.ok) {
@@ -81,8 +93,15 @@ const ContactForm: React.FC = () => {
 
    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (!e.target.files) return;
+
       const files = Array.from(e.target.files);
-      console.log(files);
+
+      if (files.length > maxImagesInRequest) {
+         setError(`You can only add up to ${maxImagesInRequest} images.`);
+         setImages(files.slice(0, maxImagesInRequest));
+         return;
+      }
+
       setImages(files);
    };
 
@@ -152,7 +171,7 @@ const ContactForm: React.FC = () => {
                margin="normal"
             />
             <input
-               name="images"
+               // name="images"
                id="images-input"
                multiple
                type="file"
@@ -172,6 +191,47 @@ const ContactForm: React.FC = () => {
                   Add Images
                </Button>
             </label>
+            <Stack
+               direction="row"
+               spacing={2}
+               sx={{ my: "0.5rem", overflowX: "auto" }}
+            >
+               {images.map((img, i) => (
+                  <Box
+                     key={i}
+                     sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        position: "relative",
+                     }}
+                  >
+                     <Image
+                        style={{
+                           objectFit: "cover",
+                           borderRadius: "0.5rem",
+                        }}
+                        src={URL.createObjectURL(img)}
+                        alt="image to upload"
+                        height={100}
+                        width={100}
+                     />
+                     <IconButton
+                        size="small"
+                        sx={{
+                           position: "absolute",
+                           top: 0,
+                           right: 0,
+                           backgroundColor: "rgb(255,255,255,0.65)",
+                        }}
+                        onClick={() => {
+                           setImages(images.filter((_, index) => index !== i));
+                        }}
+                     >
+                        <CloseIcon />
+                     </IconButton>
+                  </Box>
+               ))}
+            </Stack>
             <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
                <Button
                   variant="contained"

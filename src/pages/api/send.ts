@@ -8,7 +8,7 @@ import fs from "fs";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
-   const form = formidable({ allowEmptyFiles: true, minFileSize: 0 });
+   const form = formidable({ allowEmptyFiles: false, minFileSize: 1 });
 
    let fields;
    let files;
@@ -66,7 +66,7 @@ const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
          })),
       }),
    });
-   
+
    // Clean up temporary files
    if (images.length > 0) {
       for (let img of images) fs.unlinkSync(img.filepath);
