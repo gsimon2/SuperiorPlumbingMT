@@ -3,13 +3,16 @@ const nextConfig = {
    // output: 'export'
    compiler: {
       emotion: true,
-    },
-    images: {
-      domains: [
-         'seal-alaskaoregonwesternwashington.bbb.org'
-      ]
-    },
-    transpilePackages: ['mui-tel-input'],
+   },
+   images: {
+      remotePatterns: [
+         {
+            protocol: "https",
+            hostname: "seal-alaskaoregonwesternwashington.bbb.org",
+         },
+      ],
+   },
+   transpilePackages: ["mui-tel-input"],
 };
 
 export default nextConfig;
