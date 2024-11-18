@@ -7,7 +7,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { headerLogo } from "@/content";
 import ParallaxContainer from "@/components/ParallaxContainer";
-import BBBSeal from '@/components/BBBSeal';
+import BBBSeal from "@/components/BBBSeal";
 
 export const getStaticProps = async () => {
    return {
@@ -69,19 +69,21 @@ const Page = () => {
                            Superior Plumbing Service, where quality meets
                            integrity.
                         </Typography>
-                        <Box sx={{
-                           display: "flex",
-                           justifyContent: "flex-end",
-                           marginTop: "2rem",
-                           '@media (max-width: 400px)': {
-                              flexDirection: 'column',
-                              justifyContent: 'center',
-                              alignItems: 'center',
-                              ">a": {
-                                 marginBottom: "1rem"
-                              }
-                           }
-                        }}>
+                        <Box
+                           sx={{
+                              display: "flex",
+                              justifyContent: "flex-end",
+                              marginTop: "2rem",
+                              "@media (max-width: 400px)": {
+                                 flexDirection: "column",
+                                 justifyContent: "center",
+                                 alignItems: "center",
+                                 ">a": {
+                                    marginBottom: "1rem",
+                                 },
+                              },
+                           }}
+                        >
                            <Link
                               href={ContactInfo.rinnai.href}
                               target="_blank"
@@ -92,20 +94,26 @@ const Page = () => {
                                  height={60}
                                  width={60}
                                  src="/assets/rinnai-pro.svg"
-                                 alt="Rinnai Pro" />
+                                 alt="Rinnai Pro"
+                              />
                            </Link>
                            <BBBSeal sx={{ justifyContent: "flex-end" }} />
                         </Box>
-
                      </Grid>
                   </Grid>
                </Content>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
-               <ParallaxContainer
-                  imagePath="/assets/test-mountains.png"
-                  sx={{ height: "20rem", borderRadius: "0.5rem" }}
-               />
+               <Content sx={{ position: "relative", height: "auto", padding: "0" }}>
+                  <Box sx={{ position: "relative", width: "100%", aspectRatio: "16/9" }}>
+                     <Image
+                        src="/assets/brody-with-van.jpg"
+                        alt="Company owner Brody Barr standing in front of a company truck"
+                        fill
+                        style={{ objectFit: "cover", borderRadius: "0.5rem" }}
+                     />
+                  </Box>
+               </Content>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
                <Content bold={true}>

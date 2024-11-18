@@ -19,6 +19,7 @@ export const pages: ReadonlyArray<{
    { title: "Home", url: "/" },
    { title: "Contact", url: "/contact" },
    { title: "Reviews", url: "/reviews" },
+   { title: "Our Team", url: "/team" }
 ];
 
 export const ContactInfo = {
