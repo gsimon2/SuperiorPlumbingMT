@@ -59,12 +59,11 @@ const TeamPage: React.FC = () => {
                         Owner & Master Plumber
                      </Typography>
                      <Typography sx={{ textAlign: "center" }}>
-                        With over 10 years of experience in the plumbing
-                        industry, Brody founded Superior Plumbing Service with a
-                        vision to provide exceptional plumbing services to the
-                        Superior, MT community. His dedication to quality
-                        workmanship and customer satisfaction has built our
-                        reputation as the area&apos;s most trusted plumbing service.
+                        Brody is a fourth-generation plumber with over a decade
+                        of experience in the field. His focus on quality and
+                        customer satisfaction has made Superior Plumbing Service
+                        the top choice for plumbing solutions in Western
+                        Montana.
                      </Typography>
                   </Box>
                </Content>
