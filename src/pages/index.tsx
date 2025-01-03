@@ -44,13 +44,11 @@ const Page = () => {
                            Superior Plumbing Service, your trusted local
                            plumbing Professionals proudly serving the
                            communities of Mineral County, Sanders County and
-                           Missoula County. Owned and operated by Brody Barr, a
-                           fourth-generation plumber with a passion for
-                           precision and service. Our team understands the
-                           unique plumbing needs of our community, and our
-                           highly skilled plumbers bring a personal touch to
-                           every project, big or small. From emergency repairs
-                           in the dead of winter to thoughtful consultations on
+                           Missoula County. Our team understands the unique
+                           plumbing needs of our community, and our highly
+                           skilled plumbers bring a personal touch to every
+                           project, big or small. From emergency repairs in the
+                           dead of winter to thoughtful consultations on
                            eco-friendly upgrades, Superior Plumbing Service is
                            committed to ensuring your water flows as beautifully
                            as the Clark Fork River.
@@ -104,8 +102,16 @@ const Page = () => {
                </Content>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
-               <Content sx={{ position: "relative", height: "auto", padding: "0" }}>
-                  <Box sx={{ position: "relative", width: "100%", aspectRatio: "16/9" }}>
+               <Content
+                  sx={{ position: "relative", height: "auto", padding: "0" }}
+               >
+                  <Box
+                     sx={{
+                        position: "relative",
+                        width: "100%",
+                        aspectRatio: "16/9",
+                     }}
+                  >
                      <Image
                         src="/assets/brody-with-van.jpg"
                         alt="Company owner Brody Barr standing in front of a company truck"
