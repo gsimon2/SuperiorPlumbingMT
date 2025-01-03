@@ -16,6 +16,25 @@ export default function RootLayout({
             minHeight: "100%",
             display: "flex",
             flexDirection: "column",
+            backgroundImage: 'url(/assets/background-pattern.avif)',
+            backgroundAttachment: 'fixed',
+            backgroundSize: 'initial',
+            backgroundRepeat: 'repeat',
+            position: 'relative',
+            '&::before': {
+               content: '""',
+               position: 'absolute',
+               top: 0,
+               left: 0,
+               right: 0,
+               bottom: 0,
+               backgroundColor: 'rgba(255, 255, 255, 0.6)', // This creates a 60% lighter overlay
+               zIndex: 0,
+            },
+            '& > *': {
+               position: 'relative',
+               zIndex: 1,
+            },
          }}
       >
          <TopInfo />
