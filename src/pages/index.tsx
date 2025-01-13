@@ -72,16 +72,23 @@ const Page = () => {
                               display: "flex",
                               justifyContent: "flex-end",
                               marginTop: "2rem",
-                              "@media (max-width: 400px)": {
+                              "@media (max-width: 460px)": {
                                  flexDirection: "column",
                                  justifyContent: "center",
                                  alignItems: "center",
-                                 ">a": {
+                                 "img": {
                                     marginBottom: "1rem",
-                                 },
+                                 }
                               },
                            }}
                         >
+                           <Image
+                              height={60}
+                              width={60}
+                              src="/assets/delta-pro-badge.jpg"
+                              alt="Delte Pro badge"
+                              style={{ marginRight: "1rem" }}
+                           />
                            <Link
                               href={ContactInfo.rinnai.href}
                               target="_blank"
