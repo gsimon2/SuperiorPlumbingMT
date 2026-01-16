@@ -6,14 +6,12 @@ import {
    Container,
    Link,
    Toolbar,
-   Typography,
    useMediaQuery,
 } from "@mui/material";
 import React from "react";
 import DesktopNavMenu from "./DesktopNavMenu";
 import MobileNavMenu from "./MobileNavMenu";
-import HeaderIcon from "./HeaderIcon";
-import { siteTitle, pages } from "@/content";
+import { pages, siteTitleLogo, dogOnlyLogo } from "@/content";
 import Image from "next/image";
 import NextLink from "next/link";
 
@@ -85,11 +83,19 @@ const NavigationHeader: React.FC = () => {
                      >
                         <Box
                            sx={{
-                              overflow: "hidden",
-                              filter: "brightness(0) invert(1)",
+                              overflow: "hidden"
                            }}
                         >
-                           <HeaderIcon sizeInPx={60} />
+                           <Image
+                              width={120}
+                              height={60}
+                              src={dogOnlyLogo}
+                              alt="logo"
+                              style={{
+                                 objectFit: "contain",
+                                 transform: "scale(1.5) translateY(5px)"
+                              }}
+                           />
                         </Box>
                      </Link>
                      <Link
@@ -98,26 +104,18 @@ const NavigationHeader: React.FC = () => {
                         sx={{
                            color: "unset",
                            ":hover": { textDecoration: "none" },
+                           position: "relative",
+                           display: "flex",
+                           flex: 1,
+                           minWidth: "120px",
+                           minHeight: "60px",
+                           overflowX: "clip"
                         }}
                      >
-                        <Typography
-                           variant="h1"
-                           sx={{
-                              mx: 2,
-                              display: "flex",
-                              fontSize: {
-                                 xs: "large",
-                                 sm: "large",
-                                 md: "x-large",
-                                 lg: "xx-large",
-                              },
-                              fontWeight: 700,
-                              letterSpacing: ".2rem",
-                              flex: 1,
-                           }}
-                        >
-                           {siteTitle}
-                        </Typography>
+                        <Image src={siteTitleLogo} alt="logo" fill style={{
+                           objectFit: "contain",
+                           transform: isSmall ? "scale(2.0) translateY(5px)" : "scale(3.75) translateY(5px)"
+                        }} />
                      </Link>
                      <DesktopNavMenu pages={pages} />
                   </Toolbar>

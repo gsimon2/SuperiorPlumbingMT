@@ -1,11 +1,10 @@
 import Content from "@/components/Content";
 import MainContentWrapper from "@/components/MainContentWrapper";
 import Service from "@/components/Service";
-import { ContactInfo, siteTitle } from "@/content";
+import { ContactInfo, siteTitle, headerLogo } from "@/content";
 import { Box, Grid, Link, Typography } from "@mui/material";
 import Head from "next/head";
 import Image from "next/image";
-import { headerLogo } from "@/content";
 import ParallaxContainer from "@/components/ParallaxContainer";
 import BBBSeal from "@/components/BBBSeal";
 
@@ -34,9 +33,19 @@ const Page = () => {
                               height: "100%",
                               position: "relative",
                               minHeight: "200px",
+                              backgroundColor: "transparent",
                            }}
                         >
-                           <Image src={headerLogo} alt="logo" fill />
+                           {/* <Image src={headerLogo} alt="logo" fill /> */}
+                           <Image 
+                              src={headerLogo} 
+                              alt="logo" 
+                              fill 
+                              style={{ 
+                                 objectFit: "contain",
+                                 transform: "scale(1.2)"
+                              }} 
+                           />
                         </Box>
                      </Grid>
                      <Grid item xs={12} sm={12} md={12} lg={7} xl={8}>

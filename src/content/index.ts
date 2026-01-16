@@ -1,4 +1,6 @@
-export const headerLogo = "/assets/logo.svg";
+export const headerLogo = "/assets/dog_logo_no_background.png";
+export const dogOnlyLogo = "/assets/dog_only_logo.svg";
+export const siteTitleLogo = "/assets/superior_plumbing_name_graphic.svg"
 
 export const siteTitle = "Superior Plumbing Service";
 export const siteURL = "superiorPlumbingMt.com";
