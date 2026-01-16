@@ -3,10 +3,11 @@ import { Box, Drawer, IconButton, Link, ListItem } from "@mui/material";
 import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import HeaderIcon from "./HeaderIcon";
 import CloseIcon from "@mui/icons-material/Close";
 import { useRouter } from "next/router";
 import NextLink from "next/link";
+import Image from "next/image";
+import { headerLogo } from "@/content"
 
 const MobileNavMenu: React.FC<IMobileNavMenuProps> = ({ pages }) => {
    const { pathname } = useRouter();
@@ -42,9 +43,19 @@ const MobileNavMenu: React.FC<IMobileNavMenuProps> = ({ pages }) => {
                   display: "flex",
                   justifyContent: "center",
                   px: "1rem",
+                  overflow: "hidden"
                }}
             >
-               <HeaderIcon sizeInPx={128} />
+               <Image
+                  width={200}
+                  height={200}
+                  src={headerLogo}
+                  alt="logo"
+                  style={{
+                     objectFit: "contain",
+                     transform: "scale(1.5)"
+                  }}
+               />
             </Box>
             {pages.map((page) => (
                <ListItem

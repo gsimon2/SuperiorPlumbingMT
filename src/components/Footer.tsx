@@ -1,9 +1,12 @@
+"use client"
 import { siteURL } from "@/content";
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import ContactDisplay, { DisplayableContacts } from "./header/ContactDisplay";
 
 const Footer: React.FC = () => {
+   const currentDate = new Date();
+
    return (
       <Box
          sx={{
@@ -18,7 +21,7 @@ const Footer: React.FC = () => {
          }}
       >
          <Typography variant="h6" sx={{ textAlign: "center", mb: '0.5rem' }}>
-            {`Copyright 2024 | ${siteURL}`}
+            {`Copyright ${currentDate.getFullYear()} | ${siteURL}`}
          </Typography>
          <ContactDisplay
             iconColor="secondary.main"
