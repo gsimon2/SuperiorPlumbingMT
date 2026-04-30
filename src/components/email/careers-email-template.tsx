@@ -1,20 +1,27 @@
 import theme from "@/app/theme";
 import { siteURL } from "@/content";
 import * as React from "react";
-export interface EmailTemplateProps {
+
+export interface CareersEmailTemplateProps {
    name: string;
-   phoneNumber?: string;
+   phoneNumber: string;
    email: string;
-   message: string;
-   subject?: string;
+   position: string;
+   currentCity: string;
+   currentState: string;
+   yearsExperience: string;
 }
 
-export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
+export const CareersEmailTemplate: React.FC<
+   Readonly<CareersEmailTemplateProps>
+> = ({
    name,
    phoneNumber,
    email,
-   message,
-   subject,
+   position,
+   currentCity,
+   currentState,
+   yearsExperience,
 }) => {
    const logoUrl = `https://${siteURL}/assets/dog_logo_no_background.png`;
 
@@ -61,19 +68,15 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
                      color: theme.palette.primary.main,
                   }}
                >
-                  New Website Message
+                  New Careers Application
                </h1>
             </div>
 
             <div style={{ padding: "1.25rem" }}>
                <p style={{ margin: "0 0 0.75rem 0", fontSize: "1rem" }}>
-                  From: <strong>{name}</strong>
+                  Applicant: <strong>{name}</strong>
                </p>
-               {!!subject && (
-                  <p style={{ margin: "0 0 1rem 0", fontSize: "1rem" }}>
-                     Subject: <strong>{subject}</strong>
-                  </p>
-               )}
+
                <div
                   style={{
                      marginBottom: "1rem",
@@ -83,17 +86,11 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
                      backgroundColor: "#fafcff",
                   }}
                >
-                  <p
-                     style={{
-                        margin: "0 0 0.4rem 0",
-                        fontWeight: 700,
-                        fontSize: "0.95rem",
-                     }}
-                  >
-                     Message
+                  <p style={{ margin: "0 0 0.35rem 0" }}>
+                     Position: <strong>{position}</strong>
                   </p>
-                  <p style={{ margin: "0", whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
-                     {message}
+                  <p style={{ margin: "0" }}>
+                     Years of Experience: <strong>{yearsExperience}</strong>
                   </p>
                </div>
 
@@ -110,14 +107,13 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
                   <p style={{ margin: "0 0 0.35rem 0" }}>
                      Email: <a href={`mailto:${email}`}>{email}</a>
                   </p>
-                  {!!phoneNumber && (
-                     <p style={{ margin: "0" }}>
-                        Phone:{" "}
-                        <a href={`tel:${phoneNumber.replace(/\D+/g, "")}`}>
-                           {phoneNumber}
-                        </a>
-                     </p>
-                  )}
+                  <p style={{ margin: "0 0 0.35rem 0" }}>
+                     Phone:{" "}
+                     <a href={`tel:${phoneNumber.replace(/\D+/g, "")}`}>{phoneNumber}</a>
+                  </p>
+                  <p style={{ margin: "0" }}>
+                     Current Location: <strong>{currentCity}, {currentState}</strong>
+                  </p>
                </div>
             </div>
          </div>
