@@ -18,14 +18,8 @@ import { MuiTelInput } from "mui-tel-input";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 const availablePositions = [
-   "Apprentice Plumber",
    "Journeyman Plumber",
-   "Master Plumber",
-   "Service Plumber",
-   "New Construction Plumber",
-   "Drain Technician",
-   "Sewer/Water Line Installer",
-   "Plumbing Foreman",
+   "Customer Service Representative"
 ];
 
 const usStates = [

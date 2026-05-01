@@ -24,7 +24,7 @@ const CareersPage = () => {
                      Want to work with us?
                   </Typography>
                   <Typography variant="h6" sx={{ mt: 1 }}>
-                     Submit a quick prescreen application and tell us what plumbing
+                     Submit a quick prescreen application and tell us what
                      position you are looking for.
                   </Typography>
                   <CareersApplicationForm />
