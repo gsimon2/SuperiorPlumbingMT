@@ -20,6 +20,7 @@ export const pages: ReadonlyArray<{
 }> = [
    { title: "Home", url: "/" },
    { title: "Contact", url: "/contact" },
+   { title: "Careers", url: "/careers" },
    { title: "Reviews", url: "/reviews" },
    { title: "Our Team", url: "/team" }
 ];

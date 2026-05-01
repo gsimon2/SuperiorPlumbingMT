@@ -1,4 +1,5 @@
 import Content from "@/components/Content";
+import { JoinTeamRibbon } from "@/components/home/JoinTeamCallout";
 import MainContentWrapper from "@/components/MainContentWrapper";
 import Service from "@/components/Service";
 import { ContactInfo, siteTitle, headerLogo } from "@/content";
@@ -23,7 +24,9 @@ const Page = () => {
          <MainContentWrapper>
             <Grid item xs={12} sm={12} md={12} lg={12}>
                <Content>
-                  <Grid container spacing={2}>
+                  <Box sx={{ position: "relative", overflow: "visible" }}>
+                     <JoinTeamRibbon />
+                     <Grid container spacing={2}>
                      <Grid item xs={12} sm={12} md={12} lg={5} xl={4}>
                         <Box
                            sx={{
@@ -111,10 +114,11 @@ const Page = () => {
                                  alt="Rinnai Pro"
                               />
                            </Link>
-                           <BBBSeal sx={{ justifyContent: "flex-end" }} />
+                           {/* <BBBSeal sx={{ justifyContent: "flex-end" }} /> */}
                         </Box>
                      </Grid>
                   </Grid>
+                  </Box>
                </Content>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
