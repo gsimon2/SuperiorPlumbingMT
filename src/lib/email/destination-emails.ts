@@ -2,16 +2,19 @@ import { ContactInfo } from "@/content";
 
 interface DestinationEmailOptions {
    subject?: string;
+   email?: string;
 }
 
 export const getDestinationEmails = (
-   options?: DestinationEmailOptions
+   options?: DestinationEmailOptions,
 ): string[] => {
    const vercelEnv = (process.env.VERCEL_ENV ?? "").toLowerCase();
    const nodeEnv = (process.env.NODE_ENV ?? "").toLowerCase();
    const testerEmail = "glen.a.simon@gmail.com";
    const isLocal = !vercelEnv && (!nodeEnv || nodeEnv === "development");
-   const hasTesterKeyword = options?.subject?.toUpperCase().includes("TEST-EMAIL");
+   const hasTesterKeyword = options?.subject
+      ?.toUpperCase()
+      .includes("TEST-EMAIL");
 
    if (isLocal) {
       return [testerEmail];
@@ -21,5 +24,5 @@ export const getDestinationEmails = (
       return [testerEmail];
    }
 
-   return [ContactInfo.email.text];
+   return [options?.email ?? ContactInfo.email.text];
 };
