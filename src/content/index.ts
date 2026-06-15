@@ -38,6 +38,10 @@ export const ContactInfo = {
       text: "service@superiorPlumbingMt.com",
       href: "mailto:service@superiorPlumbingMt.com",
    },
+   applicationEmail: {
+      text: "BrodyBarr@superiorPlumbingMt.com",
+      href: "mailto:BrodyBarr@superiorPlumbingMt.com",
+   },
    facebook: {
       text: "Facebook",
       href: "https://www.facebook.com/profile.php?id=61555851148323&mibextid=qi2Omg",
@@ -51,4 +55,5 @@ export const ContactInfo = {
    youtube: {
       href: "",
    },
+
 };

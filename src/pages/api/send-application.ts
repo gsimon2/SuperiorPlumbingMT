@@ -1,5 +1,5 @@
 import { CareersEmailTemplate } from "@/components/email/careers-email-template";
-import { siteTitle, siteURL } from "@/content";
+import { ContactInfo, siteTitle, siteURL } from "@/content";
 import { getDestinationEmails } from "@/lib/email/destination-emails";
 import {
    cleanupUploadedFiles,
@@ -42,7 +42,10 @@ const sendApplication = async (req: NextApiRequest, res: NextApiResponse) => {
       const subject = `Website Job Application - ${fields.position}`;
       const { data, error } = await resend.emails.send({
          from: `${siteTitle}<${siteURL}@glenasimon.com>`,
-         to: getDestinationEmails({ subject }),
+         to: getDestinationEmails({
+            subject,
+            email: ContactInfo.applicationEmail.text,
+         }),
          subject,
          react: CareersEmailTemplate({
             name: fields.name,
