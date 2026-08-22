@@ -25,6 +25,11 @@ export const pages: ReadonlyArray<{
    { title: "Our Team", url: "/team" }
 ];
 
+export const footerLinks: ReadonlyArray<{
+   title: string;
+   url: string;
+}> = [{ title: "Privacy Policy", url: "/privacy" }];
+
 export const ContactInfo = {
    address: {
       text: "",
