@@ -6,6 +6,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { ContactInfo } from "@/content";
+import { reportConversion } from "@/lib/gtag";
 
 export interface ISiteIconLinks {
    sx?: SxProps;
@@ -29,6 +30,10 @@ const SiteIconLinks: React.FC<ISiteIconLinks> = ({
             aria-label="Phone number"
             title="Phone number"
             href={ContactInfo.phone.href}
+            onClick={(event) => {
+               event.preventDefault();
+               reportConversion(ContactInfo.phone.href);
+            }}
             sx={{
                color: "secondary.main",
                display: alwaysShowAll
