@@ -3,6 +3,7 @@ import React from "react";
 import PhoneIcon from "@mui/icons-material/Phone";
 import NextLink from "next/link";
 import { ContactInfo } from "@/content";
+import { reportConversion } from "@/lib/gtag";
 import EmailIcon from "@mui/icons-material/Email";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
@@ -79,6 +80,14 @@ const ContactDisplay: React.FC<IContactDisplayProps> = ({
                      component={NextLink}
                      target="_blank"
                      href={ContactInfoMap[contact].href}
+                     onClick={
+                        contact === DisplayableContacts.phone
+                           ? (event) => {
+                              event.preventDefault();
+                              reportConversion(ContactInfoMap[contact].href);
+                           }
+                           : undefined
+                     }
                      sx={{ alignSelf: "center", color: textColor, wordBreak: "break-word" }}
                   >
                      {ContactInfoMap[contact].text}

@@ -21,6 +21,7 @@ import imageCompression from "browser-image-compression";
 import { maxImagesInRequest, maxRequestSizeInMB } from "@/app/Constants";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
+import { reportConversion } from "@/lib/gtag";
 
 const ContactForm: React.FC = () => {
    const [loading, setLoading] = useState(false);
@@ -80,6 +81,7 @@ const ContactForm: React.FC = () => {
       });
 
       if (res.ok) {
+         reportConversion();
          setMessageSent(true);
       } else {
          setError(
