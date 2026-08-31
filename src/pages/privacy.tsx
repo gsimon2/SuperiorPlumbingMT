@@ -1,9 +1,8 @@
 import Content from "@/components/Content";
 import MainContentWrapper from "@/components/MainContentWrapper";
-import { siteTitle } from "@/content";
+import { ContactInfo, siteTitle } from "@/content";
 import { Grid, Link, Typography } from "@mui/material";
 import Head from "next/head";
-import NextLink from "next/link";
 
 export const getStaticProps = async () => {
    return {
@@ -56,34 +55,68 @@ const PrivacyPage: React.FC = () => {
                      By providing your mobile phone number and opting in to receive
                      text messages, you consent to receive service-related
                      communications from Superior Plumbing Service LLC. Message and
-                     data rates may apply. Message frequency may vary. You may opt
-                     out of text messages at any time by replying STOP.
+                     data rates may apply. Message frequency may vary.
+                  </Typography>
+
+                  <Typography sx={{ mb: 2 }}>
+                     You may opt out of text messages at any time by replying STOP.
+                  </Typography>
+
+                  <Typography sx={{ mb: 2 }}>
+                     For assistance, reply HELP to any text message. You may also
+                     contact Superior Plumbing Service LLC directly using the contact
+                     information below for questions or support regarding our text
+                     messaging service.
                   </Typography>
 
                   <Typography sx={{ mb: 3, fontStyle: "italic" }}>
-                     No mobile information will be shared with third
-                     parties/affiliates for marketing/promotional purposes. All
-                     the above categories exclude text messaging originator opt-in
-                     data and consent; this information will not be shared with any
-                     third parties.
+                     &ldquo;No mobile information will be shared with third
+                     parties/affiliates for marketing/promotional purposes. All the
+                     above categories exclude text messaging originator opt-in data
+                     and consent; this information will not be shared with any third
+                     parties&rdquo;.
                   </Typography>
 
                   <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 }}>
-                     Contact Us
+                     Contact &amp; Support
+                  </Typography>
+
+                  <Typography sx={{ mb: 2 }}>
+                     For questions regarding our services, privacy practices, or text
+                     messaging program, please contact:
+                  </Typography>
+
+                  <Typography sx={{ mb: 2 }}>
+                     Superior Plumbing Service LLC
+                     <br />
+                     Phone:{" "}
+                     <Link href={ContactInfo.phone.href}>
+                        {ContactInfo.phone.text}
+                     </Link>
+                     <br />
+                     Email:{" "}
+                     <Link href={ContactInfo.email.href}>
+                        {ContactInfo.email.text}
+                     </Link>
+                     <br />
+                     Website:{" "}
+                     <Link href="https://superiorplumbingmt.com">
+                        SuperiorPlumbingMT.com
+                     </Link>
+                  </Typography>
+
+                  <Typography sx={{ mb: 2 }}>
+                     For text messaging support, reply HELP to any message or
+                     contact us directly using the phone number or email address
+                     listed above.
                   </Typography>
 
                   <Typography sx={{ mb: 3 }}>
-                     If you have questions regarding this Privacy Policy or how
-                     your information is handled, please contact Superior Plumbing
-                     Service LLC through the{" "}
-                     <Link component={NextLink} href="/contact">
-                        contact information
-                     </Link>{" "}
-                     provided on our website.
+                     To stop receiving text messages, reply STOP at any time.
                   </Typography>
 
                   <Typography variant="body2" color="text.secondary">
-                     Last Updated: August 17, 2026
+                     Last Updated: August 25, 2026
                   </Typography>
                </Content>
             </Grid>
