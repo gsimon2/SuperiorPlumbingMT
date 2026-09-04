@@ -10,7 +10,7 @@ export function ServicesShowcase() {
          <Carousel
             hiddenFrom="md"
             slideSize={{ base: "100%", sm: "50%" }}
-            slideGap="md"
+            slideGap={0}
             slidesToScroll={1}
             withIndicators
             withControls
