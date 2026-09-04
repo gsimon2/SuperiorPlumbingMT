@@ -24,7 +24,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
          <MantineProvider theme={theme} defaultColorScheme="light" forceColorScheme="light">
             <Notifications />
             <Analytics />
-            <div className={inter.className} style={{ minHeight: "100%" }}>
+            <div
+               className={inter.className}
+               style={{ minHeight: "100%", display: "flex", flexDirection: "column", flex: 1 }}
+            >
                <Layout>
                   <Component {...pageProps} />
                </Layout>
