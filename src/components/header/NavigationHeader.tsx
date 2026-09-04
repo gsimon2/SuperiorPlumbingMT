@@ -28,13 +28,16 @@ const NavigationHeader: React.FC = () => {
                   className="header-dog-link"
                >
                   <Box className="header-dog">
-                     <Image
-                        src={dogOnlyLogo}
-                        alt=""
-                        fill
-                        sizes="88px"
-                        style={{ objectFit: "contain" }}
-                     />
+                     <span className="header-dog-drop" aria-hidden="true" />
+                     <span className="header-dog-mascot">
+                        <Image
+                           src={dogOnlyLogo}
+                           alt=""
+                           fill
+                           sizes="88px"
+                           style={{ objectFit: "contain" }}
+                        />
+                     </span>
                   </Box>
                </Anchor>
 

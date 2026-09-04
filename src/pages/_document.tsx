@@ -8,7 +8,8 @@ export default function MyDocument() {
          <Head>
             <ColorSchemeScript defaultColorScheme="light" />
             <meta name="description" content={siteDescription} />
-            <link rel="icon" href="/assets/plumber.svg" />
+            <link rel="icon" href="/favicon.png" type="image/png" />
+            <link rel="apple-touch-icon" href="/favicon.png" />
          </Head>
          <body style={{ margin: 0, height: "100%" }}>
             <Main />

@@ -65,7 +65,7 @@ body {
    display: grid;
    grid-template-columns: auto minmax(0, 1fr) auto;
    align-items: center;
-   min-height: 5.5rem;
+   min-height: 5.75rem;
    gap: 1rem;
 }
 
@@ -77,8 +77,21 @@ body {
 
 .header-dog {
    position: relative;
-   width: clamp(3.5rem, 7vw, 5.5rem);
-   height: clamp(3.5rem, 7vw, 5.5rem);
+   width: clamp(3.1rem, 6vw, 4.5rem);
+   height: clamp(3.5rem, 6.8vw, 5.1rem);
+   -webkit-mask: url(/assets/water-drop.svg) center / contain no-repeat;
+   mask: url(/assets/water-drop.svg) center / contain no-repeat;
+}
+
+.header-dog-drop {
+   position: absolute;
+   inset: 0;
+   background: #a5c3ed;
+}
+
+.header-dog-mascot {
+   position: absolute;
+   inset: 6% -8% -10% -8%;
 }
 
 .header-wordmark {
