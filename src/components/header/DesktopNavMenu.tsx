@@ -1,29 +1,32 @@
-import { Box, Link } from "@mui/material";
+"use client";
+import { Anchor, Group } from "@mantine/core";
 import React from "react";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 
 const DesktopNavMenu: React.FC<IDesktopNavMenuProps> = ({ pages }) => {
+   const { pathname } = useRouter();
+
    return (
-      <Box
-         sx={{
-            marginLeft: "auto",
-            display: { xs: "none", sm: "none", md: "none", lg: "flex" },
-         }}
-      >
-         {pages.map((page) => (
-            <Link
-               component={NextLink}
-               href={page.url}
-               color="inherit"
-               noWrap
-               key={page.title}
-               variant="body2"
-               sx={{ p: 1, flexShrink: 0 }}
-            >
-               {page.title}
-            </Link>
-         ))}
-      </Box>
+      <Group gap="lg" wrap="nowrap" className="header-nav">
+         {pages.map((page) => {
+            const active = pathname === page.url;
+            return (
+               <Anchor
+                  component={NextLink}
+                  href={page.url}
+                  key={page.title}
+                  c={active ? "gold.4" : "gray.2"}
+                  fw={active ? 700 : 500}
+                  size="sm"
+                  underline="never"
+                  style={{ letterSpacing: "0.02em", whiteSpace: "nowrap" }}
+               >
+                  {page.title}
+               </Anchor>
+            );
+         })}
+      </Group>
    );
 };
 

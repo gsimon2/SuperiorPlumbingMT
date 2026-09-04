@@ -1,9 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-   // output: 'export'
-   compiler: {
-      emotion: true,
-   },
    images: {
       remotePatterns: [
          {
@@ -12,7 +8,6 @@ const nextConfig = {
          },
       ],
    },
-   transpilePackages: ["mui-tel-input"],
 };
 
 export default nextConfig;

@@ -1,32 +1,14 @@
-import { siteDescription } from '@/content';
-import {
-   DocumentHeadTags,
-   DocumentHeadTagsProps,
-   documentGetInitialProps,
-} from "@mui/material-nextjs/v14-pagesRouter";
-import {
-   DocumentContext,
-   DocumentProps,
-   Head,
-   Html,
-   Main,
-   NextScript,
-} from "next/document";
+import { siteDescription } from "@/content";
+import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
+import { Head, Html, Main, NextScript } from "next/document";
 
-export default function MyDocument(
-   props: DocumentProps & DocumentHeadTagsProps
-) {
+export default function MyDocument() {
    return (
-      <Html lang="en" style={{ height: "100%" }}>
+      <Html lang="en" {...mantineHtmlProps} style={{ height: "100%" }}>
          <Head>
-            <DocumentHeadTags {...props} />
+            <ColorSchemeScript defaultColorScheme="light" />
             <meta name="description" content={siteDescription} />
-            <link
-               rel="icon"
-               href="/assets/plumber.svg"
-               type="image/<generated>"
-               sizes="<generated>"
-            />
+            <link rel="icon" href="/assets/plumber.svg" />
          </Head>
          <body style={{ margin: 0, height: "100%" }}>
             <Main />
@@ -35,8 +17,3 @@ export default function MyDocument(
       </Html>
    );
 }
-
-MyDocument.getInitialProps = async (ctx: DocumentContext) => {
-   const finalProps = await documentGetInitialProps(ctx);
-   return finalProps;
-};

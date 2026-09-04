@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, SxProps } from "@mui/material";
+import { Box, Card, Text, Title } from "@mantine/core";
 import React from "react";
 import Image from "next/image";
 
@@ -7,39 +7,40 @@ const Service: React.FC<IServiceProps> = ({
    imageAltText,
    title,
    text,
-   sx,
 }) => {
    return (
-      <Grid item xs={12} sm={12} md={6} lg={4} xl={3} sx={{ ...sx }}>
-         <Box
-            sx={{
-               border: "1px dashed white",
-               borderRadius: "0.5rem",
-               padding: "1rem",
-               height: "100%",
-               ...sx,
-            }}
-         >
-            <Box sx={{ display: "flex", justifyContent: "center" }}>
-               {imageSource && (
-                  <Image
-                     src={imageSource}
-                     alt={imageAltText || ""}
-                     height={80}
-                     width={80}
-                     style={{
-                        filter: "invert(1)",
-                     }}
-                  />
-               )}
+      <Card withBorder shadow="sm" h="100%">
+         {imageSource && (
+            <Box
+               mx="auto"
+               mb="md"
+               p="md"
+               bg="navy.6"
+               w={88}
+               h={88}
+               style={{
+                  borderRadius: 14,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+               }}
+            >
+               <Image
+                  src={imageSource}
+                  alt={imageAltText || ""}
+                  height={52}
+                  width={52}
+                  style={{ filter: "invert(1)" }}
+               />
             </Box>
-            <Typography variant="h5" sx={{ textAlign: "center" }}>
-               {title}
-            </Typography>
-            <br />
-            <Typography sx={{ textAlign: "center" }}>{text}</Typography>
-         </Box>
-      </Grid>
+         )}
+         <Title order={4} ta="center">
+            {title}
+         </Title>
+         <Text ta="center" mt="sm" c="dimmed" size="sm">
+            {text}
+         </Text>
+      </Card>
    );
 };
 
@@ -48,7 +49,6 @@ export interface IServiceProps {
    imageAltText?: string;
    title: string;
    text: string;
-   sx?: SxProps;
 }
 
 export default Service;

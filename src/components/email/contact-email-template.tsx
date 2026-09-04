@@ -1,5 +1,6 @@
-import theme from "@/app/theme";
 import { siteURL } from "@/content";
+
+const brandNavy = "#2b3e8e";
 import * as React from "react";
 export interface EmailTemplateProps {
    name: string;
@@ -33,7 +34,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
                maxWidth: "680px",
                margin: "0 auto",
                borderRadius: "12px",
-               border: `1px solid ${theme.palette.primary.main}`,
+               border: `1px solid ${brandNavy}`,
                backgroundColor: "#ffffff",
                overflow: "hidden",
             }}
@@ -58,7 +59,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
                      margin: "0",
                      fontSize: "1.6rem",
                      fontWeight: 700,
-                     color: theme.palette.primary.main,
+                     color: brandNavy,
                   }}
                >
                   New Website Message

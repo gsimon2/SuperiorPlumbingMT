@@ -1,27 +1,35 @@
-import { Box, Link } from '@mui/material';
-import React from 'react';
+import { Anchor, Box } from "@mantine/core";
+import React from "react";
 import Image from "next/image";
 
-const BBBSeal: React.FC<BBBSealProps> = ({ sx }) => {
-
+const BBBSeal: React.FC<BBBSealProps> = ({ style }) => {
    return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', ...sx }}>
-         <Link
+      <Box
+         style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            ...style,
+         }}
+      >
+         <Anchor
             href="https://www.bbb.org/us/mt/superior/profile/plumber/superior-plumbing-service-llc-1296-1000170171/#sealclick"
             target="_blank"
-            rel="nofollow">
+            rel="nofollow"
+         >
             <Image
                height={42}
                width={200}
                src="https://seal-alaskaoregonwesternwashington.bbb.org/seals/blue-seal-200-42-bbb-1000170171.png"
-               alt="Superior Plumbing Service LLC BBB Business Review" />
-         </Link>
+               alt="Superior Plumbing Service LLC BBB Business Review"
+            />
+         </Anchor>
       </Box>
    );
 };
 
 export interface BBBSealProps {
-   sx?: React.CSSProperties;
+   style?: React.CSSProperties;
 }
 
 export default BBBSeal;

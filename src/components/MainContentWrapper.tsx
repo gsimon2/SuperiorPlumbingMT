@@ -1,16 +1,10 @@
-import { Grid } from "@mui/material";
 import React, { PropsWithChildren } from "react";
+import { Stack } from "@mantine/core";
 
 const MainContentWrapper: React.FC<PropsWithChildren> = ({ children }) => {
    return (
-      <main
-         style={{
-            marginTop: '1rem'
-         }}
-      >
-         <Grid container spacing={2}>
-            {children}
-         </Grid>
+      <main>
+         <Stack gap="xl">{children}</Stack>
       </main>
    );
 };
