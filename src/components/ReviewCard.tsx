@@ -1,83 +1,71 @@
 "use client";
 import { Review } from "@/pages/reviews";
-import { Avatar, Card, CardContent, CardHeader, Collapse, Link, Rating, Typography } from "@mui/material";
+import {
+   Anchor,
+   Avatar,
+   Card,
+   Collapse,
+   Group,
+   Rating,
+   Text,
+} from "@mantine/core";
 import React, { useState } from "react";
 
-const ReviewCard: React.FC<IReviewCardProps> = ({ review, initialExpanded = false, allowCollapse = true }) => {
-   const lineHeightInPx = 24;
-   const collapsedLineClamp = 6;
-   const collapsedSize = collapsedLineClamp * lineHeightInPx;
-
+const ReviewCard: React.FC<IReviewCardProps> = ({
+   review,
+   initialExpanded = false,
+   allowCollapse = true,
+}) => {
    const [expanded, setExpanded] = useState(initialExpanded);
-   const [lineClamp, setLineClamp] = useState(collapsedLineClamp);
 
    const handleClick = () => {
       if (!allowCollapse) return;
-
-      if (expanded) {
-         // Delay the line clamp change to allow the height animation to show properly on collapse
-         setTimeout(() => {
-            setLineClamp(collapsedLineClamp);
-         }, 150);
-      } else {
-         setLineClamp(400)
-      }
       setExpanded(!expanded);
-   }
+   };
 
    return (
       <Card
          onClick={handleClick}
-         elevation={4}
-         sx={{
-            backgroundColor: 'secondary.main',
-            outline: "1px solid",
-            outlineColor: "primary.light",
-            padding: '0.25rem'
-         }}>
-         <CardHeader
-            sx={{ pb: 0 }}
-            avatar={
-               <Link
+         withBorder
+         shadow="sm"
+         style={{ cursor: allowCollapse ? "pointer" : "default" }}
+      >
+         <Group justify="space-between" align="flex-start" mb="sm">
+            <Group>
+               <Anchor
                   href={review.authorAttribution.uri}
                   target="_blank"
                   rel="noopener noreferrer"
-                  underline="hover">
-                  <Avatar src={review.authorAttribution.photoUri} aria-label="review-author" variant='square' />
-               </Link>
-
-            }
-            action={
-               <Rating name="read-only" value={review.rating} readOnly />
-            }
-            title={<Link
-               target="_blank"
-               rel="noopener noreferrer"
-               color="text.primary"
-               underline="hover"
-               href={review.authorAttribution.uri}>
-               {review.authorAttribution.displayName}
-            </Link>}
-            subheader={review.relativePublishTimeDescription}
-         />
-         <CardContent>
-            <Collapse collapsedSize={collapsedSize} in={expanded}>
-               <Typography
-                  sx={{
-                     ...(!expanded && {
-                        WebkitLineClamp: lineClamp,
-                        lineHeight: `${lineHeightInPx}px`,
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        textOverflow: "ellipsis",
-                        overflow: "hidden",
-                     }),
-                  }}
                >
-                  {review.text.text}
-               </Typography>
-            </Collapse>
-         </CardContent>
+                  <Avatar
+                     src={review.authorAttribution.photoUri}
+                     alt={review.authorAttribution.displayName}
+                     radius="sm"
+                  />
+               </Anchor>
+               <div>
+                  <Anchor
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     href={review.authorAttribution.uri}
+                     c="navy.8"
+                     fw={600}
+                  >
+                     {review.authorAttribution.displayName}
+                  </Anchor>
+                  <Text size="sm" c="dimmed">
+                     {review.relativePublishTimeDescription}
+                  </Text>
+               </div>
+            </Group>
+            <Rating value={review.rating} readOnly />
+         </Group>
+         <Collapse in={expanded} transitionDuration={150}>
+            <Text>{review.text.text}</Text>
+         </Collapse>
+         {!expanded && (
+            <Text lineClamp={6}>{review.text.text}</Text>
+         )}
       </Card>
    );
 };

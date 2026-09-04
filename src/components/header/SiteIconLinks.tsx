@@ -1,91 +1,77 @@
-import { IconButton, Stack, SxProps } from "@mui/material";
+"use client";
+import { ActionIcon, Group } from "@mantine/core";
 import React from "react";
-import GoogleIcon from "@mui/icons-material/Google";
-import FacebookIcon from "@mui/icons-material/Facebook";
-// import YouTubeIcon from "@mui/icons-material/YouTube";
-import EmailIcon from "@mui/icons-material/Email";
-import PhoneIcon from "@mui/icons-material/Phone";
+import {
+   IconBrandFacebook,
+   IconBrandGoogle,
+   IconMail,
+   IconPhone,
+} from "@tabler/icons-react";
 import { ContactInfo } from "@/content";
 import { reportConversion } from "@/lib/gtag";
 
 export interface ISiteIconLinks {
-   sx?: SxProps;
    alwaysShowAll?: boolean;
 }
 
-const SiteIconLinks: React.FC<ISiteIconLinks> = ({
-   sx,
-   alwaysShowAll = false,
-}) => {
+const SiteIconLinks: React.FC<ISiteIconLinks> = ({ alwaysShowAll = false }) => {
    return (
-      <Stack
-         direction="row"
-         spacing={2}
-         sx={{
-            justifyContent: "center",
-            ...sx,
-         }}
-      >
-         <IconButton
+      <Group gap="xs" justify="center">
+         <ActionIcon
+            component="a"
+            href={ContactInfo.phone.href}
+            variant="subtle"
+            color="gold"
+            size="lg"
             aria-label="Phone number"
             title="Phone number"
-            href={ContactInfo.phone.href}
+            hiddenFrom={alwaysShowAll ? undefined : "md"}
             onClick={(event) => {
                event.preventDefault();
                reportConversion(ContactInfo.phone.href);
             }}
-            sx={{
-               color: "secondary.main",
-               display: alwaysShowAll
-                  ? "inline-flex"
-                  : { sm: "inline-flex", md: "none" },
-            }}
          >
-            <PhoneIcon />
-         </IconButton>
-         <IconButton
+            <IconPhone size={18} />
+         </ActionIcon>
+         <ActionIcon
+            component="a"
+            href={ContactInfo.email.href}
+            variant="subtle"
+            color="gold"
+            size="lg"
             aria-label="Email"
             title="Email"
-            href={ContactInfo.email.href}
-            sx={{
-               color: "secondary.main",
-               display: alwaysShowAll
-                  ? "inline-flex"
-                  : { sm: "inline-flex", md: "none" },
-            }}
+            hiddenFrom={alwaysShowAll ? undefined : "md"}
          >
-            <EmailIcon />
-         </IconButton>
+            <IconMail size={18} />
+         </ActionIcon>
          {ContactInfo.google.href && (
-            <IconButton
-               aria-label="Google business page"
-               title="Google business page"
+            <ActionIcon
+               component="a"
                href={ContactInfo.google.href}
                target="_blank"
-               sx={{ color: "secondary.main" }}
+               variant="subtle"
+               color="gold"
+               size="lg"
+               aria-label="Google business page"
+               title="Google business page"
             >
-               <GoogleIcon />
-            </IconButton>
+               <IconBrandGoogle size={18} />
+            </ActionIcon>
          )}
-         <IconButton
-            aria-label="Facebook business page"
-            title="Facebook business page"
+         <ActionIcon
+            component="a"
             href={ContactInfo.facebook.href}
             target="_blank"
-            sx={{ color: "secondary.main" }}
+            variant="subtle"
+            color="gold"
+            size="lg"
+            aria-label="Facebook business page"
+            title="Facebook business page"
          >
-            <FacebookIcon />
-         </IconButton>
-         {/* <IconButton
-            aria-label="Youtube business page"
-            title="Youtube business page"
-            href={ContactInfo.youtube.href}
-            target='_blank'
-            sx={{ color: "secondary.main" }}
-         >
-            <YouTubeIcon />
-         </IconButton> */}
-      </Stack>
+            <IconBrandFacebook size={18} />
+         </ActionIcon>
+      </Group>
    );
 };
 

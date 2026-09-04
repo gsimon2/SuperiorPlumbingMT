@@ -1,13 +1,10 @@
-import { Box, Link } from "@mui/material";
+import { Anchor, Group, Text } from "@mantine/core";
 import React from "react";
-import PhoneIcon from "@mui/icons-material/Phone";
+import { IconBrandFacebook, IconBrandGoogle, IconMail, IconPhone } from "@tabler/icons-react";
 import NextLink from "next/link";
 import { ContactInfo } from "@/content";
 import { reportConversion } from "@/lib/gtag";
-import EmailIcon from "@mui/icons-material/Email";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import GoogleIcon from "@mui/icons-material/Google";
-import Image from 'next/image';
+import Image from "next/image";
 
 export enum DisplayableContacts {
    phone = "phone",
@@ -17,86 +14,80 @@ export enum DisplayableContacts {
    rinnai = "rinnai",
 }
 
-const ContactInfoMap: Record<DisplayableContacts, { href: string; text: string, icon: (props: any) => React.ReactNode }> = {
+const ContactInfoMap: Record<
+   DisplayableContacts,
+   { href: string; text: string; icon: React.ReactNode }
+> = {
    phone: {
       href: ContactInfo.phone.href,
       text: ContactInfo.phone.text,
-      icon: (props) => <PhoneIcon {...props} />
+      icon: <IconPhone size={18} />,
    },
    email: {
       href: ContactInfo.email.href,
       text: ContactInfo.email.text,
-      icon: (props) => <EmailIcon {...props} />
+      icon: <IconMail size={18} />,
    },
    facebook: {
       href: ContactInfo.facebook.href,
       text: "Facebook Page",
-      icon: (props) => <FacebookIcon {...props} />
+      icon: <IconBrandFacebook size={18} />,
    },
    google: {
       href: ContactInfo.google.href,
       text: "Google Page",
-      icon: (props) => <GoogleIcon {...props} />
+      icon: <IconBrandGoogle size={18} />,
    },
    rinnai: {
       href: ContactInfo.rinnai.href,
       text: "Rinnai Page",
-      icon: (props) => <Image
-         alt="Rinnai Logo"
-         src="/assets/rinnai-logo.svg"
-         width={20}
-         height={20}
-         style={{ marginLeft: "0.25rem", marginRight: "1rem" }} />
-   }
+      icon: (
+         <Image
+            alt="Rinnai Logo"
+            src="/assets/rinnai-logo.svg"
+            width={18}
+            height={18}
+         />
+      ),
+   },
 };
+
 export interface IContactDisplayProps {
-   iconColor?: string;
-   textColor?: string;
+   c?: string;
    contactsToDisplay: DisplayableContacts[];
 }
 
 const ContactDisplay: React.FC<IContactDisplayProps> = ({
-   iconColor,
-   textColor,
-   contactsToDisplay
+   c = "navy.8",
+   contactsToDisplay,
 }) => {
    return (
-      <Box>
-         {contactsToDisplay?.map(contact => {
-            return (
-               <Box
-                  key={contact}
-                  sx={{
-                     display: "flex",
-                     padding: "0.5rem",
-                     justifyContent: "flex-start",
-                  }}
+      <div>
+         {contactsToDisplay?.map((contact) => (
+            <Group key={contact} gap="sm" py={6} wrap="nowrap">
+               <Text c={c} style={{ display: "flex" }}>
+                  {ContactInfoMap[contact].icon}
+               </Text>
+               <Anchor
+                  component={NextLink}
+                  target="_blank"
+                  href={ContactInfoMap[contact].href}
+                  c={c}
+                  onClick={
+                     contact === DisplayableContacts.phone
+                        ? (event) => {
+                             event.preventDefault();
+                             reportConversion(ContactInfoMap[contact].href);
+                          }
+                        : undefined
+                  }
+                  style={{ wordBreak: "break-word" }}
                >
-                  {ContactInfoMap[contact].icon({
-                     fontSize: "medium",
-                     sx: { marginRight: "1rem", color: iconColor },
-                  })}
-                  <Link
-                     component={NextLink}
-                     target="_blank"
-                     href={ContactInfoMap[contact].href}
-                     onClick={
-                        contact === DisplayableContacts.phone
-                           ? (event) => {
-                              event.preventDefault();
-                              reportConversion(ContactInfoMap[contact].href);
-                           }
-                           : undefined
-                     }
-                     sx={{ alignSelf: "center", color: textColor, wordBreak: "break-word" }}
-                  >
-                     {ContactInfoMap[contact].text}
-                  </Link>
-               </Box>
-
-            )
-         })}
-      </Box>
+                  {ContactInfoMap[contact].text}
+               </Anchor>
+            </Group>
+         ))}
+      </div>
    );
 };
 

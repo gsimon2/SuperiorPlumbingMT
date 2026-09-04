@@ -1,11 +1,15 @@
 import { AppProps } from "next/app";
-import Layout from "../app/layout";
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "@/app/theme";
-import { CssBaseline } from "@mui/material";
+import Layout from "@/components/SiteLayout";
+import { MantineProvider } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
+import { inter, theme } from "@/theme";
 import Head from "next/head";
-import { Analytics } from "@vercel/analytics/react"
-import GoogleAnalytics from '@/components/GoogleAnalytics';
+import { Analytics } from "@vercel/analytics/react";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
+import "@mantine/carousel/styles.css";
+import "@/globals.css";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
    return (
@@ -14,23 +18,18 @@ export default function MyApp({ Component, pageProps }: AppProps) {
          <Head>
             <meta
                name="viewport"
-               content="initial-scale=1, width=device-width"
+               content="minimum-scale=1, initial-scale=1, width=device-width"
             />
          </Head>
-         <ThemeProvider theme={theme}>
-            <CssBaseline />
+         <MantineProvider theme={theme} defaultColorScheme="light" forceColorScheme="light">
+            <Notifications />
             <Analytics />
-            <Layout>
-               <Component {...pageProps} />
-            </Layout>
-         </ThemeProvider>
-         <style jsx global>{`
-            /* Other global styles such as 'html, body' etc... */
-
-            #__next {
-               height: 100%;
-            }
-         `}</style>
+            <div className={inter.className} style={{ minHeight: "100%" }}>
+               <Layout>
+                  <Component {...pageProps} />
+               </Layout>
+            </div>
+         </MantineProvider>
       </>
    );
 }

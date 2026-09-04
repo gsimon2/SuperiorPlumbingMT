@@ -11,8 +11,8 @@ From emergency repairs to installations, our certified experts ensure your plumb
 `;
 
 export const googlePlaceId = "ChIJI38X8IHzZm8R8xBNy6v5EhU";
-export const reviewsUrl =
-   "https://www.google.com/localservices/prolist?spp=Cg0vZy8xMXkzcmtkNWNq&source=sh/x/loc/srv/m1/0&kgs=09ff334a00aa471f&src=2&slp=UhUIARIREg8iDS9nLzExeTNya2Q1Y2o#ts=3";
+export const reviewsUrl = `https://search.google.com/local/reviews?placeid=${googlePlaceId}`;
+export const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=Superior+Plumbing+Service&query_place_id=${googlePlaceId}`;
 
 export const pages: ReadonlyArray<{
    title: string;
@@ -52,7 +52,7 @@ export const ContactInfo = {
       href: "https://www.facebook.com/profile.php?id=61555851148323&mibextid=qi2Omg",
    },
    google: {
-      href: "https://g.co/kgs/C9PUvaV",
+      href: googleMapsUrl,
    },
    rinnai: {
       href: "https://www.rinnai.us/pro/superior-plumbing-service/superior/sanders?guid=120e8584731a7137fddbc6eca9e592613dc62666",

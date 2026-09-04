@@ -1,25 +1,24 @@
 "use client";
 import {
+   ActionIcon,
    Alert,
-   AlertTitle,
-   Backdrop,
    Box,
    Button,
-   CircularProgress,
-   IconButton,
+   FileButton,
+   Group,
+   LoadingOverlay,
+   Overlay,
    Paper,
    Stack,
-   TextField,
-   Typography,
-   Zoom,
-} from "@mui/material";
+   Text,
+   Textarea,
+   TextInput,
+   Title,
+} from "@mantine/core";
 import React, { useState } from "react";
-import SendIcon from "@mui/icons-material/Send";
-import { MuiTelInput } from "mui-tel-input";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { IconSend, IconUpload, IconX } from "@tabler/icons-react";
 import imageCompression from "browser-image-compression";
-import { maxImagesInRequest, maxRequestSizeInMB } from "@/app/Constants";
-import CloseIcon from "@mui/icons-material/Close";
+import { maxImagesInRequest, maxRequestSizeInMB } from "@/Constants";
 import Image from "next/image";
 import { reportConversion } from "@/lib/gtag";
 
@@ -30,12 +29,9 @@ const ContactForm: React.FC = () => {
    const [phoneValue, setPhoneValue] = useState("");
    const [images, setImages] = useState<File[]>([]);
 
-   const handlePhoneChange = (value: string) => {
-      setPhoneValue(value);
-   };
-
    const checkValidity = () => {
-      if (!phoneValue || phoneValue.replace(/\s+/g, "").length < 12) {
+      const digits = phoneValue.replace(/\D/g, "");
+      if (digits.length < 10) {
          setError("Phone number is required.");
          return false;
       }
@@ -56,7 +52,6 @@ const ContactForm: React.FC = () => {
       const formData = new FormData(event.currentTarget);
 
       if (images.length > 0) {
-         //compress images
          const options = {
             maxSizeMB: Math.floor((maxRequestSizeInMB - 0.5) / images.length),
             maxWidthOrHeight: 1920,
@@ -65,8 +60,7 @@ const ContactForm: React.FC = () => {
             images.map((img) => imageCompression(img, options))
          );
 
-         for (let img of compressedImages) {
-            // compressing the image turns it into a blob, convert it back to a file before sending
+         for (const img of compressedImages) {
             formData.append("images", new File([img], img.name));
          }
       }
@@ -92,11 +86,7 @@ const ContactForm: React.FC = () => {
       setLoading(false);
    };
 
-   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (!e.target.files) return;
-
-      const files = Array.from(e.target.files);
-
+   const handleFiles = (files: File[]) => {
       if (files.length > maxImagesInRequest) {
          setError(`You can only add up to ${maxImagesInRequest} images.`);
          setImages(files.slice(0, maxImagesInRequest));
@@ -108,180 +98,112 @@ const ContactForm: React.FC = () => {
 
    return (
       <Paper
-         component={"form"}
+         component="form"
          onSubmit={handleSubmit}
-         variant="outlined"
-         sx={{
-            p: "1rem",
-            mt: "0.5rem",
-            backgroundColor: "secondary.main",
-            borderRadius: "0.5rem",
-            position: "relative",
-         }}
+         withBorder
+         p="md"
+         mt="sm"
+         pos="relative"
+         bg="white"
       >
-         <Box>
-            {!!error && (
-               <Alert severity="error">
-                  <AlertTitle>Error</AlertTitle>
-                  {error}
-               </Alert>
-            )}
-            <TextField
-               required
-               name="name"
-               id="name-input"
-               label="Name"
-               fullWidth
-               margin="normal"
-            />
-            <MuiTelInput
-               required
-               label="Phone Number"
-               forceCallingCode
-               defaultCountry="US"
-               onlyCountries={["US", "CA"]}
-               sx={{ width: "100%" }}
-               name="phone"
-               value={phoneValue}
-               onChange={handlePhoneChange}
-               margin="normal"
-               error={error.toLowerCase().includes("phone")}
-            />
-            <TextField
-               name="email"
-               id="email-input"
-               label="Email"
-               fullWidth
-               margin="normal"
-            />
-            <TextField
-               name="subject"
-               id="subject-input"
-               label="Subject"
-               fullWidth
-               margin="normal"
-            />
-            <TextField
-               required
-               name="message"
-               id="message-input"
-               label="Message"
-               multiline
-               fullWidth
-               rows={5}
-               margin="normal"
-            />
-            <input
-               // name="images"
-               id="images-input"
-               multiple
-               type="file"
-               accept="image/*"
-               onChange={handleFileChange}
-               style={{
-                  display: "none",
-               }}
-            />
-            <label htmlFor="images-input">
+         <LoadingOverlay visible={loading && !messageSent} />
+         {messageSent && (
+            <Overlay color="#16246c" backgroundOpacity={0.92} center>
+               <Stack align="center" gap="xs">
+                  <Title order={3} c="white">
+                     Message sent!
+                  </Title>
+                  <Text c="white">
+                     We will get back to you as soon as possible.
+                  </Text>
+               </Stack>
+            </Overlay>
+         )}
+         {!!error && (
+            <Alert color="red" title="Error" mb="md">
+               {error}
+            </Alert>
+         )}
+         <TextInput required name="name" id="name-input" label="Name" mb="sm" />
+         <TextInput
+            required
+            name="phone"
+            id="phone-input"
+            label="Phone Number"
+            type="tel"
+            placeholder="(406) 555-1234"
+            value={phoneValue}
+            onChange={(event) => setPhoneValue(event.currentTarget.value)}
+            error={error.toLowerCase().includes("phone") ? error : undefined}
+            mb="sm"
+         />
+         <TextInput name="email" id="email-input" label="Email" mb="sm" />
+         <TextInput name="subject" id="subject-input" label="Subject" mb="sm" />
+         <Textarea
+            required
+            name="message"
+            id="message-input"
+            label="Message"
+            minRows={5}
+            mb="sm"
+         />
+         <FileButton
+            onChange={(payload) => {
+               const files = Array.isArray(payload)
+                  ? payload
+                  : payload
+                    ? [payload]
+                    : [];
+               handleFiles(files);
+            }}
+            accept="image/*"
+            multiple
+         >
+            {(props) => (
                <Button
-                  component="span"
-                  variant="outlined"
-                  sx={{ mt: "0.25rem" }}
-                  endIcon={<CloudUploadIcon />}
+                  {...props}
+                  variant="outline"
+                  rightSection={<IconUpload size={16} />}
                >
                   Add Images
                </Button>
-            </label>
-            <Stack
-               direction="row"
-               spacing={2}
-               sx={{ my: "0.5rem", overflowX: "auto" }}
-            >
-               {images.map((img, i) => (
-                  <Box
-                     key={i}
-                     sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        position: "relative",
+            )}
+         </FileButton>
+         <Group gap="sm" my="sm" wrap="nowrap" style={{ overflowX: "auto" }}>
+            {images.map((img, i) => (
+               <Box key={`${img.name}-${i}`} pos="relative">
+                  <Image
+                     style={{ objectFit: "cover", borderRadius: "0.5rem" }}
+                     src={URL.createObjectURL(img)}
+                     alt="image to upload"
+                     height={100}
+                     width={100}
+                  />
+                  <ActionIcon
+                     size="sm"
+                     color="dark"
+                     variant="filled"
+                     pos="absolute"
+                     top={4}
+                     right={4}
+                     onClick={() => {
+                        setImages(images.filter((_, index) => index !== i));
                      }}
                   >
-                     <Image
-                        style={{
-                           objectFit: "cover",
-                           borderRadius: "0.5rem",
-                        }}
-                        src={URL.createObjectURL(img)}
-                        alt="image to upload"
-                        height={100}
-                        width={100}
-                     />
-                     <IconButton
-                        size="small"
-                        sx={{
-                           position: "absolute",
-                           top: 0,
-                           right: 0,
-                           backgroundColor: "rgb(255,255,255,0.65)",
-                        }}
-                        onClick={() => {
-                           setImages(images.filter((_, index) => index !== i));
-                        }}
-                     >
-                        <CloseIcon />
-                     </IconButton>
-                  </Box>
-               ))}
-            </Stack>
-            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-               <Button
-                  variant="contained"
-                  type="submit"
-                  disabled={loading}
-                  endIcon={<SendIcon />}
-               >
-                  Send
-               </Button>
-            </Box>
-         </Box>
-
-         <Backdrop
-            open={loading || messageSent}
-            sx={{
-               position: "absolute",
-               borderRadius: "0.5rem",
-               backgroundColor: "primary.dark",
-            }}
-         >
-            {messageSent ? (
-               <Box>
-                  <Zoom in={messageSent}>
-                     <Box
-                        sx={{
-                           textAlign: "center",
-                           position: "relative",
-                           zIndex: 1,
-                        }}
-                     >
-                        <Typography
-                           sx={{
-                              color: "white",
-                              fontWeight: "bold",
-                              fontSize: "1.5rem",
-                           }}
-                        >
-                           Message sent!
-                        </Typography>
-                        <Typography sx={{ color: "white" }}>
-                           We will get back to you as soon as possible.
-                        </Typography>
-                     </Box>
-                  </Zoom>
+                     <IconX size={14} />
+                  </ActionIcon>
                </Box>
-            ) : (
-               <CircularProgress sx={{ color: "primary.light" }} />
-            )}
-         </Backdrop>
+            ))}
+         </Group>
+         <Group justify="flex-end">
+            <Button
+               type="submit"
+               disabled={loading}
+               rightSection={<IconSend size={16} />}
+            >
+               Send
+            </Button>
+         </Group>
       </Paper>
    );
 };

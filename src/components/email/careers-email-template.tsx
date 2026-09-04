@@ -1,6 +1,10 @@
-import theme from "@/app/theme";
-import { siteURL } from "@/content";
 import * as React from "react";
+import {
+   DetailRow,
+   EmailLayout,
+   formatPhoneNumber,
+   linkStyle,
+} from "./email-layout";
 
 export interface CareersEmailTemplateProps {
    name: string;
@@ -23,100 +27,50 @@ export const CareersEmailTemplate: React.FC<
    currentState,
    yearsExperience,
 }) => {
-   const logoUrl = `https://${siteURL}/assets/dog_logo_no_background.png`;
-
    return (
-      <div
-         style={{
-            margin: "0",
-            padding: "1.25rem",
-            fontFamily: "Arial, Helvetica, sans-serif",
-            backgroundColor: "#f4f7fb",
-            color: "#1a1a1a",
-         }}
+      <EmailLayout
+         title="New job application"
+         footerNote="Sent from the careers form on superiorplumbingmt.com. The applicant's resume is attached."
       >
-         <div
+         <p
             style={{
-               maxWidth: "680px",
-               margin: "0 auto",
-               borderRadius: "12px",
-               border: `1px solid ${theme.palette.primary.main}`,
-               backgroundColor: "#ffffff",
-               overflow: "hidden",
+               margin: "0 0 18px",
+               fontSize: 14,
+               lineHeight: "22px",
             }}
          >
-            <div
-               style={{
-                  padding: "1rem 1.25rem",
-                  borderBottom: "1px solid #e9edf3",
-                  textAlign: "center",
-               }}
-            >
-               {/* eslint-disable-next-line @next/next/no-img-element */}
-               <img
-                  src={logoUrl}
-                  alt="Superior Plumbing logo"
-                  width={250}
-                  height={200}
-                  style={{ display: "inline-block", marginBottom: "0.5rem" }}
-               />
-               <h1
-                  style={{
-                     margin: "0",
-                     fontSize: "1.6rem",
-                     fontWeight: 700,
-                     color: theme.palette.primary.main,
-                  }}
-               >
-                  New Careers Application
-               </h1>
-            </div>
+            {name} applied for {position}.
+         </p>
 
-            <div style={{ padding: "1.25rem" }}>
-               <p style={{ margin: "0 0 0.75rem 0", fontSize: "1rem" }}>
-                  Applicant: <strong>{name}</strong>
-               </p>
-
-               <div
-                  style={{
-                     marginBottom: "1rem",
-                     border: "1px solid #e9edf3",
-                     borderRadius: "8px",
-                     padding: "0.85rem",
-                     backgroundColor: "#fafcff",
-                  }}
-               >
-                  <p style={{ margin: "0 0 0.35rem 0" }}>
-                     Position: <strong>{position}</strong>
-                  </p>
-                  <p style={{ margin: "0" }}>
-                     Years of Experience: <strong>{yearsExperience}</strong>
-                  </p>
-               </div>
-
-               <div
-                  style={{
-                     borderTop: "1px solid #e9edf3",
-                     paddingTop: "0.85rem",
-                     fontSize: "0.95rem",
-                  }}
-               >
-                  <p style={{ margin: "0 0 0.35rem 0" }}>
-                     Name: <strong>{name}</strong>
-                  </p>
-                  <p style={{ margin: "0 0 0.35rem 0" }}>
-                     Email: <a href={`mailto:${email}`}>{email}</a>
-                  </p>
-                  <p style={{ margin: "0 0 0.35rem 0" }}>
-                     Phone:{" "}
-                     <a href={`tel:${phoneNumber.replace(/\D+/g, "")}`}>{phoneNumber}</a>
-                  </p>
-                  <p style={{ margin: "0" }}>
-                     Current Location: <strong>{currentCity}, {currentState}</strong>
-                  </p>
-               </div>
-            </div>
-         </div>
-      </div>
+         <table
+            role="presentation"
+            width="100%"
+            cellPadding={0}
+            cellSpacing={0}
+            style={{ borderCollapse: "collapse", marginBottom: 8 }}
+         >
+            <tbody>
+               <DetailRow label="Applicant">{name}</DetailRow>
+               <DetailRow label="Position">{position}</DetailRow>
+               <DetailRow label="Experience">{yearsExperience}</DetailRow>
+               <DetailRow label="Location">
+                  {currentCity}, {currentState}
+               </DetailRow>
+               <DetailRow label="Email">
+                  <a href={`mailto:${email}`} style={linkStyle}>
+                     {email}
+                  </a>
+               </DetailRow>
+               <DetailRow label="Phone">
+                  <a
+                     href={`tel:${phoneNumber.replace(/\D+/g, "")}`}
+                     style={linkStyle}
+                  >
+                     {formatPhoneNumber(phoneNumber)}
+                  </a>
+               </DetailRow>
+            </tbody>
+         </table>
+      </EmailLayout>
    );
 };

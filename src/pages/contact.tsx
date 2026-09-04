@@ -1,11 +1,11 @@
-import ContactForm from '@/components/ContactForm';
+import ContactForm from "@/components/ContactForm";
 import Content from "@/components/Content";
 import MainContentWrapper from "@/components/MainContentWrapper";
 import ContactDisplay, {
    DisplayableContacts,
 } from "@/components/header/ContactDisplay";
 import { siteTitle } from "@/content";
-import { Grid, Typography, Box } from "@mui/material";
+import { SimpleGrid, Text, Title } from "@mantine/core";
 import Head from "next/head";
 
 export const getStaticProps = async () => {
@@ -21,46 +21,39 @@ const Page = () => {
             <title>{`Contact | ${siteTitle}`}</title>
          </Head>
          <MainContentWrapper>
-
-            <Grid item xs={12} sm={12} md={12} lg={6}>
+            <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
                <Content>
-                  <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-                     Get a hold of us at:
-                  </Typography>
-                  <Box>
-                     <ContactDisplay
-                        iconColor="primary.dark"
-                        textColor="primary.dark"
-                        contactsToDisplay={[
-                           DisplayableContacts.phone,
-                           DisplayableContacts.email
-                        ]}
-                     />
-                  </Box>
-                  <Typography variant='h6' sx ={{ mt: 2 }}>
+                  <Text className="eyebrow" mb="xs">
+                     Reach out
+                  </Text>
+                  <Title order={2}>Get a hold of us at:</Title>
+                  <ContactDisplay
+                     c="navy.8"
+                     contactsToDisplay={[
+                        DisplayableContacts.phone,
+                        DisplayableContacts.email,
+                     ]}
+                  />
+                  <Title order={3} mt="lg" mb="xs">
                      Or send us a message using the form below
-                  </Typography>
+                  </Title>
                   <ContactForm />
                </Content>
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={6}>
                <Content>
-                  <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-                     Check out our other pages
-                  </Typography>
-                  <Box>
-                     <ContactDisplay
-                        iconColor="primary.dark"
-                        textColor="primary.dark"
-                        contactsToDisplay={[
-                           DisplayableContacts.facebook,
-                           DisplayableContacts.google,
-                           DisplayableContacts.rinnai,
-                        ]}
-                     />
-                  </Box>
+                  <Text className="eyebrow" mb="xs">
+                     More ways to connect
+                  </Text>
+                  <Title order={2}>Check out our other pages</Title>
+                  <ContactDisplay
+                     c="navy.8"
+                     contactsToDisplay={[
+                        DisplayableContacts.facebook,
+                        DisplayableContacts.google,
+                        DisplayableContacts.rinnai,
+                     ]}
+                  />
                </Content>
-            </Grid>
+            </SimpleGrid>
          </MainContentWrapper>
       </>
    );

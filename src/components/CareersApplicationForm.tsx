@@ -1,25 +1,24 @@
 "use client";
 import {
    Alert,
-   AlertTitle,
-   Backdrop,
-   Box,
    Button,
-   CircularProgress,
-   MenuItem,
+   FileButton,
+   Group,
+   LoadingOverlay,
+   NativeSelect,
+   Overlay,
    Paper,
-   TextField,
-   Typography,
-   Zoom,
-} from "@mui/material";
+   Stack,
+   Text,
+   TextInput,
+   Title,
+} from "@mantine/core";
 import React, { useState } from "react";
-import SendIcon from "@mui/icons-material/Send";
-import { MuiTelInput } from "mui-tel-input";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { IconSend, IconUpload } from "@tabler/icons-react";
 
 const availablePositions = [
    "Journeyman Plumber",
-   "Customer Service Representative"
+   "Customer Service Representative",
 ];
 
 const usStates = [
@@ -91,7 +90,8 @@ const CareersApplicationForm: React.FC = () => {
    const [resume, setResume] = useState<File | null>(null);
 
    const checkValidity = () => {
-      if (!phoneValue || phoneValue.replace(/\s+/g, "").length < 12) {
+      const digits = phoneValue.replace(/\D/g, "");
+      if (digits.length < 10) {
          setError("Phone number is required.");
          return false;
       }
@@ -131,20 +131,17 @@ const CareersApplicationForm: React.FC = () => {
       setLoading(false);
    };
 
-   const handleResumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (!e.target.files?.length) return;
+   const handleResumeChange = (file: File | null) => {
+      if (!file) return;
       setError("");
 
-      const file = e.target.files[0];
       if (!supportedResumeTypes.includes(file.type)) {
          setError("Resume must be a PDF or Word document.");
-         e.target.value = "";
          return;
       }
 
       if (file.size > maxResumeSizeInMB * 1024 * 1024) {
          setError(`Resume must be ${maxResumeSizeInMB}MB or smaller.`);
-         e.target.value = "";
          return;
       }
 
@@ -153,169 +150,106 @@ const CareersApplicationForm: React.FC = () => {
 
    return (
       <Paper
-         component={"form"}
+         component="form"
          onSubmit={handleSubmit}
-         variant="outlined"
-         sx={{
-            p: "1rem",
-            mt: "0.5rem",
-            backgroundColor: "secondary.main",
-            borderRadius: "0.5rem",
-            position: "relative",
-         }}
+         withBorder
+         p="md"
+         mt="sm"
+         pos="relative"
+         bg="white"
       >
-         <Box>
-            {!!error && (
-               <Alert severity="error">
-                  <AlertTitle>Error</AlertTitle>
-                  {error}
-               </Alert>
-            )}
-            <TextField
-               required
-               select
-               name="position"
-               label="Position Applying For"
-               fullWidth
-               margin="normal"
-               defaultValue=""
-            >
-               <MenuItem value="" disabled>
-                  Select a position
-               </MenuItem>
-               {availablePositions.map((position) => (
-                  <MenuItem key={position} value={position}>
-                     {position}
-                  </MenuItem>
-               ))}
-            </TextField>
-            <TextField
-               required
-               name="name"
-               label="Full Name"
-               fullWidth
-               margin="normal"
-            />
-            <TextField
-               required
-               name="email"
-               type="email"
-               label="Email"
-               fullWidth
-               margin="normal"
-            />
-            <MuiTelInput
-               required
-               label="Phone Number"
-               forceCallingCode
-               defaultCountry="US"
-               onlyCountries={["US", "CA"]}
-               sx={{ width: "100%" }}
-               name="phone"
-               value={phoneValue}
-               onChange={setPhoneValue}
-               margin="normal"
-               error={error.toLowerCase().includes("phone")}
-            />
-            <TextField
-               required
-               name="currentCity"
-               label="Current City"
-               fullWidth
-               margin="normal"
-            />
-            <TextField
-               required
-               select
-               name="currentState"
-               label="Current State"
-               fullWidth
-               margin="normal"
-               defaultValue=""
-            >
-               <MenuItem value="" disabled>
-                  Select a state
-               </MenuItem>
-               {usStates.map((state) => (
-                  <MenuItem key={state} value={state}>
-                     {state}
-                  </MenuItem>
-               ))}
-            </TextField>
-            <TextField
-               required
-               name="yearsExperience"
-               type="number"
-               label="Years of Experience"
-               fullWidth
-               margin="normal"
-               slotProps={{ htmlInput: { min: 0, max: 60 } }}
-            />
-            <input
-               id="resume-input"
-               type="file"
-               accept=".pdf,.doc,.docx"
-               onChange={handleResumeChange}
-               style={{ display: "none" }}
-            />
-            <label htmlFor="resume-input">
+         <LoadingOverlay visible={loading && !messageSent} />
+         {messageSent && (
+            <Overlay color="#16246c" backgroundOpacity={0.92} center>
+               <Stack align="center" gap="xs">
+                  <Title order={3} c="white">
+                     Application submitted!
+                  </Title>
+                  <Text c="white">
+                     Thanks for applying. We will review and reach out soon.
+                  </Text>
+               </Stack>
+            </Overlay>
+         )}
+         {!!error && (
+            <Alert color="red" title="Error" mb="md">
+               {error}
+            </Alert>
+         )}
+         <NativeSelect
+            required
+            name="position"
+            label="Position Applying For"
+            data={[
+               { value: "", label: "Select a position" },
+               ...availablePositions.map((position) => ({
+                  value: position,
+                  label: position,
+               })),
+            ]}
+            mb="sm"
+         />
+         <TextInput required name="name" label="Full Name" mb="sm" />
+         <TextInput required name="email" type="email" label="Email" mb="sm" />
+         <TextInput
+            required
+            name="phone"
+            label="Phone Number"
+            type="tel"
+            placeholder="(406) 555-1234"
+            value={phoneValue}
+            onChange={(event) => setPhoneValue(event.currentTarget.value)}
+            error={error.toLowerCase().includes("phone") ? error : undefined}
+            mb="sm"
+         />
+         <TextInput required name="currentCity" label="Current City" mb="sm" />
+         <NativeSelect
+            required
+            name="currentState"
+            label="Current State"
+            data={[
+               { value: "", label: "Select a state" },
+               ...usStates.map((state) => ({ value: state, label: state })),
+            ]}
+            mb="sm"
+         />
+         <TextInput
+            required
+            name="yearsExperience"
+            type="number"
+            label="Years of Experience"
+            min={0}
+            max={60}
+            mb="sm"
+         />
+         <FileButton
+            onChange={handleResumeChange}
+            accept=".pdf,.doc,.docx"
+         >
+            {(props) => (
                <Button
-                  component="span"
-                  variant="outlined"
-                  sx={{ mt: "0.5rem" }}
-                  endIcon={<CloudUploadIcon />}
+                  {...props}
+                  variant="outline"
+                  rightSection={<IconUpload size={16} />}
                >
                   Upload Resume
                </Button>
-            </label>
-            {!!resume && (
-               <Typography sx={{ mt: "0.5rem", fontSize: "0.95rem" }}>
-                  Attached: {resume.name}
-               </Typography>
             )}
-            <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 1 }}>
-               <Button
-                  variant="contained"
-                  type="submit"
-                  disabled={loading}
-                  endIcon={<SendIcon />}
-               >
-                  Submit Application
-               </Button>
-            </Box>
-         </Box>
-
-         <Backdrop
-            open={loading || messageSent}
-            sx={{
-               position: "absolute",
-               borderRadius: "0.5rem",
-               backgroundColor: "primary.dark",
-            }}
-         >
-            {messageSent ? (
-               <Box>
-                  <Zoom in={messageSent}>
-                     <Box sx={{ textAlign: "center", position: "relative", zIndex: 1 }}>
-                        <Typography
-                           sx={{
-                              color: "white",
-                              fontWeight: "bold",
-                              fontSize: "1.5rem",
-                           }}
-                        >
-                           Application submitted!
-                        </Typography>
-                        <Typography sx={{ color: "white" }}>
-                           Thanks for applying. We will review and reach out soon.
-                        </Typography>
-                     </Box>
-                  </Zoom>
-               </Box>
-            ) : (
-               <CircularProgress sx={{ color: "primary.light" }} />
-            )}
-         </Backdrop>
+         </FileButton>
+         {!!resume && (
+            <Text mt="xs" size="sm">
+               Attached: {resume.name}
+            </Text>
+         )}
+         <Group justify="flex-end" mt="md">
+            <Button
+               type="submit"
+               disabled={loading}
+               rightSection={<IconSend size={16} />}
+            >
+               Submit Application
+            </Button>
+         </Group>
       </Paper>
    );
 };

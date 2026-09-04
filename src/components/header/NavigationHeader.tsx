@@ -1,140 +1,170 @@
 "use client";
-import { elevation, maxWidth } from "@/app/Constants";
-import {
-   AppBar,
-   Box,
-   Container,
-   Link,
-   Toolbar,
-   useMediaQuery,
-} from "@mui/material";
+import { maxWidth } from "@/Constants";
+import { Anchor, Box, Burger, Button, Container, Divider, Drawer, Stack, Text } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import React from "react";
 import DesktopNavMenu from "./DesktopNavMenu";
-import MobileNavMenu from "./MobileNavMenu";
-import { pages, siteTitleLogo, dogOnlyLogo } from "@/content";
+import { pages, headerLogo, siteTitleLogo, ContactInfo, footerLinks, siteTitle, siteURL } from "@/content";
 import Image from "next/image";
 import NextLink from "next/link";
+import { reportConversion } from "@/lib/gtag";
+import { useRouter } from "next/router";
+import SiteIconLinks from "./SiteIconLinks";
 
 const NavigationHeader: React.FC = () => {
-   const isSmall = useMediaQuery("(max-width:660px)");
+   const [opened, { toggle, close }] = useDisclosure(false);
+   const { pathname } = useRouter();
 
    return (
-      <Box sx={{ position: "sticky", top: 0, display: "grid", zIndex: 5 }}>
-         <Box
-            sx={{
-               background: "black",
-               height: "3.5rem",
-               zIndex: "-1",
-               gridColumn: "1",
-               gridRow: "1",
-            }}
-         />
-         <Box
-            sx={{
-               paddingX: isSmall ? "2rem" : "5rem",
-               gridColumn: "1",
-               gridRow: "1",
+      <header className="site-header">
+         <Container size={maxWidth} px={{ base: "sm", sm: "md", lg: "xl" }}>
+            <div className="header-bar">
+               <Anchor
+                  component={NextLink}
+                  href="/"
+                  underline="never"
+                  onClick={close}
+                  aria-label="Superior Plumbing Service"
+                  className="header-dog-link"
+               >
+                  <Box className="header-dog">
+                     <Image
+                        src="/assets/dog-mark.png"
+                        alt=""
+                        fill
+                        sizes="96px"
+                        style={{ objectFit: "contain" }}
+                     />
+                  </Box>
+               </Anchor>
+
+               <Anchor
+                  component={NextLink}
+                  href="/"
+                  underline="never"
+                  onClick={close}
+                  className="header-wordmark"
+               >
+                  <img src={siteTitleLogo} alt="Superior Plumbing Service" />
+               </Anchor>
+
+               <div className="header-bar-right">
+                  <div className="header-nav-desktop">
+                     <DesktopNavMenu pages={pages} />
+                  </div>
+
+                  <Burger
+                     opened={opened}
+                     onClick={toggle}
+                     hiddenFrom="md"
+                     size="sm"
+                     color="white"
+                     aria-label="Toggle navigation"
+                  />
+               </div>
+            </div>
+         </Container>
+
+         <Drawer
+            opened={opened}
+            onClose={close}
+            padding="md"
+            title={null}
+            withCloseButton
+            hiddenFrom="md"
+            zIndex={200}
+            styles={{
+               content: {
+                  display: "flex",
+                  flexDirection: "column",
+                  overflow: "hidden",
+               },
+               header: {
+                  minHeight: "unset",
+                  paddingBottom: 4,
+               },
+               body: {
+                  display: "flex",
+                  flexDirection: "column",
+                  flex: 1,
+                  minHeight: 0,
+                  overflow: "hidden",
+               },
             }}
          >
-            <Image
-               src="/assets/pipes/pipe-gold-straight-leak.svg"
-               alt="pipe"
-               height={isSmall ? 32 : 80}
-               width={isSmall ? 32 : 80}
-               style={{
-                  position: "absolute",
-                  top: isSmall ? "45%" : "19%",
-                  left: "0",
-               }}
-            />
-            <AppBar
-               elevation={elevation}
-               id="site-header"
-               sx={{
-                  position: "static",
-                  width: "100%",
-                  padding: "1rem",
-                  border: "2px solid",
-                  borderColor: "secondary.main",
-                  borderRadius: "0.5rem",
-               }}
+            <Anchor
+               component={NextLink}
+               href="/"
+               underline="never"
+               onClick={close}
+               className="mobile-nav-dog"
+               aria-label="Superior Plumbing Service"
             >
-               <Container maxWidth={maxWidth} sx={{ paddingX: "0 !important" }}>
-                  <Toolbar sx={{ paddingX: "0 !important" }}>
-                     <MobileNavMenu pages={pages} />
-                     <Link
-                        component={NextLink}
-                        href="/"
-                        sx={{
-                           color: "unset",
-                           ":hover": { textDecoration: "none" },
-                           order: {
-                              xs: 2,
-                              sm: 2,
-                              md: 3,
-                              lg: 0,
-                           },
-                           display: {
-                              xs: "none",
-                              sm: "flex",
-                              md: "flex"
-                           },
-                        }}
-                     >
-                        <Box
-                           sx={{
-                              overflow: "hidden"
-                           }}
-                        >
-                           <Image
-                              width={120}
-                              height={60}
-                              src={dogOnlyLogo}
-                              alt="logo"
-                              style={{
-                                 objectFit: "contain",
-                                 transform: "scale(1.5) translateY(5px)"
-                              }}
-                           />
-                        </Box>
-                     </Link>
-                     <Link
-                        component={NextLink}
-                        href="/"
-                        sx={{
-                           color: "unset",
-                           ":hover": { textDecoration: "none" },
-                           position: "relative",
-                           display: "flex",
-                           flex: 1,
-                           minWidth: "120px",
-                           minHeight: "60px",
-                           overflowX: "clip"
-                        }}
-                     >
-                        <Image src={siteTitleLogo} alt="logo" fill style={{
-                           objectFit: "contain",
-                           transform: isSmall ? "scale(2.0) translateY(5px)" : "scale(3.75) translateY(5px)"
-                        }} />
-                     </Link>
-                     <DesktopNavMenu pages={pages} />
-                  </Toolbar>
-               </Container>
-            </AppBar>
-            <Image
-               src="/assets/pipes/pipe-gold-straight.svg"
-               alt="pipe"
-               height={isSmall ? 32 : 80}
-               width={isSmall ? 32 : 80}
-               style={{
-                  position: "absolute",
-                  top: isSmall ? "39%" : "10%",
-                  right: "0",
-                  transform: "rotate(180deg)",
-               }}
-            />
-         </Box>
-      </Box>
+               <Image
+                  src={headerLogo}
+                  alt=""
+                  width={640}
+                  height={427}
+                  style={{ width: "100%", height: "auto" }}
+               />
+            </Anchor>
+            <Stack gap={6} mt="sm">
+               {pages.map((page) => (
+                  <Anchor
+                     key={page.title}
+                     component={NextLink}
+                     href={page.url}
+                     c={pathname === page.url ? "navy.6" : "dark"}
+                     fw={pathname === page.url ? 700 : 500}
+                     onClick={close}
+                  >
+                     {page.title}
+                  </Anchor>
+               ))}
+               <Button
+                  component="a"
+                  href={ContactInfo.phone.href}
+                  color="gold"
+                  c="navy.9"
+                  mt="xs"
+                  onClick={(event) => {
+                     event.preventDefault();
+                     close();
+                     reportConversion(ContactInfo.phone.href);
+                  }}
+               >
+                  Call now
+               </Button>
+            </Stack>
+
+            <Box className="mobile-nav-footer">
+               <Divider mb="md" />
+               <Text fw={700} size="sm" c="navy.6">
+                  {siteTitle}
+               </Text>
+               <Text size="xs" c="dimmed" mt={4}>
+                  {`Copyright ${new Date().getFullYear()} | ${siteURL}`}
+               </Text>
+               {footerLinks.map(({ title, url }) => (
+                  <Anchor
+                     key={url}
+                     component={NextLink}
+                     href={url}
+                     c="navy.6"
+                     size="sm"
+                     mt={6}
+                     display="block"
+                     onClick={close}
+                  >
+                     {title}
+                  </Anchor>
+               ))}
+               <Box mt="sm">
+                  <SiteIconLinks alwaysShowAll />
+               </Box>
+            </Box>
+         </Drawer>
+      </header>
    );
 };
 
