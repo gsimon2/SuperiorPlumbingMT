@@ -4,7 +4,7 @@ import { Anchor, Box, Burger, Button, Container, Divider, Drawer, Stack, Text } 
 import { useDisclosure } from "@mantine/hooks";
 import React from "react";
 import DesktopNavMenu from "./DesktopNavMenu";
-import { pages, dogOnlyLogo, headerLogo, siteTitleLogo, ContactInfo, footerLinks, siteTitle, siteURL } from "@/content";
+import { pages, headerLogo, siteTitleLogo, ContactInfo, footerLinks, siteTitle, siteURL } from "@/content";
 import Image from "next/image";
 import NextLink from "next/link";
 import { reportConversion } from "@/lib/gtag";
@@ -28,16 +28,13 @@ const NavigationHeader: React.FC = () => {
                   className="header-dog-link"
                >
                   <Box className="header-dog">
-                     <span className="header-dog-drop" aria-hidden="true" />
-                     <span className="header-dog-mascot">
-                        <Image
-                           src={dogOnlyLogo}
-                           alt=""
-                           fill
-                           sizes="88px"
-                           style={{ objectFit: "contain" }}
-                        />
-                     </span>
+                     <Image
+                        src="/assets/dog-mark.png"
+                        alt=""
+                        fill
+                        sizes="96px"
+                        style={{ objectFit: "contain" }}
+                     />
                   </Box>
                </Anchor>
 

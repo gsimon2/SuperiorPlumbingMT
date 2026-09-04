@@ -77,21 +77,11 @@ body {
 
 .header-dog {
    position: relative;
-   width: clamp(3.1rem, 6vw, 4.5rem);
-   height: clamp(3.5rem, 6.8vw, 5.1rem);
-   -webkit-mask: url(/assets/water-drop.svg) center / contain no-repeat;
-   mask: url(/assets/water-drop.svg) center / contain no-repeat;
-}
-
-.header-dog-drop {
-   position: absolute;
-   inset: 0;
-   background: #a5c3ed;
-}
-
-.header-dog-mascot {
-   position: absolute;
-   inset: 6% -8% -10% -8%;
+   width: clamp(3.5rem, 7vw, 5.15rem);
+   aspect-ratio: 1;
+   height: auto;
+   overflow: visible;
+   filter: drop-shadow(0 0 1px #a5c3ed) drop-shadow(0 0 3px rgba(165, 195, 237, 0.35));
 }
 
 .header-wordmark {
