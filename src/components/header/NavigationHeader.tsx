@@ -5,6 +5,7 @@ import { useDisclosure } from "@mantine/hooks";
 import React from "react";
 import DesktopNavMenu from "./DesktopNavMenu";
 import { pages, headerLogo, siteTitleLogo, ContactInfo, footerLinks, siteTitle, siteURL } from "@/content";
+import { isNavActive } from "@/lib/nav";
 import Image from "next/image";
 import NextLink from "next/link";
 import { reportConversion } from "@/lib/gtag";
@@ -114,8 +115,8 @@ const NavigationHeader: React.FC = () => {
                      key={page.title}
                      component={NextLink}
                      href={page.url}
-                     c={pathname === page.url ? "navy.6" : "dark"}
-                     fw={pathname === page.url ? 700 : 500}
+                     c={isNavActive(pathname, page.url) ? "navy.6" : "dark"}
+                     fw={isNavActive(pathname, page.url) ? 700 : 500}
                      onClick={close}
                   >
                      {page.title}

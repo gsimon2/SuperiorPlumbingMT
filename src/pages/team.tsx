@@ -1,8 +1,8 @@
 import Content from "@/components/Content";
 import MainContentWrapper from "@/components/MainContentWrapper";
+import SeoHead from "@/components/SeoHead";
 import { siteTitle } from "@/content";
 import { Box, Stack, Text, Title } from "@mantine/core";
-import Head from "next/head";
 import Image from "next/image";
 
 export const getStaticProps = async () => {
@@ -14,15 +14,19 @@ export const getStaticProps = async () => {
 const TeamPage: React.FC = () => {
    return (
       <>
-         <Head>
-            <title>{`Our Team | ${siteTitle}`}</title>
-         </Head>
+         <SeoHead
+            title={`Our Team | ${siteTitle}`}
+            description="Meet Brody Barr, owner and master plumber at Superior Plumbing Service. Fourth-generation plumbing serving Superior, MT and Western Montana."
+            path="/team"
+            image="/assets/team/owner.jpg"
+            imageAlt="Brody Barr, owner and master plumber of Superior Plumbing Service"
+         />
          <MainContentWrapper>
             <Content>
                <Text className="eyebrow" mb="xs">
                   The people behind the work
                </Text>
-               <Title order={2} mb="lg">
+               <Title order={1} mb="lg">
                   Meet Our Team
                </Title>
                <Stack align="center" gap="sm">
@@ -34,7 +38,7 @@ const TeamPage: React.FC = () => {
                   >
                      <Image
                         src="/assets/team/owner.jpg"
-                        alt="Company Owner"
+                        alt="Brody Barr, owner and master plumber of Superior Plumbing Service"
                         fill
                         style={{
                            borderRadius: "0.75rem",
@@ -42,9 +46,9 @@ const TeamPage: React.FC = () => {
                         }}
                      />
                   </Box>
-                  <Title order={3} mt="md">
-                     Brody Barr
-                  </Title>
+               <Title order={2} mt="md">
+                  Brody Barr
+               </Title>
                   <Text size="lg" c="gold.6" fw={600}>
                      Owner & Master Plumber
                   </Text>

@@ -1,12 +1,12 @@
 import ContactForm from "@/components/ContactForm";
 import Content from "@/components/Content";
 import MainContentWrapper from "@/components/MainContentWrapper";
+import SeoHead from "@/components/SeoHead";
 import ContactDisplay, {
    DisplayableContacts,
 } from "@/components/header/ContactDisplay";
 import { siteTitle } from "@/content";
 import { SimpleGrid, Text, Title } from "@mantine/core";
-import Head from "next/head";
 
 export const getStaticProps = async () => {
    return {
@@ -17,16 +17,18 @@ export const getStaticProps = async () => {
 const Page = () => {
    return (
       <>
-         <Head>
-            <title>{`Contact | ${siteTitle}`}</title>
-         </Head>
+         <SeoHead
+            title={`Contact a Plumber in Superior, MT | ${siteTitle}`}
+            description="Call (406) 550-0868 or send a message to Superior Plumbing Service. Request plumbing repair, installation, or a quote in Mineral, Sanders, and Missoula Counties."
+            path="/contact"
+         />
          <MainContentWrapper>
             <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
                <Content>
                   <Text className="eyebrow" mb="xs">
                      Reach out
                   </Text>
-                  <Title order={2}>Get a hold of us at:</Title>
+                  <Title order={1}>Get a hold of us at:</Title>
                   <ContactDisplay
                      c="navy.8"
                      contactsToDisplay={[

@@ -1,6 +1,5 @@
 import { Anchor, Box } from "@mantine/core";
 import React from "react";
-import Image from "next/image";
 
 const BBBSeal: React.FC<BBBSealProps> = ({ style }) => {
    return (
@@ -17,7 +16,9 @@ const BBBSeal: React.FC<BBBSealProps> = ({ style }) => {
             target="_blank"
             rel="nofollow"
          >
-            <Image
+            {/* BBB blocks Next's image optimizer, so load the seal in the browser. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
                height={42}
                width={200}
                src="https://seal-alaskaoregonwesternwashington.bbb.org/seals/blue-seal-200-42-bbb-1000170171.png"
