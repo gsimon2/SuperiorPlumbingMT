@@ -40,7 +40,7 @@ const Page = () => {
                      <Text className="eyebrow" mb="sm">
                         Mineral · Sanders · Missoula County
                      </Text>
-                     <Text size="lg" mb="md">
+                     <Text mb="md">
                         Superior Plumbing Service, your trusted local
                         plumbing Professionals proudly serving the
                         communities of Mineral County, Sanders County and
@@ -71,12 +71,21 @@ const Page = () => {
                            component="a"
                            href={ContactInfo.phone.href}
                            size="lg"
+                           hiddenFrom="md"
                            onClick={(event) => {
                               event.preventDefault();
                               reportConversion(ContactInfo.phone.href);
                            }}
                         >
                            Call now
+                        </Button>
+                        <Button
+                           component={NextLink}
+                           href="/contact"
+                           size="lg"
+                           visibleFrom="md"
+                        >
+                           Contact us
                         </Button>
                         <Button
                            component={NextLink}

@@ -52,17 +52,13 @@ const NavigationHeader: React.FC = () => {
                      <DesktopNavMenu pages={pages} />
                      <Button
                         className="header-call-btn"
-                        component="a"
-                        href={ContactInfo.phone.href}
+                        component={NextLink}
+                        href="/contact"
                         color="gold"
                         c="navy.9"
                         px="lg"
-                        onClick={(event) => {
-                           event.preventDefault();
-                           reportConversion(ContactInfo.phone.href);
-                        }}
                      >
-                        Call now
+                        Contact us
                      </Button>
                   </Group>
 
