@@ -125,8 +125,8 @@ body {
 
 .hiring-ribbon {
    position: absolute;
-   top: 14px;
-   left: 14px;
+   top: 10px;
+   left: -10px;
    z-index: 3;
    display: block;
    transform: rotate(-8deg);

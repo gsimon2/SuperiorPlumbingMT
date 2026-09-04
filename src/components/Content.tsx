@@ -12,7 +12,7 @@ const Content: React.FC<IContentProps> = ({
       <Paper
          p="xl"
          withBorder={!bold}
-         bg={bold ? "navy.6" : "white"}
+         bg={bold ? "navy.6" : "#e3f2fd"}
          c={bold ? "white" : undefined}
          shadow="sm"
          className={className}
