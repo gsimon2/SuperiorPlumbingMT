@@ -10,7 +10,6 @@
   "dependencies": {
     "@mantine/carousel": "^7.17.8",
     "@mantine/core": "^7.17.8",
-    "@mantine/form": "^7.17.8",
     "@mantine/hooks": "^7.17.8",
     "@mantine/notifications": "^7.17.8",
     "@tabler/icons-react": "^3.46.0",

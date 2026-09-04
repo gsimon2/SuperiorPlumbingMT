@@ -3,7 +3,7 @@ import * as React from "react";
 export const brandNavy = "#2b3e8e";
 export const brandGold = "#c9a227";
 export const emailLogoUrl =
-   "https://www.superiorplumbingmt.com/assets/dog_logo_no_background.png";
+   "https://www.superiorplumbingmt.com/assets/email-logo.png";
 
 const page: React.CSSProperties = {
    margin: 0,
@@ -92,8 +92,8 @@ export const EmailLayout: React.FC<{
                <img
                   src={emailLogoUrl}
                   alt="Superior Plumbing Service"
-                  width={160}
-                  height={107}
+                  width={320}
+                  height={213}
                   style={{
                      display: "block",
                      margin: "0 auto",

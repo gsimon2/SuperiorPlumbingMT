@@ -2,12 +2,12 @@ html,
 body,
 #__next {
    min-height: 100%;
+   min-height: 100vh;
+   min-height: 100dvh;
    width: 100%;
    max-width: 100%;
-}
-
-html {
-   height: 100%;
+   display: flex;
+   flex-direction: column;
 }
 
 html,
@@ -18,16 +18,20 @@ body {
 
 body {
    background-color: #e8f1fa;
-   min-height: 100%;
 }
 
 #__next,
 .site-root {
    min-height: 100%;
+   display: flex;
+   flex-direction: column;
+   flex: 1;
 }
 
 .site-shell {
+   flex: 1 0 auto;
    min-height: 100%;
+   min-height: 100vh;
    min-height: 100dvh;
    width: 100%;
    display: flex;
@@ -39,6 +43,10 @@ body {
    background-repeat: repeat;
    background-position: 0 0;
    background-size: auto;
+}
+
+.site-main {
+   flex: 1 0 auto;
 }
 
 .site-shell::before {
@@ -53,10 +61,6 @@ body {
 .site-shell > * {
    position: relative;
    z-index: 1;
-}
-
-.site-main {
-   flex: 1 1 auto;
 }
 
 .eyebrow {
@@ -257,6 +261,7 @@ body {
    background: #0c1224;
    color: white;
    margin-top: 2.5rem;
+   flex-shrink: 0;
 }
 
 .services-carousel {
