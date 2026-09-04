@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/carousel": "^7.17.8",
     "@mantine/core": "^7.17.8",
     "@mantine/form": "^7.17.8",
     "@mantine/hooks": "^7.17.8",
@@ -15,6 +16,7 @@
     "@tabler/icons-react": "^3.46.0",
     "@vercel/analytics": "^1.2.2",
     "browser-image-compression": "^2.0.2",
+    "embla-carousel-react": "^7.1.0",
     "formidable": "^3.5.2",
     "next": "^14.2.15",
     "react": "^18",

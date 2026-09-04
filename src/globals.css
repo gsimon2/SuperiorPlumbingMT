@@ -210,3 +210,27 @@ body {
    margin-top: 2.5rem;
 }
 
+.services-carousel {
+   padding-bottom: 2.25rem;
+}
+
+.services-carousel .mantine-Carousel-viewport {
+   margin-inline: 3.25rem;
+}
+
+.services-carousel .mantine-Carousel-slide {
+   display: flex;
+}
+
+.services-carousel .mantine-Carousel-slide > * {
+   flex: 1;
+}
+
+.services-carousel .mantine-Carousel-indicators {
+   bottom: 0.35rem;
+}
+
+.services-carousel .mantine-Carousel-indicator[data-active] {
+   background: var(--mantine-color-gold-5);
+}
+
