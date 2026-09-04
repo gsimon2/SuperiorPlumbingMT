@@ -11,7 +11,7 @@ export default function SiteLayout({
    return (
       <Box className="site-shell">
          <NavigationHeader />
-         <Box style={{ flex: "1 0 auto" }}>
+         <Box className="site-main">
             <Container size={maxWidth} px={{ base: "sm", sm: "md", lg: "xl" }} py={{ base: "md", md: "xl" }}>
                {children}
             </Container>
