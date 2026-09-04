@@ -1,14 +1,15 @@
 "use client";
 import { maxWidth } from "@/Constants";
-import { Anchor, Box, Burger, Button, Container, Drawer, Group, Stack } from "@mantine/core";
+import { Anchor, Box, Burger, Button, Container, Divider, Drawer, Group, Stack, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import React from "react";
 import DesktopNavMenu from "./DesktopNavMenu";
-import { pages, dogOnlyLogo, siteTitleLogo, ContactInfo } from "@/content";
+import { pages, dogOnlyLogo, headerLogo, siteTitleLogo, ContactInfo, footerLinks, siteTitle, siteURL } from "@/content";
 import Image from "next/image";
 import NextLink from "next/link";
 import { reportConversion } from "@/lib/gtag";
 import { useRouter } from "next/router";
+import SiteIconLinks from "./SiteIconLinks";
 
 const NavigationHeader: React.FC = () => {
    const [opened, { toggle, close }] = useDisclosure(false);
@@ -81,11 +82,46 @@ const NavigationHeader: React.FC = () => {
             opened={opened}
             onClose={close}
             padding="md"
-            title="Menu"
+            title={null}
+            withCloseButton
             hiddenFrom="md"
             zIndex={200}
+            styles={{
+               content: {
+                  display: "flex",
+                  flexDirection: "column",
+                  overflow: "hidden",
+               },
+               header: {
+                  minHeight: "unset",
+                  paddingBottom: 4,
+               },
+               body: {
+                  display: "flex",
+                  flexDirection: "column",
+                  flex: 1,
+                  minHeight: 0,
+                  overflow: "hidden",
+               },
+            }}
          >
-            <Stack gap="sm" mt="md">
+            <Anchor
+               component={NextLink}
+               href="/"
+               underline="never"
+               onClick={close}
+               className="mobile-nav-dog"
+               aria-label="Superior Plumbing Service"
+            >
+               <Image
+                  src={headerLogo}
+                  alt=""
+                  width={640}
+                  height={427}
+                  style={{ width: "100%", height: "auto" }}
+               />
+            </Anchor>
+            <Stack gap={6} mt="sm">
                {pages.map((page) => (
                   <Anchor
                      key={page.title}
@@ -103,7 +139,7 @@ const NavigationHeader: React.FC = () => {
                   href={ContactInfo.phone.href}
                   color="gold"
                   c="navy.9"
-                  mt="sm"
+                  mt="xs"
                   onClick={(event) => {
                      event.preventDefault();
                      close();
@@ -113,6 +149,33 @@ const NavigationHeader: React.FC = () => {
                   Call now
                </Button>
             </Stack>
+
+            <Box className="mobile-nav-footer">
+               <Divider mb="md" />
+               <Text fw={700} size="sm" c="navy.6">
+                  {siteTitle}
+               </Text>
+               <Text size="xs" c="dimmed" mt={4}>
+                  {`Copyright ${new Date().getFullYear()} | ${siteURL}`}
+               </Text>
+               {footerLinks.map(({ title, url }) => (
+                  <Anchor
+                     key={url}
+                     component={NextLink}
+                     href={url}
+                     c="navy.6"
+                     size="sm"
+                     mt={6}
+                     display="block"
+                     onClick={close}
+                  >
+                     {title}
+                  </Anchor>
+               ))}
+               <Box mt="sm">
+                  <SiteIconLinks alwaysShowAll />
+               </Box>
+            </Box>
          </Drawer>
       </header>
    );

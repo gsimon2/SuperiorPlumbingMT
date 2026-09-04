@@ -118,6 +118,27 @@ body {
    padding-inline: 1.4rem;
 }
 
+.mobile-nav-dog {
+   display: block;
+   width: min(100%, 15rem);
+   margin: 0 auto;
+   flex: 0 1 auto;
+   min-height: 0;
+}
+
+.mobile-nav-dog img {
+   width: 100%;
+   height: auto;
+   max-height: 22vh;
+   object-fit: contain;
+}
+
+.mobile-nav-footer {
+   margin-top: auto;
+   padding-top: 0.75rem;
+   flex-shrink: 0;
+}
+
 .content-card {
    position: relative;
    overflow: visible;
