@@ -2,12 +2,11 @@ import Content from "@/components/Content";
 import JsonLd from "@/components/JsonLd";
 import MainContentWrapper from "@/components/MainContentWrapper";
 import SeoHead from "@/components/SeoHead";
-import Service from "@/components/Service";
+import { LinkedService } from "@/components/Service";
 import { siteTitle } from "@/content";
 import { plumbingServices } from "@/content/services";
 import { breadcrumbJsonLd } from "@/lib/seo";
-import { Anchor, SimpleGrid, Text, Title } from "@mantine/core";
-import NextLink from "next/link";
+import { SimpleGrid, Text, Title } from "@mantine/core";
 
 export const getStaticProps = async () => {
    return {
@@ -45,18 +44,7 @@ const ServicesPage = () => {
                </Text>
                <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
                   {plumbingServices.map((service) => (
-                     <Anchor
-                        key={service.slug}
-                        component={NextLink}
-                        href={`/services/${service.slug}`}
-                        underline="never"
-                        c="inherit"
-                        display="block"
-                        h="100%"
-                        className="service-card-link"
-                     >
-                        <Service {...service} />
-                     </Anchor>
+                     <LinkedService key={service.slug} service={service} />
                   ))}
                </SimpleGrid>
             </Content>

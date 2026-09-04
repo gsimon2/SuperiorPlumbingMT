@@ -2,10 +2,9 @@ import Content from "@/components/Content";
 import JsonLd from "@/components/JsonLd";
 import MainContentWrapper from "@/components/MainContentWrapper";
 import SeoHead from "@/components/SeoHead";
-import { ContactInfo, siteTitle } from "@/content";
+import { siteTitle } from "@/content";
 import { getPlumbingService, plumbingServices } from "@/content/services";
 import { breadcrumbJsonLd, serviceJsonLd } from "@/lib/seo";
-import { reportConversion } from "@/lib/gtag";
 import { Anchor, Box, Button, Group, List, Text, Title } from "@mantine/core";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
@@ -96,18 +95,6 @@ const ServicePage = ({ slug }: ServicePageProps) => {
                   ))}
                </List>
                <Group>
-                  <Button
-                     component="a"
-                     href={ContactInfo.phone.href}
-                     size="lg"
-                     hiddenFrom="md"
-                     onClick={(event) => {
-                        event.preventDefault();
-                        reportConversion(ContactInfo.phone.href);
-                     }}
-                  >
-                     Call {ContactInfo.phone.text}
-                  </Button>
                   <Button
                      component={NextLink}
                      href={`/contact?subject=${encodeURIComponent(

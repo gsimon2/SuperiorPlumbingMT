@@ -1,7 +1,7 @@
 "use client";
 import { Carousel } from "@mantine/carousel";
 import { SimpleGrid } from "@mantine/core";
-import Service from "@/components/Service";
+import { LinkedService } from "@/components/Service";
 import { plumbingServices } from "@/content/services";
 
 export function ServicesShowcase() {
@@ -33,15 +33,15 @@ export function ServicesShowcase() {
             }}
          >
             {plumbingServices.map((service) => (
-               <Carousel.Slide key={service.title}>
-                  <Service {...service} />
+               <Carousel.Slide key={service.slug}>
+                  <LinkedService service={service} />
                </Carousel.Slide>
             ))}
          </Carousel>
 
          <SimpleGrid visibleFrom="md" cols={3} spacing="lg">
             {plumbingServices.map((service) => (
-               <Service key={service.title} {...service} />
+               <LinkedService key={service.slug} service={service} />
             ))}
          </SimpleGrid>
       </>

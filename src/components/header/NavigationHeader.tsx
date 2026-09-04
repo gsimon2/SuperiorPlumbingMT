@@ -50,10 +50,6 @@ const NavigationHeader: React.FC = () => {
                </Anchor>
 
                <div className="header-bar-right">
-                  <div className="header-nav-desktop">
-                     <DesktopNavMenu pages={pages} />
-                  </div>
-
                   <Burger
                      opened={opened}
                      onClick={toggle}
@@ -62,6 +58,10 @@ const NavigationHeader: React.FC = () => {
                      color="white"
                      aria-label="Toggle navigation"
                   />
+               </div>
+
+               <div className="header-nav-desktop">
+                  <DesktopNavMenu pages={pages} />
                </div>
             </div>
          </Container>
