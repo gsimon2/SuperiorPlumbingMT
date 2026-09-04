@@ -2,9 +2,9 @@ import Content from "@/components/Content";
 import { JoinTeamRibbon } from "@/components/home/JoinTeamCallout";
 import { ServicesShowcase } from "@/components/home/ServicesShowcase";
 import MainContentWrapper from "@/components/MainContentWrapper";
-import { ContactInfo, headerLogo, siteTitle } from "@/content";
+import SeoHead from "@/components/SeoHead";
+import { ContactInfo, headerLogo, siteDescription, siteTitle } from "@/content";
 import { Anchor, Box, Button, Group, Text, Title } from "@mantine/core";
-import Head from "next/head";
 import Image from "next/image";
 import NextLink from "next/link";
 import { reportConversion } from "@/lib/gtag";
@@ -18,9 +18,11 @@ export const getStaticProps = async () => {
 const Page = () => {
    return (
       <>
-         <Head>
-            <title>{`${siteTitle}`}</title>
-         </Head>
+         <SeoHead
+            title={`${siteTitle} | Plumber in Superior, MT`}
+            description={siteDescription}
+            path="/"
+         />
          <MainContentWrapper>
             <Content className="content-card">
                <JoinTeamRibbon />
@@ -40,6 +42,9 @@ const Page = () => {
                      <Text className="eyebrow" mb="sm">
                         Mineral · Sanders · Missoula County
                      </Text>
+                     <Title order={1} mb="md">
+                        Plumbers serving Mineral, Sanders, and Missoula Counties
+                     </Title>
                      <Text mb="md">
                         Superior Plumbing Service, your trusted local
                         plumbing Professionals proudly serving the

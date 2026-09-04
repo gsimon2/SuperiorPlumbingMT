@@ -61,10 +61,10 @@ const ReviewCard: React.FC<IReviewCardProps> = ({
             <Rating value={review.rating} readOnly />
          </Group>
          <Collapse in={expanded} transitionDuration={150}>
-            <Text>{review.text.text}</Text>
+            <Text>{review.text?.text ?? ""}</Text>
          </Collapse>
          {!expanded && (
-            <Text lineClamp={6}>{review.text.text}</Text>
+            <Text lineClamp={6}>{review.text?.text ?? ""}</Text>
          )}
       </Card>
    );

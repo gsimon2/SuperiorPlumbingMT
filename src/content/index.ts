@@ -4,11 +4,10 @@ export const siteTitleLogo = "/assets/superior_plumbing_name_graphic.svg"
 
 export const siteTitle = "Superior Plumbing Service";
 export const siteURL = "superiorPlumbingMt.com";
+export const siteOrigin = "https://www.superiorplumbingmt.com";
 
-export const siteDescription = `
-Superior Plumbing Services: Providing top-tier plumbing solutions in Superior, MT, and surrounding areas.
-From emergency repairs to installations, our certified experts ensure your plumbing needs are met with professionalism and efficiency.
-`;
+export const siteDescription =
+   "Licensed plumbers in Superior, MT serving Mineral, Sanders, and Missoula Counties. Emergency repairs, water heaters, drain cleaning, and remodel plumbing.";
 
 export const googlePlaceId = "ChIJI38X8IHzZm8R8xBNy6v5EhU";
 export const reviewsUrl = `https://search.google.com/local/reviews?placeid=${googlePlaceId}`;
@@ -19,10 +18,12 @@ export const pages: ReadonlyArray<{
    url: string;
 }> = [
    { title: "Home", url: "/" },
+   { title: "Services", url: "/services" },
    { title: "Contact", url: "/contact" },
    { title: "Careers", url: "/careers" },
    { title: "Reviews", url: "/reviews" },
-   { title: "Our Team", url: "/team" }
+   { title: "Our Team", url: "/team" },
+   { title: "FAQ", url: "/faq" },
 ];
 
 export const footerLinks: ReadonlyArray<{

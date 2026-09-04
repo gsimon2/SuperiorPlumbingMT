@@ -15,19 +15,31 @@ import {
    TextInput,
    Title,
 } from "@mantine/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IconSend, IconUpload, IconX } from "@tabler/icons-react";
 import imageCompression from "browser-image-compression";
 import { maxImagesInRequest, maxRequestSizeInMB } from "@/Constants";
 import Image from "next/image";
 import { reportConversion } from "@/lib/gtag";
+import { useRouter } from "next/router";
 
 const ContactForm: React.FC = () => {
+   const router = useRouter();
    const [loading, setLoading] = useState(false);
    const [messageSent, setMessageSent] = useState(false);
    const [error, setError] = useState("");
    const [phoneValue, setPhoneValue] = useState("");
+   const [subjectValue, setSubjectValue] = useState("");
    const [images, setImages] = useState<File[]>([]);
+
+   useEffect(() => {
+      const subjectQuery = router.query.subject;
+      if (typeof subjectQuery !== "string") {
+         return;
+      }
+
+      setSubjectValue(subjectQuery.slice(0, 120));
+   }, [router.query.subject]);
 
    const checkValidity = () => {
       const digits = phoneValue.replace(/\D/g, "");
@@ -138,7 +150,14 @@ const ContactForm: React.FC = () => {
             mb="sm"
          />
          <TextInput name="email" id="email-input" label="Email" mb="sm" />
-         <TextInput name="subject" id="subject-input" label="Subject" mb="sm" />
+         <TextInput
+            name="subject"
+            id="subject-input"
+            label="Subject"
+            mb="sm"
+            value={subjectValue}
+            onChange={(event) => setSubjectValue(event.currentTarget.value)}
+         />
          <Textarea
             required
             name="message"

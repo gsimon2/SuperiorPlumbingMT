@@ -1,11 +1,13 @@
 import { AppProps } from "next/app";
 import Layout from "@/components/SiteLayout";
+import JsonLd from "@/components/JsonLd";
 import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { inter, theme } from "@/theme";
 import Head from "next/head";
 import { Analytics } from "@vercel/analytics/react";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { localBusinessJsonLd, websiteJsonLd } from "@/lib/seo";
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
 import "@mantine/carousel/styles.css";
@@ -15,6 +17,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
    return (
       <>
          <GoogleAnalytics />
+         <JsonLd data={localBusinessJsonLd()} />
+         <JsonLd data={websiteJsonLd()} />
          <Head>
             <meta
                name="viewport"
@@ -24,10 +28,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
          <MantineProvider theme={theme} defaultColorScheme="light" forceColorScheme="light">
             <Notifications />
             <Analytics />
-            <div
-               className={inter.className}
-               style={{ minHeight: "100%", display: "flex", flexDirection: "column", flex: 1 }}
-            >
+            <div className={`${inter.className} site-root`}>
                <Layout>
                   <Component {...pageProps} />
                </Layout>

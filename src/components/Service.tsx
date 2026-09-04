@@ -1,6 +1,8 @@
-import { Box, Card, Text, Title } from "@mantine/core";
+import { Anchor, Box, Card, Text, Title } from "@mantine/core";
 import React from "react";
 import Image from "next/image";
+import NextLink from "next/link";
+import { PlumbingService } from "@/content/services";
 
 const Service: React.FC<IServiceProps> = ({
    imageSource,
@@ -9,7 +11,7 @@ const Service: React.FC<IServiceProps> = ({
    text,
 }) => {
    return (
-      <Card withBorder shadow="sm" h="100%">
+      <Card withBorder shadow="sm" h="100%" c="navy.9">
          {imageSource && (
             <Box
                mx="auto"
@@ -43,6 +45,22 @@ const Service: React.FC<IServiceProps> = ({
       </Card>
    );
 };
+
+export function LinkedService({ service }: { service: PlumbingService }) {
+   return (
+      <Anchor
+         component={NextLink}
+         href={`/services/${service.slug}`}
+         underline="never"
+         c="navy.9"
+         display="block"
+         h="100%"
+         className="service-card-link"
+      >
+         <Service {...service} />
+      </Anchor>
+   );
+}
 
 export interface IServiceProps {
    imageSource?: string;

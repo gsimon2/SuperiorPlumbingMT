@@ -1,8 +1,8 @@
 import Content from "@/components/Content";
 import MainContentWrapper from "@/components/MainContentWrapper";
-import { ContactInfo, siteTitle } from "@/content";
+import SeoHead from "@/components/SeoHead";
+import { ContactInfo, siteOrigin, siteTitle } from "@/content";
 import { Anchor, Text, Title } from "@mantine/core";
-import Head from "next/head";
 
 export const getStaticProps = async () => {
    return {
@@ -13,15 +13,17 @@ export const getStaticProps = async () => {
 const PrivacyPage: React.FC = () => {
    return (
       <>
-         <Head>
-            <title>{`Privacy Policy | ${siteTitle}`}</title>
-         </Head>
+         <SeoHead
+            title={`Privacy Policy | ${siteTitle}`}
+            description="Privacy policy for Superior Plumbing Service LLC, including how we handle contact information and text message consent."
+            path="/privacy"
+         />
          <MainContentWrapper>
             <Content>
                <Text className="eyebrow" mb="xs">
                   Legal
                </Text>
-               <Title order={2} mb="md">
+               <Title order={1} mb="md">
                   Privacy Policy
                </Title>
 
@@ -102,7 +104,7 @@ const PrivacyPage: React.FC = () => {
                   </Anchor>
                   <br />
                   Website:{" "}
-                  <Anchor href="https://superiorplumbingmt.com">
+                  <Anchor href={siteOrigin}>
                      SuperiorPlumbingMT.com
                   </Anchor>
                </Text>

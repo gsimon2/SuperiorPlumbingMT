@@ -2,12 +2,8 @@
 import { Carousel } from "@mantine/carousel";
 import { SimpleGrid } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import Service from "@/components/Service";
+import { LinkedService } from "@/components/Service";
 import { plumbingServices } from "@/content/services";
-
-const serviceCards = plumbingServices.map((service) => (
-   <Service key={service.title} {...service} />
-));
 
 export function ServicesShowcase() {
    const isBelowMd = useMediaQuery("(max-width: 61.99em)");
@@ -16,7 +12,7 @@ export function ServicesShowcase() {
       return (
          <Carousel
             slideSize={{ base: "100%", sm: "50%" }}
-            slideGap="md"
+            slideGap={0}
             slidesToScroll={1}
             withIndicators
             withControls
@@ -39,8 +35,8 @@ export function ServicesShowcase() {
             }}
          >
             {plumbingServices.map((service) => (
-               <Carousel.Slide key={service.title}>
-                  <Service {...service} />
+               <Carousel.Slide key={service.slug}>
+                  <LinkedService service={service} />
                </Carousel.Slide>
             ))}
          </Carousel>
@@ -49,7 +45,9 @@ export function ServicesShowcase() {
 
    return (
       <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
-         {serviceCards}
+         {plumbingServices.map((service) => (
+            <LinkedService key={service.slug} service={service} />
+         ))}
       </SimpleGrid>
    );
 }

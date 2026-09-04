@@ -1,4 +1,5 @@
 "use client";
+import { isNavActive } from "@/lib/nav";
 import { Anchor, Group } from "@mantine/core";
 import React from "react";
 import NextLink from "next/link";
@@ -8,9 +9,9 @@ const DesktopNavMenu: React.FC<IDesktopNavMenuProps> = ({ pages }) => {
    const { pathname } = useRouter();
 
    return (
-      <Group gap="lg" wrap="nowrap" className="header-nav">
+      <Group gap="sm" wrap="nowrap" className="header-nav">
          {pages.map((page) => {
-            const active = pathname === page.url;
+            const active = isNavActive(pathname, page.url);
             return (
                <Anchor
                   component={NextLink}
