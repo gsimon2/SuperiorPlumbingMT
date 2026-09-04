@@ -1,6 +1,6 @@
 "use client";
 import { maxWidth } from "@/Constants";
-import { Anchor, Box, Burger, Button, Container, Divider, Drawer, Group, Stack, Text } from "@mantine/core";
+import { Anchor, Box, Burger, Button, Container, Divider, Drawer, Stack, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import React from "react";
 import DesktopNavMenu from "./DesktopNavMenu";
@@ -25,6 +25,7 @@ const NavigationHeader: React.FC = () => {
                   underline="never"
                   onClick={close}
                   aria-label="Superior Plumbing Service"
+                  className="header-dog-link"
                >
                   <Box className="header-dog">
                      <Image
@@ -48,19 +49,9 @@ const NavigationHeader: React.FC = () => {
                </Anchor>
 
                <div className="header-bar-right">
-                  <Group gap="md" visibleFrom="md" wrap="nowrap" className="header-nav">
+                  <div className="header-nav-desktop">
                      <DesktopNavMenu pages={pages} />
-                     <Button
-                        className="header-call-btn"
-                        component={NextLink}
-                        href="/contact"
-                        color="gold"
-                        c="navy.9"
-                        px="lg"
-                     >
-                        Contact us
-                     </Button>
-                  </Group>
+                  </div>
 
                   <Burger
                      opened={opened}
