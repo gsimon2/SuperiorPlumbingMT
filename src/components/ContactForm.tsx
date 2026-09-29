@@ -205,6 +205,7 @@ const ContactForm: React.FC = () => {
                      pos="absolute"
                      top={4}
                      right={4}
+                     aria-label={`Remove ${img.name}`}
                      onClick={() => {
                         setImages(images.filter((_, index) => index !== i));
                      }}
