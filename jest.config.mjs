@@ -15,6 +15,7 @@ const config = {
       "src/lib/**/*.{ts,tsx}",
       "!src/**/*.test.{ts,tsx}",
    ],
+   coverageReporters: ["text", "lcov", "json-summary"],
    clearMocks: true,
    restoreMocks: true,
 };
