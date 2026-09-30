@@ -17,6 +17,7 @@ const DesktopNavMenu: React.FC<IDesktopNavMenuProps> = ({ pages }) => {
                   component={NextLink}
                   href={page.url}
                   key={page.title}
+                  aria-current={active ? "page" : undefined}
                   c={active ? "gold.4" : "gray.2"}
                   fw={active ? 700 : 500}
                   size="sm"
