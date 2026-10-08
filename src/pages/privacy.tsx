@@ -58,9 +58,12 @@ const PrivacyPage: React.FC = () => {
                <Text mb="md">
                   By providing your mobile phone number and opting in to receive
                   text messages, you consent to receive service-related
-                  communications from Superior Plumbing Service LLC. Message and
-                  data rates may apply. Message frequency may vary.
+                  communications from Superior Plumbing Service LLC.
                </Text>
+
+               <Text mb="md">Messaging and data rates may apply.</Text>
+
+               <Text mb="md">Message frequency may vary.</Text>
 
                <Text mb="md">
                   You may opt out of text messages at any time by replying STOP.
