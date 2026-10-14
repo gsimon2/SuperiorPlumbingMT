@@ -29,10 +29,7 @@ export const pages: ReadonlyArray<{
 export const footerLinks: ReadonlyArray<{
    title: string;
    url: string;
-}> = [
-   { title: "Privacy Policy", url: "/privacy" },
-   { title: "SMS Terms", url: "/terms" },
-];
+}> = [{ title: "Privacy Policy", url: "/privacy" }];
 
 export const ContactInfo = {
    address: {
