@@ -115,6 +115,7 @@ const NavigationHeader: React.FC = () => {
                      key={page.title}
                      component={NextLink}
                      href={page.url}
+                     aria-current={isNavActive(pathname, page.url) ? "page" : undefined}
                      c={isNavActive(pathname, page.url) ? "navy.6" : "dark"}
                      fw={isNavActive(pathname, page.url) ? 700 : 500}
                      onClick={close}
