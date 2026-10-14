@@ -14,6 +14,7 @@ export interface CareersEmailTemplateProps {
    currentCity: string;
    currentState: string;
    yearsExperience: string;
+   smsConsent?: boolean;
 }
 
 export const CareersEmailTemplate: React.FC<
@@ -26,6 +27,7 @@ export const CareersEmailTemplate: React.FC<
    currentCity,
    currentState,
    yearsExperience,
+   smsConsent,
 }) => {
    return (
       <EmailLayout
@@ -68,6 +70,9 @@ export const CareersEmailTemplate: React.FC<
                   >
                      {formatPhoneNumber(phoneNumber)}
                   </a>
+               </DetailRow>
+               <DetailRow label="SMS opt-in">
+                  {smsConsent ? "Yes" : "No"}
                </DetailRow>
             </tbody>
          </table>

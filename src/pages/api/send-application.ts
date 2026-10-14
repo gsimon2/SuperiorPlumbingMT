@@ -7,6 +7,7 @@ import {
    ParsedFormData,
    parseMultipartForm,
 } from "@/lib/email/form-data";
+import { smsConsentCheckedValue } from '@/lib/sms-consent';
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Resend } from "resend";
 
@@ -55,6 +56,7 @@ const sendApplication = async (req: NextApiRequest, res: NextApiResponse) => {
             currentCity: fields.currentCity,
             currentState: fields.currentState,
             yearsExperience: fields.yearsExperience,
+            smsConsent: fields.smsConsent === smsConsentCheckedValue,
          }),
          ...(attachments.length > 0 && {
             attachments: attachments.map((file) => ({
