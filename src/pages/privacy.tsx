@@ -3,6 +3,7 @@ import MainContentWrapper from "@/components/MainContentWrapper";
 import SeoHead from "@/components/SeoHead";
 import { ContactInfo, siteOrigin, siteTitle } from "@/content";
 import { Anchor, Text, Title } from "@mantine/core";
+import NextLink from "next/link";
 
 export const getStaticProps = async () => {
    return {
@@ -56,9 +57,14 @@ const PrivacyPage: React.FC = () => {
                </Title>
 
                <Text mb="md">
-                  By providing your mobile phone number and opting in to receive
-                  text messages, you consent to receive service-related
-                  communications from Superior Plumbing Service LLC.
+                  You may opt in to our text messaging program by checking the
+                  optional SMS consent box on our website contact form. Checking
+                  that box consents to receive service-related text messages
+                  from Superior Plumbing Service LLC, including appointment
+                  reminders, quotes, scheduling updates, and responses to
+                  service requests. Providing a phone number or submitting a
+                  service request does not, by itself, enroll you in the text
+                  messaging program.
                </Text>
 
                <Text mb="md">Messaging and data rates may apply.</Text>
@@ -74,6 +80,14 @@ const PrivacyPage: React.FC = () => {
                   contact Superior Plumbing Service LLC directly using the
                   contact information below for questions or support regarding
                   our text messaging service.
+               </Text>
+
+               <Text mb="md">
+                  Additional program details are available in our{" "}
+                  <Anchor component={NextLink} href="/terms">
+                     SMS Terms
+                  </Anchor>
+                  .
                </Text>
 
                <Text mb="lg" fs="italic">
@@ -123,7 +137,7 @@ const PrivacyPage: React.FC = () => {
                </Text>
 
                <Text size="sm" c="dimmed">
-                  Last Updated: August 25, 2026
+                  Last Updated: October 14, 2026
                </Text>
             </Content>
          </MainContentWrapper>

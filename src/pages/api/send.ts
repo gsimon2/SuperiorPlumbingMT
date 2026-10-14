@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { EmailTemplate } from "../../components/email/contact-email-template";
+import { smsConsentCheckedValue } from "@/lib/sms-consent";
 import { Resend } from "resend";
 import { siteTitle, siteURL } from "@/content";
 import { getDestinationEmails } from "@/lib/email/destination-emails";
@@ -41,6 +42,7 @@ const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
             email: fields.email,
             message: fields.message,
             subject: fields.subject,
+            smsConsent: fields.smsConsent === smsConsentCheckedValue,
          }),
          ...(images.length > 0 && {
             attachments: images.map((image) => ({

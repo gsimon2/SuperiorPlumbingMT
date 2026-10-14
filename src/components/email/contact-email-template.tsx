@@ -12,6 +12,7 @@ export interface EmailTemplateProps {
    email: string;
    message: string;
    subject?: string;
+   smsConsent?: boolean;
 }
 
 export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
@@ -20,6 +21,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
    email,
    message,
    subject,
+   smsConsent,
 }) => {
    return (
       <EmailLayout
@@ -61,6 +63,9 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
                      </a>
                   </DetailRow>
                )}
+               <DetailRow label="SMS opt-in">
+                  {smsConsent ? "Yes" : "No"}
+               </DetailRow>
             </tbody>
          </table>
 
