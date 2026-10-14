@@ -2,7 +2,7 @@ import { pages, siteOrigin } from "@/content";
 import { plumbingServices } from "@/content/services";
 import { GetServerSideProps } from "next";
 
-const extraPaths = ["/privacy"] as const;
+const extraPaths = ["/privacy", "/terms"] as const;
 
 function sitemapXml(paths: ReadonlyArray<string>) {
    const lastmod = new Date().toISOString();

@@ -22,6 +22,7 @@ import { maxImagesInRequest, maxRequestSizeInMB } from "@/Constants";
 import Image from "next/image";
 import { reportConversion } from "@/lib/gtag";
 import { useRouter } from "next/router";
+import SmsConsentFields from "./SmsConsentFields";
 
 const ContactForm: React.FC = () => {
    const router = useRouter();
@@ -149,6 +150,7 @@ const ContactForm: React.FC = () => {
             error={error.toLowerCase().includes("phone") ? error : undefined}
             mb="sm"
          />
+         <SmsConsentFields />
          <TextInput name="email" id="email-input" label="Email" mb="sm" />
          <TextInput
             name="subject"
