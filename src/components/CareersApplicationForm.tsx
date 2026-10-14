@@ -15,6 +15,7 @@ import {
 } from "@mantine/core";
 import React, { useState } from "react";
 import { IconSend, IconUpload } from "@tabler/icons-react";
+import SmsConsentFields from './SmsConsentFields';
 
 const availablePositions = [
    "Journeyman Plumber",
@@ -202,6 +203,7 @@ const CareersApplicationForm: React.FC = () => {
             error={error.toLowerCase().includes("phone") ? error : undefined}
             mb="sm"
          />
+         <SmsConsentFields />
          <TextInput required name="currentCity" label="Current City" mb="sm" />
          <NativeSelect
             required
